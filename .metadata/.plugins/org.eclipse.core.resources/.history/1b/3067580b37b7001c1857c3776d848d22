@@ -1,0 +1,20 @@
+package com.kh.hw.employee.model.vo;
+
+public class Employee {
+
+	private int empNo;
+	private String name;
+	private char gender;
+	private String phone;
+	private String dept;
+	private int salaty;
+	private double bonus;
+	
+	public Employee() {
+		
+	}
+	
+	
+	
+	
+}

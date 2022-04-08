@@ -1,0 +1,22 @@
+package com.kh.ex03.object_app;
+
+public class Person2 {
+	// Person의 제대로 된 버전 -> 표준
+	// ValueObject : VO로 읽고, 데이터만 있는 객체의 표현법, 멤버 변수 + getter, setter + 기타(toString)
+	// ValueObject의 객체에서는 멤버변수를 private으로 접근 제한 한다.
+	// 이유 : 외부에서 직접 변수로 접근하지 않고, getter/setter로 기능을 제한.
+	
+	private String name;
+	private int age;
+	private String phoneNum;
+	private String Pid;
+	
+	public Person2() {
+		name = "이름 없음";
+		
+		
+	}
+	
+	
+	
+}

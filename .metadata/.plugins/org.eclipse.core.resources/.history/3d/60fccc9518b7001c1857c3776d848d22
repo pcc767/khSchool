@@ -1,0 +1,43 @@
+import java.util.Arrays;
+
+public class ObjectArray {
+
+	public static void main(String[] args) {
+		// 선언 및 초기화 문법
+		UserVO[] userArray;
+		UserVO[] userArray1 = null;
+		UserVO[] userArray2 = new UserVO[10];	//표준적으로 사용하는 방법
+		UserVO[] userArray3 = new UserVO[]{
+		
+		new UserVO("홍길동",26,"010-2222-3333"),
+		new UserVO("최길동",31,"010-2222-3333"),
+		new UserVO("박길동",29,"010-2222-3333")
+		};
+		
+//		userArray[0].getName(); //죽는 이유 : 초기화 하지 않아서
+//		userArray1[0].getName(); //죽는 이유 : null 발생, 초기화를 null로 해서
+		System.out.println(Arrays.toString(userArray2));		
+		userArray2[0].getName(); //죽는 이유 : 배열을 생성하고 user객체를 생성 안해서 null로 죽음
+		userArray2[0] = new UserVO();
+		userArray2[0].getName().length(); // 죽는 이유 객체생성하고 이름을 초기화 안고 길이를 불러서
+		
+		//처음부터 생성하면 사는 문장
+		userArray3[0].getName()	;
+		System.out.println(userArray3[0].getName());
+		
+		//객체배열 올바르게 활용하는 순서
+		//1. 객체 배열을 선언하고 객체 배열을 생성한다.
+		//2. 실제 사용할 객체를 new로 생성하고 배열에 넣어 사용한다.
+		//3. 객체가 없는 index에 접근하지 않는다.
+		userArray2 = new UserVO[10];
+		userArray2[0] = new UserVO("홍길동",24,"010-2222-2222");
+	    System.out.println(userArray2[0].getName());
+			
+		
+		
+		
+		
+		
+		
+	}
+}

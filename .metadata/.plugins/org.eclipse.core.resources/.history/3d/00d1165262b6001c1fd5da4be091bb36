@@ -1,0 +1,15 @@
+package com.kh.ex03.run_object;
+
+public class Kooki2 {
+	
+	public static void main(String[] args) {
+		
+		Kooki ki = new Kooki();
+	}
+	
+	
+	
+	
+	
+
+}

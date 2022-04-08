@@ -1,0 +1,26 @@
+package com.kh.ex03.run_object;
+
+public class Kooki {
+
+	private String name;
+	private int age;
+	private String phoneNum;
+	private String pId;
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	public void setPhoneNum(String phoneNum) {
+		this.phoneNum = phoneNum;
+	}
+	
+	public void setPid(String pId) {
+		this.pId = pId;
+	}
+	
+}

@@ -1,0 +1,32 @@
+package com.kh.example.practice4.model.vo;
+
+public class Student {
+
+	private int grade;
+	private int classroom;
+	private String name;
+	private double height;
+	private char gender;
+	 
+	public Student(int grade, int classroom, String name, double height, char gender) {
+		this.grade = grade;
+		this.classroom = classroom;
+		this.name = name;
+		this.height = height;
+		this.gender = gender;
+	}
+	
+	public String information() {
+		String result = "";
+		result += "grade : "+grade+"\n";
+		result += "classroom : "+classroom+"\n";
+		result += "name : "+name+"\n";
+		result += "height : "+height+"\n";
+		result += "gender : "+gender+"\n";
+		return result;
+	}
+	
+	
+	
+	
+}

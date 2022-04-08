@@ -1,0 +1,38 @@
+package com.kh.example.practice2.model.vo;
+
+public class Product {
+	
+	private String pName;
+	private int price;
+	private String brand;
+	
+	public Product(String pName,int price,String brand){
+		this.pName = pName;	
+		this.price = price;	
+		this.brand = brand;	
+	}
+
+	public void information() {
+		
+	}
+	
+	public void information(String pName) {
+		this.pName = pName;
+	}
+	
+	public void information(int price) {
+		this.price = price;
+	}
+	
+	public void information1(String brand) {
+		this.brand = brand;
+	}
+	
+	
+	public String getPname() {
+		return pName;
+	}
+	
+
+
+}
