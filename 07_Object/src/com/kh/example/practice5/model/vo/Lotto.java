@@ -1,5 +1,6 @@
 package com.kh.example.practice5.model.vo;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Lotto {
@@ -17,6 +18,7 @@ public class Lotto {
                 }
             }
         }
+        Arrays.sort(lotto);
 
     }
 
@@ -25,9 +27,10 @@ public class Lotto {
     }
 
     public void information(){
-        for(int i=0; i< lotto.length; i++) {
-            System.out.print(lotto[i]+" ");
-        }
+//        for(int i=0; i< lotto.length; i++) {
+//            System.out.print(lotto[i]+" ");
+//        }
+    	System.out.println(Arrays.toString(lotto));
     }
 	
 	

@@ -7,6 +7,7 @@ public class SquareController {
 	private Shape s = new Shape();
 
     public double calPerimeter(double height, double width) {
+ 
         s.setHeight(height);
         s.setWidth(width);
 

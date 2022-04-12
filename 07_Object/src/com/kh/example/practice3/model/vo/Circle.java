@@ -2,7 +2,7 @@ package com.kh.example.practice3.model.vo;
 
 public class Circle {
 	
-	private double PI = 3.14;
+	private static final double PI = 3.14;
     private int radius = 1;
 
     public Circle() {
@@ -10,7 +10,7 @@ public class Circle {
     }
 
     public void setPI(double PI){
-        this.PI = PI;
+//        this.PI = PI;
     }
 
     public double getPI(){

@@ -2,12 +2,21 @@ package com.kh.example.practice4.model.vo;
 
 public class Student {
 
-	private int grade;
+	private static int grade;
     private int classroom;
     private String name;
     private double height;
     private char gender;
 
+    {
+    	grade = 1;
+    	classroom = 3;
+    	name= "È«±æµ¿";
+    	height = 123;
+    	gender = '³²';
+    }
+    
+    
     public Student() {
 
     }

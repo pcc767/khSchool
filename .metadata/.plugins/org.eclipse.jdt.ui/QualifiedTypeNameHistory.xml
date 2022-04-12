@@ -28,7 +28,6 @@
     <fullyQualifiedTypeName name="com.kh.ex05.method_test.MyObject"/>
     <fullyQualifiedTypeName name="com.kh.ex07.overloading.Overloading"/>
     <fullyQualifiedTypeName name="java.lang.ArrayIndexOutOfBoundsException"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="UserVO"/>
     <fullyQualifiedTypeName name="com.kh.hw.shape.model.vo.Shape"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
@@ -38,7 +37,13 @@
     <fullyQualifiedTypeName name="com.kh.hw.shape.view.ShapeMenu"/>
     <fullyQualifiedTypeName name="javax.swing.text.StyleContext.SmallAttributeSet"/>
     <fullyQualifiedTypeName name="com.kh.example.practice7.model.vo.Employee"/>
-    <fullyQualifiedTypeName name="com.kh.hw.employee.model.vo.Employee"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.kh.hw.employee.controller.EmployeeController"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="com.kh.hw.employee.model.vo.Employee"/>
+    <fullyQualifiedTypeName name="com.kh.hw.member.model.MemberController"/>
+    <fullyQualifiedTypeName name="javax.swing.text.InternationalFormatter"/>
+    <fullyQualifiedTypeName name="com.kh.hw.member.model.vo.Member"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="com.kh.test.shape.model.vo.Circle"/>
+    <fullyQualifiedTypeName name="java.security.DomainCombiner"/>
 </qualifiedTypeNameHistroy>

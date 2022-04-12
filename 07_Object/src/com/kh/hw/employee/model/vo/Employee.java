@@ -2,98 +2,94 @@ package com.kh.hw.employee.model.vo;
 
 public class Employee {
 
-	private int empNo;
-	private String name;
-	private char gender;
-	private String phone;
-	private String dept;
-	private int salary;
-	private double bonus;
-	
-	public Employee() {
-		
-	}
+    private int empNo;
+    private String name;
+    private char gender;
+    private String phone;
+    private String dept;
+    private int salary;
+    private double bonus;
 
-	public Employee(int empNo, String name, char gender, String phone) {
-		super();
-		this.empNo = empNo;
-		this.name = name;
-		this.gender = gender;
-		this.phone = phone;
-	}
+    public Employee() {
 
-	public Employee(int empNo, String name, char gender, String phone, String dept, int salary, double bonus) {
-		super();
-		this.empNo = empNo;
-		this.name = name;
-		this.gender = gender;
-		this.phone = phone;
-		this.dept = dept;
-		this.salary = salary;
-		this.bonus = bonus;
-	}
+    }
 
-	public int getEmpNo() {
-		return empNo;
-	}
+    public Employee(int empNo, String name, char gender, String phone) {
+        this.empNo = empNo;
+        this.name = name;
+        this.gender = gender;
+        this.phone = phone;
+    }
 
-	public void setEmpNo(int empNo) {
-		this.empNo = empNo;
-	}
+    public Employee(int empNo, String name, char gender, String phone, String dept, int salary, double bonus) {
+        this(empNo,name,gender,phone);
+        this.dept = dept;
+        this.salary = salary;
+        this.bonus = bonus;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public int getEmpNo() {
+        return empNo;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setEmpNo(int empNo) {
+        this.empNo = empNo;
+    }
 
-	public char getGender() {
-		return gender;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setGender(char gender) {
-		this.gender = gender;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public char getGender() {
+        return gender;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
 
-	public String getDept() {
-		return dept;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setDept(String dept) {
-		this.dept = dept;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public int getSalary() {
-		return salary;
-	}
+    public String getDept() {
+        return dept;
+    }
 
-	public void setSalary(int salary) {
-		this.salary = salary;
-	}
+    public void setDept(String dept) {
+        this.dept = dept;
+    }
 
-	public double getBonus() {
-		return bonus;
-	}
+    public int getSalary() {
+        return salary;
+    }
 
-	public void setBonus(double bonus) {
-		this.bonus = bonus;
-	}
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
 
-	@Override
-	public String toString() {
-		return "Employee [empNo=" + empNo + ", name=" + name + ", gender=" + gender + ", phone=" + phone + ", dept="
-				+ dept + ", salary=" + salary + ", bonus=" + bonus + "]";
-	}
+    public double getBonus() {
+        return bonus;
+    }
+
+    public void setBonus(double bonus) {
+        this.bonus = bonus;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee [empNo=" + empNo + ", name=" + name + ", gender=" + gender + ", phone=" + phone + ", dept="
+                + dept + ", salary=" + salary + ", bonus=" + bonus + "]";
+    }
+
 	
 	
 	

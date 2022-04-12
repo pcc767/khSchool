@@ -25,7 +25,7 @@ public class ShapeMenu {
 			switch(num) {
 			case 3 :
 				triangleMenu();
-				break;		
+				break;
 			
 			case 4 : 
 				squareMenu();
@@ -37,9 +37,11 @@ public class ShapeMenu {
 				
 			default :
 				System.out.println("잘못된 번호입니다. 다시 입력해주세요\n");
-				continue;
+				
 			}
+			break;
 		}
+		
 	}
 		
 	public void triangleMenu(){
@@ -55,15 +57,15 @@ public class ShapeMenu {
 			switch(num) {
 			case 1 :
 				inputSize(3,1);
-				break;		
+				continue;		
 			
 			case 2 : 
 				inputSize(3,2);
-				break;		
+				continue;		
 			
 			case 3 :
 				printInformation(3);				
-				break;
+				continue;
 				
 			case 9 :
 				System.out.println("메인으로 돌아갑니다.");		
@@ -75,8 +77,8 @@ public class ShapeMenu {
 				continue;
 				
 			}
+			break;
 		}
-		
 		
 	}
 	
@@ -96,19 +98,19 @@ public class ShapeMenu {
 			switch(num) {
 			case 1 :
 				inputSize(4,1);
-				break;		
+				continue;		
 			
 			case 2 : 
 				inputSize(4,2);
-				break;		
+				continue;		
 			
 			case 3 :
 				inputSize(4,3);				
-				break;
+				continue;
 				
 			case 4 :
 				printInformation(4);				
-				break;
+				continue;
 				
 			case 9 :
 				System.out.println("메인으로 돌아갑니다.");		
@@ -119,7 +121,9 @@ public class ShapeMenu {
 				System.out.println("잘못된 번호입니다. 다시 입력해주세요\n");
 				continue;
 			}
+			break;
 		}
+		
 	}
 	
 	public void inputSize(int type, int menuNum) {
