@@ -5,7 +5,7 @@ import com.kh.ex03.overriding_test.SuperClass;
 public class OtherChildClass extends SuperClass {
 	// 외부 클래스 상속 테스트
 	
-	// 결과 : private, final, default 상속 불라
+	// 결과 : private, final, default 상속 불가
 
 	
 	// ★ public 추천 ★

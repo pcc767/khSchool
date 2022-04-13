@@ -42,8 +42,11 @@
     <fullyQualifiedTypeName name="com.kh.hw.employee.model.vo.Employee"/>
     <fullyQualifiedTypeName name="com.kh.hw.member.model.MemberController"/>
     <fullyQualifiedTypeName name="javax.swing.text.InternationalFormatter"/>
-    <fullyQualifiedTypeName name="com.kh.hw.member.model.vo.Member"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.kh.test.shape.model.vo.Circle"/>
     <fullyQualifiedTypeName name="java.security.DomainCombiner"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="com.kh.ex03.overriding_test.SuperClass"/>
+    <fullyQualifiedTypeName name="com.kh.hw.member.model.vo.Member"/>
+    <fullyQualifiedTypeName name="com.kh.hw.member.controller.MemberController"/>
 </qualifiedTypeNameHistroy>

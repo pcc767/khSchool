@@ -111,7 +111,7 @@ public class MemberMenu {
 				searchEmail();
 				break;
 			case 9 : 
-				mainMenu();
+//				mainMenu();
 				break;
 			default :
 				System.out.println("잘못 입력하셨습니다.");
@@ -170,17 +170,23 @@ public class MemberMenu {
 	public void updateMember() {
 		System.out.print("1. 비밀번호 수정하기\n2. 이름 수정하기\n3. 이메일 수정하기\n9. 메인으로 돌아가기\n메뉴 선택 : ");
 		int menuNum = Integer.parseInt(sc.nextLine());
-
-		if (menuNum == 1) {
-			updatePassword();
-		} else if (menuNum == 2) {
-			updateName();
-		} else if (menuNum == 3) {
-			updateEmail();
-		} else if (menuNum == 9) {
-			System.out.println("메인으로 돌아갑니다.");
-		} else {
-			System.out.println("잘못 입력하셨습니다.");
+		
+		switch(menuNum) {
+			case 1:
+				updatePassword();
+				break;
+			case 2 :
+				updateName();
+				break;
+			case 3 : 
+				updateEmail();
+				break;
+			case 9 :
+				break;
+			default :
+				System.out.println("잘못 입력하셨습니다.");
+				break;
+			
 		}
 
 	}
