@@ -1,8 +1,0 @@
-package com.kh.ex03.run_object;
-
-public class kooki2 {
-	
-	Kooki kk = new Kooki();
-	
-
-}

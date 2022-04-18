@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
-    <fullyQualifiedTypeName name="java.lang.Character"/>
-    <fullyQualifiedTypeName name="com.kh.practice.func.OperatorPractice"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="com.kh.practice.comp.func.CompExample"/>
     <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
     <fullyQualifiedTypeName name="com.kh.practice.array.ArrayPractice"/>
@@ -13,7 +9,6 @@
     <fullyQualifiedTypeName name="java.util.Collection"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
     <fullyQualifiedTypeName name="java.util.TreeSet"/>
-    <fullyQualifiedTypeName name="java.lang.Object"/>
     <fullyQualifiedTypeName name="com.kh.ex02.fisrt_object.Person"/>
     <fullyQualifiedTypeName name="java.lang.Package"/>
     <fullyQualifiedTypeName name="com.kh.ex03.object_app.Person"/>
@@ -38,15 +33,31 @@
     <fullyQualifiedTypeName name="javax.swing.text.StyleContext.SmallAttributeSet"/>
     <fullyQualifiedTypeName name="com.kh.example.practice7.model.vo.Employee"/>
     <fullyQualifiedTypeName name="com.kh.hw.employee.controller.EmployeeController"/>
-    <fullyQualifiedTypeName name="java.util.Arrays"/>
     <fullyQualifiedTypeName name="com.kh.hw.employee.model.vo.Employee"/>
     <fullyQualifiedTypeName name="com.kh.hw.member.model.MemberController"/>
     <fullyQualifiedTypeName name="javax.swing.text.InternationalFormatter"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="com.kh.test.shape.model.vo.Circle"/>
     <fullyQualifiedTypeName name="java.security.DomainCombiner"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.kh.ex03.overriding_test.SuperClass"/>
     <fullyQualifiedTypeName name="com.kh.hw.member.model.vo.Member"/>
     <fullyQualifiedTypeName name="com.kh.hw.member.controller.MemberController"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.math.BigDecimal"/>
+    <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
+    <fullyQualifiedTypeName name="com.kh.ex03.poly_abstract.Car"/>
+    <fullyQualifiedTypeName name="com.kh.ex04.poly_interface.ElectricType"/>
+    <fullyQualifiedTypeName name="com.kh.ex04.poly_interface.TeslaCar"/>
+    <fullyQualifiedTypeName name="com.kh.ex04.poly_interface.OverseasType"/>
+    <fullyQualifiedTypeName name="com.kh.ex02.poly_example.Avante"/>
+    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
+    <fullyQualifiedTypeName name="com.kh.practice.chap01_poly.model.vo.Book"/>
+    <fullyQualifiedTypeName name="com.kh.practice.chap01_poly.model.vo.Member"/>
+    <fullyQualifiedTypeName name="com.kh.practice.chap01_poly.view.LibraryMenu"/>
+    <fullyQualifiedTypeName name="com.kh.practice.chap02.model.vo.Animal"/>
+    <fullyQualifiedTypeName name="com.kh.practice.chap02.model.vo.Dog"/>
+    <fullyQualifiedTypeName name="com.kh.practice.chap02.model.vo.Cat"/>
+    <fullyQualifiedTypeName name="com.kh.practice.token.view.TokenMenu"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
 </qualifiedTypeNameHistroy>

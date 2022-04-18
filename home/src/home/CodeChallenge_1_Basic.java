@@ -1,6 +1,12 @@
 package home;
 
+import java.util.Arrays;
+import java.util.Scanner;
+
 public class CodeChallenge_1_Basic {
+	
+	public static Scanner sc = new Scanner(System.in);
+	
 	public static void main(String[] args) {
 		// 순서대로 코드 짜주세요.
 		// 1. 알맞은 변수 선언하고 출력하기
@@ -63,15 +69,41 @@ public class CodeChallenge_1_Basic {
 		}
 		
 		// 3.1 구구단 2단만 출력하기 ex) 2 X 1 = 2 꼴로
+		for(int i=1; i<10; i++) {
+			System.out.println("2 X "+i+" = "+2*i);
+		}
 		
 		// 3.2 1부터 100까지 짝수만 골라서 출력하기
+		for(int i=1; i<=100; i++) {
+			if(i%2==0) {
+				System.out.println(i);
+			}
+		}
+		System.out.println("-----------------------\n");
 		
 		// 3.3 1부터 100까지 수 중에 5의 배수와 7의 배수를 확인하고 출력하기.
+		for(int i=1; i<=100; i++) {
+			if(i%5 == 0 || i%7 == 0) {
+				System.out.println(i);
+			}
+		}
+		System.out.println("-----------------------\n");
 		
 		// 3.4 1부터 1000까지 수 중에 
 		//     3의 배수이면서 4의 배수인 수를 모두 찾고,
 		//     이중에 20번을 찾으면 반복문 정지하기.
+		int count = 0;			
+		for(int i=1; i<1000; i++) {			
+			if(i%3==0 && i%4==0) {
+				System.out.println(i);
+				count++;
+			}
+			if(count == 20) {
+				break;
+			}
+		}
 		
+		System.out.println("-----------------------\n");
 		
 //		4. 중첩 반복문
 		// 4.1 구구단 1단부터 9단까지 모두 출력하는데, 단이 바뀔때마다 "x단" 표시하기
@@ -79,23 +111,104 @@ public class CodeChallenge_1_Basic {
 		//     3단 시작!
 		//     3 X 1 = 3
 		
+		for(int i=2; i<10; i++) {
+			System.out.println(i+"단 시작");
+			for(int j=1; j<10; j++) {
+				System.out.println(i+ " X "+j+" = "+i*j);
+			}
+		}
+		
+		System.out.println("-----------------------\n");
+		
 		// 4.2 구구단 1단부터 9단까지 모두 출력하는데
 		// 9단까지 가로로 출력하기
 		// ex) 2X1=1 3X1=3 4X1=4 ...
 		//     2X2=2 3X2=6 4X2=8
 		
+		for(int i=2; i<10; i++) {
+			System.out.print(i+"단 시작\t\t");
+			
+		}
+		System.out.println();
+		for(int i=1; i<10; i++) {
+			for(int j=2; j<10; j++) {
+				System.out.print(j+ " X "+i+" = "+j*i+"\t");
+			}
+			System.out.println();
+		}
+		System.out.println("-----------------------\n");
+		
+		
 		// 4.3 사용자에게 1~100 수중 2개를 입력 받고, 두 수의 범위 안의 숫자 모두 출력하기.
 		//     단, 무한 반복하기.
 		// 입력 53, 47
-		// 출력 48, 49, 50, 51, 52
+		// 출력 48, 49, 50, 51, 52		
+		
+		
+//		System.out.println("1~100까지 두 수를 선택 하시오 ");
+//		System.out.print("첫번째 수 : ");
+//		int firtNum = Integer.parseInt(sc.nextLine());		
+//		System.out.print("두번째 수 : ");
+//		int secNum = Integer.parseInt(sc.nextLine());		
+//		
+//		if(firtNum > secNum) {
+//			for(int i=secNum; i<=firtNum; i++) {
+//				System.out.println(i);
+//			}
+//		}else if (firtNum < secNum) {
+//			for(int i=firtNum; i<=secNum; i++) {
+//				System.out.println(i);
+//			}
+//		}
+		System.out.println("-----------------------\n");
 		
 		
 //		5. 배열
-//		5.1 배열 정수형으로 10개 칸을 선언하고, 1부터 10까지로 값 초기화 하기 
+//		5.1 배열 정수형으로 10개 칸을 선언하고, 1부터 10까지로 값 초기화 하기
+		int[] num = new int[10];
+		for(int i=0; i<10; i++) {
+			System.out.println(num[i] = i);
+		}
+		System.out.println("-----------------------\n");
+		
+		
+			
+		
 
 //		5.2 배열 정수형으로 100개까지 선언하고, 3과 7의 배수 100개 찾아서 넣기
 		// 21, 42 .....
+		int[] num1 = new int[100];
+		int startNum = 1;
+		count =0;
+
+		while(true) {
+			startNum++;
+			if(startNum%3==0 && startNum%7==0) {
+				num1[count]=startNum;
+				count++;		
+				System.out.println(count+" : "+num1[count]);
+			}
+			if(count == 100) {
+				break;
+			}
+			
+		}
 		
+		
+		
+//		for(int i=0; i<=startNum; i++) {
+//			if(i%3==0 && i%7==0) {
+//				num1[count]=i;				
+//				System.out.println(num1[i]);
+//				count++;
+//			}
+//		}			
+//		if(count == 100) {
+//			break;
+//		}
+
+		
+
 //		5.3 배열 String형으로 10개 공간 선언하고 사용자의 값을 입력받아 값 저장하기.
 		//  단, exit로 입력시 바로 종료하고 저장 받은 데이터 모두 출력
 		
