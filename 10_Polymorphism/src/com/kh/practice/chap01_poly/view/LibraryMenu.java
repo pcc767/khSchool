@@ -1,6 +1,5 @@
 package com.kh.practice.chap01_poly.view;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 import com.kh.practice.chap01_poly.controller.LibraryController;

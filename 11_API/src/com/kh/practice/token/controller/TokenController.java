@@ -1,12 +1,23 @@
 package com.kh.practice.token.controller;
 
+import java.util.StringTokenizer;
+
 public class TokenController {
 	
 	public TokenController() {}
 
     public String afterToken(String str){
-        String result = str.replaceAll(" ","");
-        return result;
+    	
+    	StringTokenizer token = new StringTokenizer(str," ");
+    	StringBuilder sb = new StringBuilder();
+    	while(token.hasMoreTokens()) {
+    		String temp = token.nextToken();
+    		sb.append(temp);
+    	}
+    	return sb.toString();
+    	
+//        String result = str.replaceAll(" ","");
+//        return result;
     }
 
     public String firstCap(String input){
