@@ -34,25 +34,24 @@ public class BookDAO {
 	
 	public Book[] fileRead(){
 		
-		try (
-				FileInputStream fis = new FileInputStream("book.txt");
-				ObjectInputStream ois = new ObjectInputStream(fis);
-				
+		Object bAll = null;
+		
+		try (FileInputStream fis = new FileInputStream("book.txt");
+			 ObjectInputStream ois = new ObjectInputStream(fis);				
 			) {
 			
-			for(int i=0; i<bArr.length; i++) {
-				bArr[i] = (Book)ois.readObject();
-			}
-			
-			
-			return (Book[]) ois.readObject();
+			bAll = ois.readObject();
+
 			
 		} catch (EOFException e2) {
+			e2.printStackTrace();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
+		
+		return (Book[])bAll;
 		
 	}
 		
