@@ -72,6 +72,7 @@ public class ListBasic2 {
 
 		print(list);
 		
+		
 		//이름 오름차순, 나이 오름차순으로 정렬
 		System.out.println("이름 오름차순, 나이 오름차순으로 정렬");
 		list.sort(new Comparator<UserVO>() {

@@ -8,6 +8,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value=""/>
 		<list key="findhistory">
+			<item value="FileWriter"/>
 			<item value="list"/>
 			<item value="toString"/>
 			<item value="searchId"/>

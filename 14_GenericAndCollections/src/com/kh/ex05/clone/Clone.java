@@ -34,7 +34,7 @@ public class Clone {
 		System.out.println("------------------------------------------------");
 		
 		
-		//3. cloneable + Override + 내부적으로(UserVO파일 clone @Override) 예외처리 ★★★★★★★★★★★
+		//3. cloneable + Override + 내부적으로(UserVO파일 + clone @Override) 예외처리 ★★★★★★★★★★★
 		
 		UserVO user3Copy = user2.clone();
 		System.out.println(user3Copy == user1);
