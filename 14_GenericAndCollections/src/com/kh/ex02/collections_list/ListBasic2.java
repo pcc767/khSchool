@@ -87,13 +87,9 @@ public class ListBasic2 {
 			}
 		});
 		print(list);
-		
-		
+
 
 	}
-	
-	
-	
 	
 	public static void print(List<UserVO> list) {
 		for(int i = 0; i<list.size(); i++) {

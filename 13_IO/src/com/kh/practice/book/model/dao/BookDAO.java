@@ -10,21 +10,12 @@ import com.kh.practice.book.model.vo.Book;
 
 public class BookDAO {
 	
-	private Book[] bArr = new Book[10];
-	
-	
 	public void fileSave(Book[] bArr) {
 		
-		try(
-				FileOutputStream fos = new FileOutputStream("book.txt");
-				ObjectOutputStream oos = new ObjectOutputStream(fos);
-				
+		try(FileOutputStream fos = new FileOutputStream("book.txt");
+			ObjectOutputStream oos = new ObjectOutputStream(fos);				
 			){
-			for(int i=0; i<bArr.length; i++) {
-				if(bArr[i] != null) {
-					oos.writeObject(bArr);
-				}				
-			}
+			oos.writeObject(bArr);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,24 +25,18 @@ public class BookDAO {
 	
 	public Book[] fileRead(){
 		
-		Object bAll = null;
-		
 		try (FileInputStream fis = new FileInputStream("book.txt");
 			 ObjectInputStream ois = new ObjectInputStream(fis);				
 			) {
 			
-			bAll = ois.readObject();
+			Book[] bArr = (Book[]) ois.readObject();
+			return bArr;
 
-			
-		} catch (EOFException e2) {
-			e2.printStackTrace();
-			
 		} catch (Exception e) {
 			e.printStackTrace();
-			return null;
+			return new Book[0];
 		}
-		
-		return (Book[])bAll;
+
 		
 	}
 		

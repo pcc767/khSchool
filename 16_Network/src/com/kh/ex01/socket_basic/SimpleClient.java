@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Scanner;
 
@@ -14,7 +15,10 @@ public class SimpleClient {
 	public static void main(String[] args) throws Exception {
 		// 1. 접속하는 서버의 IP주소와 Port 번호를 설정
 		String ip = "127.0.0.1"; // 서버의 IP.  127.0.0.1 = Loopback = 본인주소
+//		String serverIP;
 		int port = 9000;
+		
+		
 		
 		// 2. socket 생성하기
 		Socket socket = new Socket(ip, port);

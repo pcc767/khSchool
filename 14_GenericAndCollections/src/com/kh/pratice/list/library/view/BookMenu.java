@@ -67,13 +67,13 @@ public class BookMenu {
 		System.out.print("삭제할 저자명 : ");
 		String author = sc.nextLine();
 		
-		boolean remove = bc.deleteBook(title, author);
+		Book remove = bc.delectBook(title, author);
 		
-		if(remove) {
+		if(remove.equals(remove)) {
 			System.out.println("성공적으로 삭제 되었습니다.");
 		} 
 		
-		if(!remove){
+		if(!remove.equals(remove)){
 			System.out.println("삭제할 도서를 찾지 못했습니다.");
 		}
 		
@@ -81,7 +81,7 @@ public class BookMenu {
 	}
 
 	private void searchBook() {
-		System.out.println("검색할 도서명 : ");
+		System.out.print("검색할 도서명 : ");
 		String keyword = sc.nextLine();
 		
 		ArrayList<Book> searchList = new ArrayList<>(bc.searchBook(keyword));
@@ -111,7 +111,7 @@ public class BookMenu {
 	}
 
 	private void insertBook() {
-		String category = null;
+		String category = "";
 		System.out.println("== 새 도서 추가 ==");
 		System.out.print("도서명 : ");
 		String title = sc.nextLine();

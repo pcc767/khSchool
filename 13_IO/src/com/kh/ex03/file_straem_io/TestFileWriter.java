@@ -23,11 +23,15 @@ public class TestFileWriter {
 //			fw = new FileWriter("./test.txt");		// 일반적인 쓰기
 			fw = new FileWriter("./test.txt",true);		// 이어쓰기
 			
-			fw.append("안녕하세요\n");
-			fw.append("반갑습니다.\n");
-			fw.append("저는 홍길동입니다.\n");
+			fw.write(97);
+			fw.write(65);
+
 			
-//			fw.flush();	
+//			fw.append("안녕하세요\n");
+//			fw.append("반갑습니다.\n");
+//			fw.append("저는 홍길동입니다.\n");
+			
+			fw.flush();	
 			
 		} catch (Exception e) {
 			

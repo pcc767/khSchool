@@ -19,6 +19,7 @@ public class SimpleServer {
 		//  - OS로부터 네트워크 포트 자원을 요청함 -> Bind 과정
 		//  - 성공하면 객체 반환, 실패하면 예외 발생
 		ServerSocket serverSocket = new ServerSocket(port); // IOException // 대표 번호
+		
 		System.out.println("Server 소켓을 생성하였습니다. port : " + port);
 		
 		// 3. Accept 클라이언트의 요청을 기다림

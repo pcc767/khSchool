@@ -11,7 +11,7 @@ public class BasicSocket {
 //		 InetAddress myIP = new InetAddress(); 
 		// The constructor InetAddress() is not visible
 		// 생성자를 private -> Singleton 패턴
-		//  - 사용자가 임의로 생성하는 것을 막을때 사용
+//		  - 사용자가 임의로 생성하는 것을 막을때 사용
 		
 		InetAddress myIP = InetAddress.getLocalHost();
 		System.out.println(myIP.getHostAddress());

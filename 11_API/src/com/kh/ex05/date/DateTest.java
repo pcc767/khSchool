@@ -24,8 +24,11 @@ public class DateTest {
 		// Date format을 통해 원하는 양식으로 변경하는 방법
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy년 MM월 dd요일 E요일 hh시 mm분 ss초");
 		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy/MM/dd(E) hh:mm:ss초");
+		SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy/MM/dd(E)");
 		System.out.println(sdf1.format(date2));
 		System.out.println(sdf2.format(date2));
+		System.out.println(sdf3.format(date.getTime()));
+		
 		
 		
 		// Calendar : 날짜를 다루는 클래스

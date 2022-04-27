@@ -69,9 +69,9 @@ public class Book implements Serializable {
 	@Override
 	public String toString() {
 		
-		SimpleDateFormat date = new SimpleDateFormat("yyyy년 MM월 dd요일 E요일");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd요일 E요일");
 		
-		return "Book [title=" + title + ", author=" + author + ", price=" + price + ", date=" + date + ", discount="
+		return "Book [title=" + title + ", author=" + author + ", price=" + price + ", date=" + sdf.format(date.getTime()) + ", discount="
 				+ discount + "]";
 	}
 
