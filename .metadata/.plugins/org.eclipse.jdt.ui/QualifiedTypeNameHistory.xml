@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.kh.practice.chap01_poly.model.vo.CookBook"/>
-    <fullyQualifiedTypeName name="com.kh.practice.chap01_poly.model.vo.AniBook"/>
-    <fullyQualifiedTypeName name="com.kh.practice.chap01_poly.controller.LibraryController"/>
-    <fullyQualifiedTypeName name="com.kh.hw.member.model.vo.Member"/>
-    <fullyQualifiedTypeName name="com.kh.practice.chap01_poly.model.vo.Member"/>
-    <fullyQualifiedTypeName name="javax.print.DocFlavor.INPUT_STREAM"/>
     <fullyQualifiedTypeName name="com.kh.practice.chap01_poly.model.vo.Book"/>
     <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
     <fullyQualifiedTypeName name="com.kh.ex01.file.FileBasic"/>
-    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
     <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
     <fullyQualifiedTypeName name="java.io.OutputStream"/>
@@ -25,7 +18,6 @@
     <fullyQualifiedTypeName name="java.io.FileWriter"/>
     <fullyQualifiedTypeName name="java.io.BufferedReader"/>
     <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
-    <fullyQualifiedTypeName name="java.util.Calendar"/>
     <fullyQualifiedTypeName name="java.io.FileOutputStream"/>
     <fullyQualifiedTypeName name="java.io.ObjectOutputStream"/>
     <fullyQualifiedTypeName name="java.io.FileInputStream"/>
@@ -33,7 +25,6 @@
     <fullyQualifiedTypeName name="java.io.EOFException"/>
     <fullyQualifiedTypeName name="com.kh.practice.book.controller.BookController"/>
     <fullyQualifiedTypeName name="com.kh.practice.book.model.dao.BookDAO"/>
-    <fullyQualifiedTypeName name="com.kh.practice.book.model.vo.Book"/>
     <fullyQualifiedTypeName name="java.lang.Double"/>
     <fullyQualifiedTypeName name="com.kh.ex01.generic.MyGenericArray"/>
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
@@ -42,7 +33,6 @@
     <fullyQualifiedTypeName name="java.util.LinkedHashSet"/>
     <fullyQualifiedTypeName name="java.lang.Cloneable"/>
     <fullyQualifiedTypeName name="java.lang.CloneNotSupportedException"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.awt.print.Book"/>
     <fullyQualifiedTypeName name="com.kh.ex01.basic_thread.MyThread"/>
     <fullyQualifiedTypeName name="com.kh.ex01.basic_thread.RunnableClass"/>
@@ -51,13 +41,23 @@
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="com.kh.pratice.list.library.controller.BookController"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="com.kh.pratice.list.library.model.vo.Book"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.kh.pratice.list.library.view.BookMenu"/>
-    <fullyQualifiedTypeName name="java.util.Comparator"/>
     <fullyQualifiedTypeName name="java.lang.Comparable"/>
     <fullyQualifiedTypeName name="java.net.InetAddress"/>
     <fullyQualifiedTypeName name="java.io.Serializable"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.util.Calendar"/>
+    <fullyQualifiedTypeName name="java.util.GregorianCalendar"/>
+    <fullyQualifiedTypeName name="com.kh.practice.book.model.vo.Book"/>
+    <fullyQualifiedTypeName name="com.kh.pratice.list.library.model.vo.Book"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="java.util.TreeSet"/>
+    <fullyQualifiedTypeName name="java.util.Comparator"/>
+    <fullyQualifiedTypeName name="com.kh.pratice.set.model.vo.Lottery"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="com.kh.pratice.map.model.vo.Member"/>
+    <fullyQualifiedTypeName name="com.kh.pratice.map.controller.MemberController"/>
+    <fullyQualifiedTypeName name="java.security.Identity"/>
 </qualifiedTypeNameHistroy>
