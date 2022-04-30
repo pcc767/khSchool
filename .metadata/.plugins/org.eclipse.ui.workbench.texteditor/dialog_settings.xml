@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="add"/>
+		<item key="selection" value="Set"/>
 		<list key="findhistory">
+			<item value="Set"/>
+			<item value="entrySet"/>
 			<item value="add"/>
 			<item value="setTime"/>
 			<item value="FileWriter"/>

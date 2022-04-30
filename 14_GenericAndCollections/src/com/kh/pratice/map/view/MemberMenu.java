@@ -1,5 +1,7 @@
 package com.kh.pratice.map.view;
 
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
 import java.util.Set;
@@ -116,10 +118,18 @@ public class MemberMenu {
 		System.out.print("이름 : ");
 		String name = sc.nextLine();
 
-		Set<Entry<String, Member>> tempSet = mc.sameName(name).entrySet();
-		for (Entry<String, Member> entry : tempSet) {
+//		Set<Entry<String, Member>> tempSet = mc.sameName(name).entrySet();		
+//		for (Entry<String, Member> entry : tempSet) {
+//			System.out.println("같은 이름 : "+ entry.getValue()+" 입니다.");
+//		}
+		
+		Iterator<Entry<String,Member>> iterator = mc.sameName(name).entrySet().iterator();
+		while(iterator.hasNext()) {
+			Map.Entry<String, Member> entry = iterator.next();
 			System.out.println("같은 이름 : "+ entry.getValue()+" 입니다.");
 		}
+		
+		
 	}
     
     
@@ -135,7 +145,7 @@ public class MemberMenu {
             	System.out.println("이름 변경에 실패하였습니다. 다시 입력해 주세요.");
             	continue;
             }
-            System.out.println("현재 이름 : "+changeName);
+            System.out.print("현재 이름 : "+changeName+"입니다.\n");
 
             System.out.print("변경할 이름 : ");
             String newName = sc.nextLine();
