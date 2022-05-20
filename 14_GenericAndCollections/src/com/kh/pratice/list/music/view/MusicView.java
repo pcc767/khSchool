@@ -81,6 +81,7 @@ public class MusicView {
         String title = sc.nextLine();
         System.out.print("가수 명 : ");
         String singer = sc.nextLine();
+        
         int addSuc = mc.addAtZero(new Music(title, singer));
         if(addSuc==1){
             System.out.println("추가 성공");

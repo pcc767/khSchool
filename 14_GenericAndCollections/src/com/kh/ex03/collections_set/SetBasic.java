@@ -30,6 +30,7 @@ public class SetBasic {
 		
 		// 1. Set에 데이터 추가하는 방법
 		treeSet.addAll(list);
+		
 		linkedHashSet.addAll((ArrayList<UserVO>)list.clone()); // 복사된 List가 들어가는데...
 		for(UserVO user : list) {
 			hashSet.add(user);
