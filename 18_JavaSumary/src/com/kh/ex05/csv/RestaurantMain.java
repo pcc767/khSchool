@@ -14,9 +14,12 @@ import java.util.Map;
 //전라남도 식당 정보
 //https://www.data.go.kr/data/15076621/fileData.do
 
-//1. 식당과 모든 메뉴를 탐색할수 있는 기능 - 
-//2. 식당을 찾으면 메뉴까지 보여주는 기능  - 
+//1. 식당과 모든 메뉴를 탐색할수 있는 기능 - OK
+//2. 식당을 찾으면 메뉴까지 보여주는 기능  - OK
 //3. 메뉴의 키워드를 조회하면 식당 정보가 같이 나올수 있는 기능 - 
+
+
+//File 을 BufferedReader로 한줄씩 String 으로 읽고 .split(",")해주면 된다.
 
 public class RestaurantMain {
 	private List<LineInfo> restaurantList = new ArrayList<>();
@@ -35,32 +38,96 @@ public class RestaurantMain {
 		RestaurantMain main = new RestaurantMain();
 		main.fileReadForRestaurant("전라남도_식당정보_20201229.csv");
 		main.fileReadForMenu("전라남도_메뉴정보_20210120.csv");
+		main.makeMap();
+//		main.printRestaurantListAndMenu();
+//		main.printRestaurantListAndMenu("진품우리집오리");
+		main.searchMenu("찜닭");
+	}
+
+	private void searchMenu(String menuKeyword) {
+		for(LineInfo info : menuList) {
+			String menuName = info.getData("메뉴명");
+			if(menuName.contains(menuKeyword) == false) {
+				continue;
+			}
+			System.out.println(info.toString());
+			String restId = info.getData("식당ID");
+			LineInfo info2 = restaurantIDToLineInfoMap.get(restId);
+			System.out.println(info2);
+			System.out.println();
+		}
+	}
+
+	private void printRestaurantListAndMenu() {
+		for(LineInfo info : restaurantList) {
+			String restId = info.getData("식당ID");
+			List<LineInfo> menuList = restaurantIDToMenuListMap.get(restId);
+			System.out.println(info);
+			for(LineInfo info2 : menuList) {
+				System.out.println(info2);
+			}
+			System.out.println("------------------------------------------");
+		}
+	}
+	
+	private void printRestaurantListAndMenu(String nameKeyword) {
+		for(LineInfo info : restaurantList) {
+			String restName = info.getData("식당명");
+			if(restName.equals(nameKeyword) == false) {
+				continue;
+			}
+			String restId = info.getData("식당ID");
+			List<LineInfo> menuList = restaurantIDToMenuListMap.get(restId);
+			System.out.println(info);
+			for(LineInfo info2 : menuList) {
+				System.out.println(info2);
+			}
+			System.out.println("------------------------------------------");
+		}
+	}
+
+	private void makeMap() {
+//		restaurantIDToLineInfoMap 채우기
+		for(LineInfo info : restaurantList) {
+			String restId = info.getData("식당ID");
+			restaurantIDToLineInfoMap.put(restId, info);
+		}
 		
+//		restaurantIDToMenuListMap 채우기
+		for(LineInfo info : menuList) {
+			String restId = info.getData("식당ID");
+			List<LineInfo> list = restaurantIDToMenuListMap.get(restId);
+			if(list == null) {
+				list = new ArrayList<LineInfo>();
+				restaurantIDToMenuListMap.put(restId, list);
+			}
+			list.add(info);
+		}
 	}
 
 	private void fileReadForMenu(String path) {
 		menuList = makeCSVList(path, "UTF-8");
 		//식당ID:857880, 식당명:고흥막회집,
-		for(LineInfo info : menuList) {
+//		for(LineInfo info : menuList) {
 //			if(info.getData("식당ID").equals("857880")) {
-				System.out.println(info);
+//				System.out.println(info);
 //			}
-		}
+//		}
 	}
 
 
 	private void fileReadForRestaurant(String path) {
 		restaurantList = makeCSVList(path, "EUC-KR");
 		//식당ID:857880, 식당명:고흥막회집,
-		for(LineInfo info : restaurantList) {
+//		for(LineInfo info : restaurantList) {
 //			if(info.getData("식당명").equals("고흥막회집")) {
-				System.out.println(info);
+//				System.out.println(info);
 //			}
-		}
+//		}
 	}
 	
 	private List<LineInfo> makeCSVList(String path, String charset) {
-		List<LineInfo> list = new ArrayList<LineInfo>();
+		List<LineInfo> list = new ArrayList<LineInfo>(); 
 		
 		try( FileReader fr = new FileReader(path, Charset.forName(charset));
 				BufferedReader br = new BufferedReader(fr);
@@ -68,6 +135,7 @@ public class RestaurantMain {
 			String headerStr = br.readLine();
 			List<String> headerList = csvLineToList(headerStr);
 			
+
 			String str = null;
 			while((str = br.readLine()) != null) {
 				List<String> lineList = csvLineToList(str);
@@ -88,7 +156,6 @@ public class RestaurantMain {
 		try {
 			String delemeter = ",";
 			if (csvLine.contains(",\"") == true) {
-				//"주재료 : 갈비살 / 조리법 : 고기 / 소스 : 양념,숙성 / 옵션 : 이베리코"
 				csvLine = filter(csvLine);
 			}
 			List<String> list = new ArrayList<String>();
