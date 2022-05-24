@@ -1,0 +1,38 @@
+package com.kh.ex01.statement;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+public class StatementBasic {
+	
+	public static Connection conn = null;
+	public static Statement stmt = null;
+	public static ResultSet rs = null;
+	
+	public static String driverClass = "oracle.jdbc.OracleDriver";
+	public static String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+	public static String user = "student";
+	public static String password = "student2";
+	
+	public static void main(String[] args) {
+		try {
+			// 1. 클래스 드라이버 등록(최초 1회만 등록하고, 요새는 안해도 되지만 명시적으로 작성함)
+			Class.forName(driverClass);
+			System.out.println("1. 드아이버 등록 성공");
+			
+			// 2. Connection 객체 생성(url(ip + port + name), id, password)
+			conn = DriverManager.getConnection(url, user, password);
+			System.out.println("2. 데이터 베이스 접속 및 로그인 성공!");
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
+	}
+
+	
+}

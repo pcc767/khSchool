@@ -1,0 +1,115 @@
+package com.kh.ex01.statement;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class StatementBasic {
+	
+	public static Connection conn = null;
+	public static Statement stmt = null;
+	public static ResultSet rs = null;
+	
+	public static String driverClass = "oracle.jdbc.OracleDriver";
+	public static String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+	public static String user = "student";
+	public static String password = "student";
+	
+	public static void main(String[] args) {
+		try {
+			// 1. 클래스 드라이버 등록(최초 1회만 등록하고, 요새는 안해도 되지만 명시적으로 작성함)
+			Class.forName(driverClass);
+			System.out.println("1. 드아이버 등록 성공");
+			
+			// 2. Connection 객체 생성(url(ip + port + name), id, password)
+			conn = DriverManager.getConnection(url, user, password);
+			System.out.println("2. 데이터 베이스 접속 및 로그인 성공!");
+			
+			// 3. 자동 커밋여부 설정 : true(기본값), false(옵션) -> 사용자가 트랜젝션 제어 필요!
+			conn.setAutoCommit(false);
+			
+			// 4. conn 객체를 통해 SQL을 DB로 요청할 수 있는 Statement 객체를 생서.
+			stmt = conn.createStatement();
+			System.out.println("3. Statement 생성 성공!");
+			
+			// 사용자 쿼시 시작부!
+			select();
+			
+			
+			
+			// 5. COMMIT 처리 수행
+//			conn.commit();
+			conn.rollback();		// 실패시 롤백
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			try {
+				conn.rollback();		//예외 발생시 롤백 처리!
+			} catch (Exception e2) {
+				e.printStackTrace();
+			}
+		} finally {
+			// 6. 생성된 객체 close
+			// -> 생성된 객체의 역순으로 close 수행!
+			try {
+				if(rs != null && rs.isClosed() == false) {
+					rs.close();
+				}
+				if(stmt != null && stmt.isClosed() == false) {
+					stmt.close();
+				}
+				if(conn != null && conn.isClosed() == false) {
+					conn.close();
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+	
+			}
+			
+			
+		}
+	}
+
+	private static void select() throws SQLException {
+		System.out.println("\n SELECT문 시작");
+		
+		String sql = "SELECT * FROM MEMBER";	// 문자열 뒤 세미클론 주의!
+		rs = stmt.executeQuery(sql);			// 실제로 db 쿼리를 요청하는 문장
+		
+		while (rs.next()) {
+			// 모든 데이터는 문자열로 가져올수 있다.
+			// -> 필요시 변환이 필요하다.
+			
+			StringBuffer sb = new StringBuffer();
+			sb.append(rs.getString("MEMBER_ID")+", ");
+			sb.append(rs.getString("PASSWORD")+", ");
+			sb.append(rs.getString("MEMBER_NAME")+", ");
+			sb.append(rs.getString("GENDER")+", ");
+			sb.append(rs.getInt("AGE")+", ");
+			sb.append(rs.getString("EMAIL")+", ");
+			sb.append(rs.getString("PHONE")+", ");
+			sb.append(rs.getString("ADDRESS")+", ");
+			sb.append(rs.getString("HOBBY")+", ");
+			sb.append(rs.getDate("ENROLL_DATE")+", ");	// java.sql.Date
+			System.out.println(sb.toString());
+		}
+
+		
+		rs.close();
+		System.out.println("SELECT문 종료\n");
+	}
+
+	
+}

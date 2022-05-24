@@ -1,0 +1,110 @@
+package member.model.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import member.model.vo.Member;
+
+public class MemberDao {
+	
+	public final static String driverClass = "oracle.jdbc.OracleDriver";
+	public final static String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+	public final static String user = "student";
+	public final static String password = "student";
+	
+	private  Connection conn = null;
+	private  PreparedStatement pstmt = null;
+	private  ResultSet rs = null;
+	
+	public MemberDao() {
+		try {
+			conn = DriverManager.getConnection(url, user, password);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void close() {
+		try {
+			if(rs != null && rs.isClosed() == false) {
+				rs.close();
+			}
+			if(pstmt != null && pstmt.isClosed() == false) {
+				pstmt.close();
+			}
+			if(conn != null && conn.isClosed() == false) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	public List<Member> selectAll() {
+		List<Member> list = new ArrayList<Member>();
+		try {
+			String sql = "SELECT * FROM MEMBER ORDER BY ENROLL_DATE DESC";
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				int count = 1;
+				String memberId = rs.getString(count++);
+				String password = rs.getString(count++);
+				String memberName = rs.getString(count++);
+				String gender = rs.getString(count++);
+				int age = rs.getInt(count++);
+				String email = rs.getString(count++);
+				String phone = rs.getString(count++);
+				String address = rs.getString(count++);
+				String hobby = rs.getString(count++);
+				java.sql.Date enrollDate = rs.getDate(count++);
+				Member m = new Member(memberId, password, memberName, gender, age, email, phone, address, hobby, enrollDate);
+				list.add(m);
+			}
+			pstmt.close();
+			rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+
+	public Member selectOne(String memberId) {
+		
+		return null;
+	}
+	
+	public List<Member> selectByName(String memberName) {
+		
+		return null;
+	}
+
+	public int insertMember(Member member) {
+	
+		return 0;
+	}
+
+	public int updateMember(Member member) {
+		
+		return 0;
+	}
+
+	public int deleteMember(String memberId) {
+		
+		return 0;
+	}
+
+	public int selectMember(Member member) {
+	
+		return 0;
+	}
+
+}
