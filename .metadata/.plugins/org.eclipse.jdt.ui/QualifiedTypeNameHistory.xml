@@ -49,7 +49,6 @@
     <fullyQualifiedTypeName name="java.lang.StringBuffer"/>
     <fullyQualifiedTypeName name="com.kh.ex03.observer.ObserverManager"/>
     <fullyQualifiedTypeName name="com.kh.ex03.observer.ChatClient"/>
-    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
@@ -59,5 +58,6 @@
     <fullyQualifiedTypeName name="javax.swing.tree.DefaultTreeCellEditor.EditorContainer"/>
     <fullyQualifiedTypeName name="java.awt.image.PackedColorModel"/>
     <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.kh.ex05.csv.LineInfo"/>
 </qualifiedTypeNameHistroy>
