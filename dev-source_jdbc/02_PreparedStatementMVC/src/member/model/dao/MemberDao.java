@@ -157,6 +157,7 @@ public class MemberDao {
 //			pstmt.setString(10, member.getEnrollDate()); // 날짜는 sysdate로 입력하는 것을 권장
 			
 			int result = pstmt.executeUpdate();
+			pstmt.close();
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -139,6 +139,7 @@ public class PreparedStatementBasic {
 			System.out.println(sb.toString());
 		}
 		rs.close();
+		pstmt.close();
 		System.out.println("SELECT문 종료\n");
 	}
 
@@ -163,6 +164,8 @@ public class PreparedStatementBasic {
 		int result = pstmt.executeUpdate();
 		System.out.println(result > 0 ? "업데이트 성공" : "업데이트 실패!");
 		System.out.println("Insert문 종료\n");
+		
+		
 	}
 	
 	

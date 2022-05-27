@@ -1,0 +1,147 @@
+-- BOX OFFICE DDL --
+
+DROP TABLE USERS CASCADE CONSTRAINTS;
+CREATE TABLE USERS(
+    UNO         NUMBER,
+	ID 	        VARCHAR2(15) NOT NULL UNIQUE,
+	PASSWORD 	VARCHAR2(15) NOT NULL,
+	NAME        VARCHAR2(20) NOT NULL,
+    PRIMARY KEY (UNO)
+);
+
+DROP SEQUENCE SEQ_USERNO;
+CREATE SEQUENCE SEQ_USERNO;
+
+INSERT INTO USERS VALUES(SEQ_USERNO.NEXTVAL, 'test1','1234','홍길동');
+INSERT INTO USERS VALUES(SEQ_USERNO.NEXTVAL, 'test2','1234','최길동');
+
+SELECT * FROM USERS;
+
+
+-- WEEKLY_BOXOFFICE : 영화정보
+
+DROP TABLE WEEKLY_BOXOFFICE CASCADE CONSTRAINTS;
+CREATE TABLE WEEKLY_BOXOFFICE(
+    BNO             NUMBER,
+	RNUM			NUMBER,	        --	순번을 출력합니다.
+	RANK			NUMBER,	        --	해당일자의 박스오피스 순위를 출력합니다.
+	RANKINTEN		NUMBER,	        --	전일대비 순위의 증감분을 출력합니다.
+	RANKOLDANDNEW	VARCHAR2(20),	--	랭킹에 신규진입여부를 출력합니다.“OLD” : 기존 , “NEW” : 신규
+	MOVIECD			VARCHAR2(20),	--	영화의 대표코드를 출력합니다.
+	MOVIENM			VARCHAR2(300),	--	영화명(국문)을 출력합니다.
+	OPENDT			DATE,	        --	영화의 개봉일을 출력합니다.
+	SALESAMT		NUMBER,	        --	해당일의 매출액을 출력합니다.
+	SALESSHARE		NUMBER,	        --	해당일자 상영작의 매출총액 대비 해당 영화의 매출비율을 출력합니다.
+	SALESINTEN		NUMBER,	        --	전일 대비 매출액 증감분을 출력합니다.
+	SALESCHANGE		NUMBER,	        --	전일 대비 매출액 증감 비율을 출력합니다.
+	SALESACC		NUMBER,	        --	누적매출액을 출력합니다.
+	AUDICNT			NUMBER,	        --	해당일의 관객수를 출력합니다.
+	AUDIINTEN		NUMBER,	        --	전일 대비 관객수 증감분을 출력합니다.
+	AUDICHANGE		NUMBER,	        --	전일 대비 관객수 증감 비율을 출력합니다.
+	AUDIACC			NUMBER,	        --	누적관객수를 출력합니다.
+	SCRNCNT			NUMBER,	        --	해당일자에 상영한 스크린수를 출력합니다.
+	SHOWCNT			NUMBER,	        --	해당일자에 상영된 횟수를 출력합니다.
+    BOXOFFICETYPE	VARCHAR2(50),	--	박스오피스 종류를 출력합니다.
+	SHOWRANGE		VARCHAR2(50),	--	대상 상영기간을 출력합니다.
+	YEARWEEKTIME	VARCHAR2(20),	--	조회일자에 해당하는 연도와 주차를 출력합니다.(YYYYIW)
+    PRIMARY KEY (BNO)
+);
+
+DROP SEQUENCE SEQ_BOX_NO;
+CREATE SEQUENCE SEQ_BOX_NO;
+
+INSERT INTO 
+WEEKLY_BOXOFFICE(BNO, RNUM, RANK, rankInten, rankOldAndNew, movieCd, movieNm, 
+                 openDt, salesAmt, salesShare, salesInten, salesChange, salesAcc,
+                 audiCnt, audiInten, audiChange, audiAcc, scrnCnt, showCnt, 
+                 BOXOFFICETYPE, SHOWRANGE, YEARWEEKTIME) 
+VALUES(SEQ_BOX_NO.NEXTVAL, 1, 1, 0, 'OLD', '20112207', '미션임파서블:고스트프로토콜', TO_DATE('20111215'), 
+        7840509500, 35.8, -1706758500, -17.9, 40541108500, 1007683, -234848, -18.9, 5328435,
+        697, 9677, '주말 박스오피스', '20111230~20120101', '201152');
+
+        
+INSERT INTO 
+WEEKLY_BOXOFFICE(BNO, RNUM, RANK, rankInten, rankOldAndNew, movieCd, movieNm, 
+                 openDt, salesAmt, salesShare, salesInten, salesChange, salesAcc,
+                 audiCnt, audiInten, audiChange, audiAcc, scrnCnt, showCnt, 
+                 BOXOFFICETYPE, SHOWRANGE, YEARWEEKTIME)   
+        VALUES(SEQ_BOX_NO.NEXTVAL, 2, 2, 0, 'OLD', '20112207', '미션임파서블:고스트프로토콜2', TO_DATE('20111215'), 
+        7840509500, 35.8, -1706758500, -17.9, 40541108500, 1007683, -234848, -18.9, 5328435,
+        697, 9677, '주말 박스오피스', '20111230~20120101', '201152');
+
+-- 전체 조회
+SELECT * FROM WEEKLY_BOXOFFICE ORDER BY RANK; 
+
+
+-- 영화 이름 검색 (부분 허용)
+SELECT * FROM WEEKLY_BOXOFFICE WHERE movieNm LIKE '%프로토콜2%'; 
+
+
+-- 영화 주간 검색 201152
+SELECT * FROM WEEKLY_BOXOFFICE WHERE YEARWEEKTIME = '201152'; 
+
+
+-- 영화 즐겨찾기
+DROP TABLE FAVORITE_BOXOFFICE CASCADE CONSTRAINTS;
+CREATE TABLE FAVORITE_BOXOFFICE(
+    BNO             NUMBER,
+	UNO             NUMBER,
+    CREATE_DATE DATE DEFAULT SYSDATE,
+    PRIMARY KEY (BNO, UNO),
+    FOREIGN KEY (BNO) REFERENCES WEEKLY_BOXOFFICE,
+    FOREIGN KEY (UNO) REFERENCES USERS
+);
+
+INSERT INTO FAVORITE_BOXOFFICE(BNO, UNO) VALUES(1, 1);
+INSERT INTO FAVORITE_BOXOFFICE(BNO, UNO) VALUES(1, 2);
+
+SELECT * FROM FAVORITE_BOXOFFICE WHERE UNO = 1;
+
+SELECT * FROM FAVORITE_BOXOFFICE, WEEKLY_BOXOFFICE WHERE UNO = 1;
+
+SELECT F.BNO, F.UNO, F.CREATE_DATE, U.ID, B.MOVIENM  
+FROM FAVORITE_BOXOFFICE F, USERS U, WEEKLY_BOXOFFICE B
+WHERE F.BNO = B.BNO AND F.UNO = U.UNO AND F.BNO = 1;
+
+SELECT COUNT(*) FROM FAVORITE_BOXOFFICE WHERE BNO = 1;
+
+-- 영화 리뷰 달기
+DROP TABLE REVIEW_BOXOFFICE;
+CREATE TABLE REVIEW_BOXOFFICE(
+    RNO             NUMBER,
+    BNO             NUMBER,
+	UNO             NUMBER,
+    TITLE           VARCHAR2(200),
+    CONTENT         CLOB,
+    SCORE           NUMBER,
+    CREATE_DATE DATE DEFAULT SYSDATE,
+    PRIMARY KEY (RNO),
+    FOREIGN KEY (BNO) REFERENCES WEEKLY_BOXOFFICE,
+    FOREIGN KEY (UNO) REFERENCES USERS
+);
+
+DROP SEQUENCE SEQ_REVIEW_NO;
+CREATE SEQUENCE SEQ_REVIEW_NO;
+
+INSERT INTO REVIEW_BOXOFFICE(RNO, BNO, UNO, TITLE, CONTENT, SCORE) 
+VALUES(SEQ_REVIEW_NO.NEXTVAL, 1, 1, '미션임파서블 보고왔습니다.', '영화관에서 봤는데, 참 재밋네요!', 5);
+
+INSERT INTO REVIEW_BOXOFFICE(RNO, BNO, UNO, TITLE, CONTENT, SCORE) 
+VALUES(SEQ_REVIEW_NO.NEXTVAL, 1, 2, '미션임파서블 보다가 졸았습니다.', '영화관에서 봤는데, 시트가 참 편하네요.', 1);
+
+SELECT * FROM REVIEW_BOXOFFICE;
+
+
+SELECT R.RNO, R.BNO, R.UNO, R.TITLE, R.CONTENT, R.SCORE,  R.CREATE_DATE, U.ID, B.MOVIENM  
+FROM REVIEW_BOXOFFICE R, USERS U, WEEKLY_BOXOFFICE B
+WHERE R.BNO = B.BNO AND R.UNO = U.UNO;
+
+
+SELECT B.*, U.*, R.*
+FROM REVIEW_BOXOFFICE R, USERS U, WEEKLY_BOXOFFICE B
+WHERE R.BNO = B.BNO AND R.UNO = U.UNO;
+
+
+COMMIT;
+--ROLLBACK;
+

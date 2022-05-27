@@ -7,10 +7,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class StatementBasic {
-	
+	// close 메모리 고갈될수 있고 (메모리 릭(leak)), close 안 할시 컴퓨터 다운됨.(무조건 사용)
 	// executeQuery, executeUpdate 차이점
-	// executeQuery  : result set을 만드는 sql문에서 사용하며, 주로 select문을 수행할때 사용됩니다.(★★ 쿼리문 이전에 위치)
-	// executeUpdate : insert나 update와 같은 ddl이나 dml을 실행할때 사용됩니다. (★★ 쿼리문 이후에 위치)
+	// executeQuery  : result set을 만드는 sql문에서 사용하며, 주로 select문을 수행할때 사용됩니다.
+	// executeUpdate : insert나 update와 같은 ddl이나 dml을 실행할때 사용됩니다.
+//						반환값이 int이며, 실행된 쿼리 갯수만큼 반환.
 	
 	public static Connection conn = null;
 	public static Statement stmt = null;
@@ -99,7 +100,7 @@ public class StatementBasic {
 	private static void select() throws SQLException {
 		System.out.println("\n SELECT문 시작");
 		
-		String sql = "SELECT * FROM MEMBER";	// 문자열 뒤 세미클론 주의!
+		String sql = "SELECT * FROM MEMBER";	// 문자열 뒤 세미클론 주의! , 실무에서는 *보다 명식적으로 추려올 컬럼 이름 명시.
 		rs = stmt.executeQuery(sql);			// 실제로 db 쿼리를 요청하는 문장
 		
 		while (rs.next()) {
