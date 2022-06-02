@@ -52,7 +52,6 @@ public class UserDao {
 			rs.close();
 			return user;
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return null;
 	}
@@ -71,7 +70,6 @@ public class UserDao {
 			pstmt.close();
 			return result;
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 		return -1;
 	}

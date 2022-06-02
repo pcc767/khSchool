@@ -1,21 +1,22 @@
 package com.boxoffice.model.vo;
 
-import java.sql.Date;
+import java.util.Date;
+
+import com.boxoffice.common.Util;
 
 public class Review {
-	int rNo;
-	int bNo;
-	int uNo;
-	String title;
-	String content;
-	int score;
-	Date createDate; // REVIEW_BOXOFFICE
-	User user;
-	Boxoffice movieInfo;
+	private int rNo;
+	private int bNo;
+	private int uNo;
+	private String title;
+	private String content;
+	private int score;
+	private Date createDate; // REVIEW_BOXOFFICE
+	private User user;
+	private Boxoffice movieInfo;
 
 	public Review() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Review(int rNo, int bNo, int uNo, String title, String content, int score, Date createDate, User user,
@@ -48,6 +49,22 @@ public class Review {
 		return "Review [rNo=" + rNo + ", bNo=" + bNo + ", uNo=" + uNo + ", title=" + title + ", content=" + content
 				+ ", score=" + score + ", createDate=" + createDate + ", user=" + user + ", movieInfo=" + movieInfo
 				+ "]";
+	}
+	
+	public String toStringForConsole() {
+		return "No:" + rNo +" 제목:" + title + " 영화:" + movieInfo.getMovienm() + 
+				" 평점:" + score +  " 작성자:"+user.getId() + " 작성일:" + Util.getDateFormat(createDate);
+	}
+	
+	public String toStringDetail() {
+		return "No : " + rNo 
+				+ "\n제목 : : " + title 
+				+ "\n영화 : " + movieInfo.getMovienm() + ", 순위 : " + movieInfo.getRank()
+				+ "\n내용 : " + content  
+				+ "\n작성일 : " + Util.getDateFormat(createDate)
+				+ "\n작성자 : " + user.getId()  
+				+ "\n평점 : " + score 
+				+ "\n";
 	}
 
 	public int getrNo() {

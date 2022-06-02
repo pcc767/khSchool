@@ -6,8 +6,12 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="JSONArray"/>
+		<item key="selection" value="callWeeklyBoxOfficeListByXML"/>
 		<list key="findhistory">
+			<item value="callWeeklyBoxOfficeListByXML"/>
+			<item value="OpenApiManager"/>
+			<item value="진경대사탑비"/>
+			<item value="weeklyBoxOffice"/>
 			<item value="JSONArray"/>
 			<item value="getConnection"/>
 			<item value="executeUpdate"/>

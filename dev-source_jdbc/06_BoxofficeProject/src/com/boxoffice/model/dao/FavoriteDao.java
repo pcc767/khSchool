@@ -21,7 +21,7 @@ public class FavoriteDao {
 		ResultSet rs = null;
 
 		try {
-			String sql = "SELECT F.BNO, F.UNO, F.CREATE_DATE, U.ID, B.MOVIENM  "
+			String sql = "SELECT F.BNO, F.UNO, F.CREATE_DATE, U.ID, B.MOVIENM "
 					+ "FROM FAVORITE_BOXOFFICE F, USERS U, WEEKLY_BOXOFFICE B "
 					+ "WHERE F.BNO = B.BNO AND F.UNO = U.UNO";
 
@@ -31,7 +31,7 @@ public class FavoriteDao {
 			while (rs.next() == true) {
 				int bNo = rs.getInt("BNO");
 				int uNo = rs.getInt("UNO");
-				Date createDate = rs.getDate("CREATE_DATE");
+				Date createDate  = new Date(rs.getTimestamp("CREATE_DATE").getTime());
 				String userId = rs.getString("ID");
 				String movieNm = rs.getString("MOVIENM");
 				Favorite info = new Favorite(bNo, uNo, createDate, userId, movieNm);
@@ -64,7 +64,7 @@ public class FavoriteDao {
 			while (rs.next() == true) {
 				int bNo = rs.getInt("BNO");
 				int uNo = rs.getInt("UNO");
-				Date createDate = rs.getDate("CREATE_DATE");
+				Date createDate  = new Date(rs.getTimestamp("CREATE_DATE").getTime());
 				String userId = rs.getString("ID");
 				String movieNm = rs.getString("MOVIENM");
 				Favorite info = new Favorite(bNo, uNo, createDate, userId, movieNm);
@@ -97,7 +97,7 @@ public class FavoriteDao {
 			while (rs.next() == true) {
 				int bNo = rs.getInt("BNO");
 				int uNo = rs.getInt("UNO");
-				Date createDate = rs.getDate("CREATE_DATE");
+				Date createDate  = new Date(rs.getTimestamp("CREATE_DATE").getTime());
 				String userId = rs.getString("ID");
 				String movieNm = rs.getString("MOVIENM");
 				Favorite info = new Favorite(bNo, uNo, createDate, userId, movieNm);

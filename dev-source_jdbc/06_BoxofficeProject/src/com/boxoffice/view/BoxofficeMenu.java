@@ -1,11 +1,14 @@
 package com.boxoffice.view;
 
 import java.util.List;
-import java.util.Scanner;
 
+import com.boxoffice.common.Util;
 import com.boxoffice.controller.BoxofficeController;
 import com.boxoffice.controller.CommunityController;
 import com.boxoffice.controller.UserController;
+import com.boxoffice.model.vo.Boxoffice;
+import com.boxoffice.model.vo.Favorite;
+import com.boxoffice.model.vo.Review;
 import com.boxoffice.model.vo.User;
 
 public class BoxofficeMenu {
@@ -13,190 +16,210 @@ public class BoxofficeMenu {
 	private BoxofficeController boxofficeController = new BoxofficeController();
 	private UserController userController = new UserController();
 	
-	private Scanner sc = new Scanner(System.in);
-	
 	public void mainMenu() {
+		boolean isLogin = false;
+		String menu = "========== Boxoffice Project Main ===========\n"
+					+ "1.DB 초기화\n"
+					+ "2.BoxOffice 메뉴\n" 
+					+ "3.커뮤니티 메뉴\n" 
+					+ "4.로그 아웃\n"
+					+ "0.프로그램 끝내기\n"
+					+ "---------------------------------------------\n"
+					+ "선택 : "; 
+
+		while(true) {
+			if(isLogin == false) {
+				loginMenu();
+				isLogin = true;
+			}
+			System.out.print(menu);
+			int choice = Util.readIntForConsol();
+			switch(choice) {
+				case 1: 
+					boxofficeController.initBoxOffice();
+					break;
+				case 2: 
+					boxofficeMenu();
+					break;
+				case 3: 
+					commnunityMenu();
+					break;
+				case 4: 
+					isLogin = false;
+					UserController.logout();
+					System.out.println("로그아웃 되었습니다.\n");
+					break;
+				case 0: 
+					System.out.print("정말로 끝내시겠습니까?(y/n) : ");
+					if(Util.readStrForConsol().charAt(0) == 'y')
+						return;
+					break;
+				default: 
+					System.out.println("잘못 입력하셨습니다.");
+			}
+		}
+	}
+	
+	public void loginMenu() {
 		while(true) {
 			System.out.println("================== 로그인 =====================");
 			System.out.print("아이디 : ");
-			String id = sc.next();
+			String id = Util.readStrForConsol();
 			System.out.print("비밀번호 : ");
-			String pw = sc.next();
-			System.out.println("");
-			break;
-		}
-		
-		
-		String menu = "========== 회원 관리 프로그램 ==========\n"
-					+ "1.회원 전체조회\n"
-					+ "2.회원 아이디조회\n" 
-					+ "3.회원 이름조회\n" 
-					+ "4.회원 가입\n" 
-					+ "5.회원 정보변경\n" 
-					+ "6.회원 탈퇴\n" 
-					+ "0.프로그램 끝내기\n"
-					+ "----------------------------------\n"
-					+ "선택 : "; 
-		
-//		while(true) {
-//			System.out.print(menu);
-//			int choice = sc.nextInt();
-//			
-//			User member = null;
-//			int result = 0;
-//			String msg = null;
-//			List<User> list = null;
-//			String memberId = null;
-//			String memberName = null;
-//			
-//			switch(choice) {
-//				case 1: 
-//					list = memberController.selectAll();
-//					displayMemberList(list);
-//					break;
-//				case 2: 
-//					memberId = inputMemberId();
-//					member = memberController.selectOne(memberId);
-//					displayMember(member);
-//					break;
-//				case 3: 
-//					memberName = inputMemberName();
-//					list = memberController.selectByName(memberName);
-//					displayMemberList(list);
-//					break;
-//				case 4: 
-//					//1.신규회원정보 입력 -> Member객체
-//					member = inputMember();
-//					System.out.println(">>> 신규회원 확인 : " + member);
-//					//2.controller에 회원가입 요청(메소드호출) -> int리턴(처리된 행의 개수)
-//					result = memberController.insertMember(member);
-//					//3.int에 따른 분기처리
-//					msg = result > 0 ? "회원 가입 성공!" : "회원 가입 실패!";
-//					displayMsg(msg);
-//					break;
-//				case 5: 
-//					member = updateMember();
-//					result = memberController.updateMember(member);
-//					msg = result > 0 ? "회원 수정 성공!" : "회원 수정 실패!";
-//					displayMsg(msg);
-//					break;
-//				case 6: 
-//					memberId = inputMemberId();
-//					result = memberController.deleteMember(memberId);
-//					msg = result > 0 ? "회원 탈퇴 성공!" : "회원 탈퇴 실패!";
-//					displayMsg(msg);
-//					break;
-//				case 0: 
-//					System.out.print("정말로 끝내시겠습니까?(y/n) : ");
-//					if(sc.next().charAt(0) == 'y')
-//						return;//현재메소드(mainMenu)를 호출한 곳
-//					break;
-//				default: 
-//					System.out.println("잘못 입력하셨습니다.");
-//			}	
-		}
-
-	/**
-	 * 회원정보변경 메소드
-	 * @return
-	 */
-//	private User updateMember() {
-//		User m = new User();
-//		System.out.print("변경할 회원 아이디 : ");
-//		m.setMemberId(sc.next());
-//		System.out.print("암호 : ");
-//		m.setPassword(sc.next());
-//		System.out.print("이메일 : ");
-//		m.setEmail(sc.next());
-//		System.out.print("전화번호(-빼고입력): ");
-//		m.setPhone(sc.next());
-//		System.out.print("주소 : ");
-//		sc.nextLine();
-//		m.setAddress(sc.nextLine());
-//		System.out.print("취미(/로 공백없이 나열): ");
-//		m.setHobby(sc.next());
-//		return m;
-//	}
-	
-	private String inputMemberName() {
-		System.out.print("조회할 이름 입력 : ");
-		return sc.next();
-	}
-
-	/**
-	 * DB에서 조회한 1명의 회원 출력
-	 * @param member
-	 */
-	private void displayMember(User member) {
-		if(member == null)
-			System.out.println(">>>> 조회된 회원이 없습니다.");
-		else {
-			System.out.println("****************************************************************");
-			System.out.println(member);
-			System.out.println("****************************************************************");
-		}
-	}
-
-	/**
-	 * 조회할 회원아이디 입력
-	 * @return
-	 */
-	private String inputMemberId() {
-		System.out.print("아이디 입력 : ");
-		return sc.next();
-	}
-
-	/**
-	 * DB에서 조회된 회원객체 n개를 출력
-	 * @param list
-	 */
-	private void displayMemberList(List<User> list) {
-		if(list == null || list.isEmpty()) {
-			System.out.println(">>>> 조회된 행이 없습니다.");	
-		}
-		else {
-			System.out.println("*********************************************************");
-			for(User m : list) {
-				System.out.println(m);
+			String pw = Util.readStrForConsol();
+			boolean result = userController.login(id, pw);
+			if(result) {
+				System.out.println("로그인에 성공하였습니다!");
+				break;
+			}else {
+				System.out.println("로그인에 실패하였습니다. 다시 입력해주세요.");
 			}
-			System.out.println("*********************************************************");
 		}
 	}
-
-	/**
-	 * DML처리결과 통보용 
-	 * @param msg
-	 */
-	private void displayMsg(String msg) {
-		System.out.println(">>> 처리결과 : " + msg);
+	
+	private void boxofficeMenu() {
+		String menu = "========== Boxoffice Menu ==========\n"
+				+ "1.전체목록 조회\n"
+				+ "2.영화 이름으로 찾기\n" 
+				+ "3.주별로 찾기\n" 
+				+ "0.이전 메뉴로 돌아가기\n"
+				+ "----------------------------------\n"
+				+ "선택 : "; 
+		while(true) {
+			List<Boxoffice> list = null;
+			System.out.print(menu);
+			int choice = Util.readIntForConsol();
+			switch(choice) {
+				case 1: 
+					list = boxofficeController.getAllMvList();
+					printBoxOffice(list);
+					break;
+				case 2: 
+					System.out.print("찾을 영화 제목 : ");
+					String name = Util.readStrForConsol();
+					list = boxofficeController.searchMovieName(name);
+					printBoxOffice(list);
+					break;
+				case 3: 
+					System.out.print("찾을 주간(ex :202201 ) : ");
+					String yearweekTime = Util.readStrForConsol();
+					list = boxofficeController.getMvListByYearweekTime(yearweekTime);
+					printBoxOffice(list);
+					break;
+				case 0: 
+					return;
+				default: 
+					System.out.println("잘못 입력하셨습니다.");
+			}
+		}
+	}
+	
+	private void printBoxOffice(List<Boxoffice> list) {
+		System.out.println("================== 조회 건수 총 :" +list.size()  +"건 ===================");
+		for(Boxoffice item : list) {
+			System.out.println(item.toStringForConsole());
+		}
+		System.out.println("=================================================================\n");
+	}
+	
+	private void commnunityMenu() {
+		String menu = "========== Community Menu ==========\n"
+				+ "1.영화 찜하기\n"
+				+ "2.내가 찜한 목록 보기\n" 
+				+ "3.영화리뷰 달기\n" 
+				+ "4.전체 영화리뷰 보기\n" 
+				+ "5.내가 쓴 영화리뷰 보기\n" 
+				+ "0.이전 메뉴로 돌아가기\n"
+				+ "----------------------------------\n"
+				+ "선택 : "; 
+		
+		List<Boxoffice> boxList = null;
+		List<Review> reviewList = null; 
+		User user = UserController.getLoginUser();
+		int userNo = user.getuNo();
+		int movieNo = 0;
+		int rNo = 0;
+		boolean result = false;
+		Review review = null;
+		
+		while(true) {
+			System.out.print(menu);
+			int choice = Util.readIntForConsol();
+			switch(choice) {
+				case 1: 
+					boxList = boxofficeController.getAllMvList();
+					printBoxOffice(boxList);
+					System.out.print("찜할 영화 번호 : ");
+					movieNo = Util.readIntForConsol();
+					result = communityController.setFavorite(userNo, movieNo);
+					System.out.println(result ? "성공 하였습니다.": "실패 하였습니다.");
+					break;
+				case 2: 
+					System.out.println("-내가 찜한 영화 목록-");
+					List<Favorite> list = communityController.getFavoriteListByUserNo(userNo);
+					printFavorite(list);
+					break;
+				case 3: 
+					boxList = boxofficeController.getAllMvList();
+					printBoxOffice(boxList);
+					System.out.print("리뷰 영화번호 : ");
+					movieNo = Util.readIntForConsol();
+					System.out.println("제목을 입력하세요.");
+					String title = Util.readStrForConsol();
+					System.out.println("내용을 입력하세요.");
+					String content = Util.readStrForConsol();
+					System.out.print("별점을 입력하세요.(1~5) : ");
+					int score = Util.readIntForConsol();
+					review = new Review(movieNo, userNo, title, content, score);
+					result = communityController.writeReview(review);
+					System.out.println(result ? "성공 하였습니다.": "실패 하였습니다.");
+					break;
+				case 4:
+					System.out.println("-전체 영화리뷰 목록-");
+					reviewList = communityController.getReviewAllList();
+					printReviewTitle(reviewList);
+					System.out.print("상세 조회(No) :");
+					rNo = Util.readIntForConsol();
+					review = communityController.getReviewDetail(rNo);
+					System.out.println(review.toStringDetail());
+					break;
+				case 5:
+					System.out.println("-내가 쓴 영화리뷰 목록-");
+					reviewList = communityController.getReviewUserList(userNo);
+					printReviewTitle(reviewList);
+					System.out.print("상세 조회(No) :");
+					rNo = Util.readIntForConsol();
+					review = communityController.getReviewDetail(rNo);
+					System.out.println(review.toStringDetail());
+					break;
+				case 0 : 
+					return;
+				default: 
+					System.out.println("잘못 입력하셨습니다.");
+			}
+		}
+	}
+	
+	private void printReviewTitle(List<Review> list) {
+		System.out.println("================== 조회 건수 총 :" +list.size()  +"건 ===================");
+		for(Review item : list) {
+			System.out.println(item.toStringForConsole());
+		}
+		System.out.println("=================================================================\n");
 	}
 
-	/**
-	 * 신규회원 정보 입력
-	 * @return
-	 */
-//	private User inputMember() {
-//		System.out.println("새로운 회원정보를 입력하세요.");
-//		User member = new User();
-//		System.out.print("아이디 : ");
-//		member.setMemberId(sc.next());
-//		System.out.print("이름 : ");
-//		member.setMemberName(sc.next());
-//		System.out.print("비밀번호 : ");
-//		member.setPassword(sc.next());
-//		System.out.print("나이 : ");
-//		member.setAge(sc.nextInt());
-//		System.out.print("성별(M/F) : ");//m, f
-//		member.setGender(String.valueOf(sc.next().toUpperCase().charAt(0)));
-//		System.out.print("이메일: ");
-//		member.setEmail(sc.next());
-//		System.out.print("전화번호(-빼고 입력) : ");
-//		member.setPhone(sc.next());
-//		sc.nextLine();//버퍼에 남은 개행문자 날리기용 (next계열 - nextLine)
-//		System.out.print("주소 : ");
-//		member.setAddress(sc.nextLine());
-//		System.out.print("취미(/로 나열할것) : ");
-//		member.setHobby(sc.nextLine());
-//		return member;
-//	}
+	private void printFavorite(List<Favorite> list) {
+		System.out.println("================== 조회 건수 총 :" +list.size()  +"건 ===================");
+		for(Favorite item : list) {
+			System.out.println(item.toStringForConsole());
+		}
+		System.out.println("=================================================================\n");
+	}
+	
+		
+	public static void main(String[] args) {
+		new BoxofficeMenu().mainMenu();
+		System.out.println("---- 프로그램 종료 ----");
+	}
 }
+

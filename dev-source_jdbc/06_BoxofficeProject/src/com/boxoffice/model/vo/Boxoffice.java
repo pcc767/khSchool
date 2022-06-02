@@ -1,6 +1,6 @@
 package com.boxoffice.model.vo;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Boxoffice {
 	private int bNo; // PK
@@ -10,7 +10,7 @@ public class Boxoffice {
 	private String rankOldandnew; // 랭킹에 신규진입여부를 출력합니다.“OLD” : 기존 , “NEW” : 신규
 	private String moviecd; // 영화의 대표코드를 출력합니다.
 	private String movienm; // 영화명(국문)을 출력합니다.
-	private java.sql.Date opendt; // 영화의 개봉일을 출력합니다.
+	private Date opendt; // 영화의 개봉일을 출력합니다.
 	private long salesamt; // 해당일의 매출액을 출력합니다.
 	private double salesshare; // 해당일자 상영작의 매출총액 대비 해당 영화의 매출비율을 출력합니다.
 	private long salesinten; // 전일 대비 매출액 증감분을 출력합니다.
@@ -28,7 +28,6 @@ public class Boxoffice {
 
 	public Boxoffice() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Boxoffice(int bNo, int rnum, int rank, int rankInten, String rankOldandnew, String moviecd, String movienm,
@@ -69,6 +68,16 @@ public class Boxoffice {
 				+ audiinten + ", audichange=" + audichange + ", audiacc=" + audiacc + ", scrncnt=" + scrncnt
 				+ ", showcnt=" + showcnt + ", boxofficeType=" + boxofficeType + ", showrange=" + showrange
 				+ ", yearweektime=" + yearweektime + "]";
+	}
+
+	public String toStringForConsole() {
+		return "no:" + bNo + ", 순위:" + rank + ", 이름:" + movienm	+ ", 주간:" + yearweektime
+				+ ", 신규여부:" + rankOldandnew + ", 랭크변화:" + rankInten + ", 개봉일:"
+				+ opendt + ", salesamt:" + salesamt + ", salesshare:" + salesshare + ", salesinten:" + salesinten
+				+ ", saleschange:" + saleschange + ", salesacc:" + salesacc + ", audicnt:" + audicnt + ", audiinten:"
+				+ audiinten + ", audichange:" + audichange + ", audiacc:" + audiacc + ", scrncnt:" + scrncnt
+				+ ", showcnt:" + showcnt + ", boxofficeType:" + boxofficeType + ", showrange:" + showrange;
+			
 	}
 
 	public int getbNo() {

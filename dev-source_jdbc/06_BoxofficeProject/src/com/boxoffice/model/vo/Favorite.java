@@ -2,12 +2,14 @@ package com.boxoffice.model.vo;
 
 import java.util.Date;
 
+import com.boxoffice.common.Util;
+
 public class Favorite {
-	int bNo;
-	int uNo;
-	Date createDate; // CREATE_DATE
-	String userId;
-	String movieNm;
+	private int bNo;
+	private int uNo;
+	private Date createDate; // CREATE_DATE
+	private String userId;
+	private String movieNm;
 
 	public Favorite() {
 		super();
@@ -30,8 +32,12 @@ public class Favorite {
 
 	@Override
 	public String toString() {
-		return "Favorite [bNo=" + bNo + ", uNo=" + uNo + ", createDate=" + createDate + ", userId=" + userId
+		return "Favorite [bNo=" + bNo + ", uNo=" + uNo + ", createDate=" + Util.getDateFormat(createDate)  + ", userId=" + userId
 				+ ", movieNm=" + movieNm + "]";
+	}
+	
+	public String toStringForConsole() {
+		return 	"제목 : " + movieNm + ", 생성일 : " + Util.getDateFormat(createDate)  + ", id=" + userId;
 	}
 
 	public int getbNo() {

@@ -26,7 +26,7 @@ public class ReviewDao {
 		try {
 			String sql = "SELECT R.RNO, R.BNO, R.UNO, R.TITLE, R.SCORE, R.CREATE_DATE, U.ID, B.MOVIENM "
 					+ "FROM REVIEW_BOXOFFICE R, USERS U, WEEKLY_BOXOFFICE B "
-					+ "WHERE R.BNO = B.BNO AND R.UNO = U.UNO";
+					+ "WHERE R.BNO = B.BNO AND R.UNO = U.UNO ORDER BY R.RNO";
 
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -37,9 +37,9 @@ public class ReviewDao {
 				int uNo  = rs.getInt("UNO");
 				String title  = rs.getString("TITLE");
 				int score  = rs.getInt("SCORE");
-				Date createDate  = rs.getDate("CREATE_DATE");
+				Date createDate  = new Date(rs.getTimestamp("CREATE_DATE").getTime());
 				User user = new User();
-				user.setId(rs.getString("CREATE_DATE"));
+				user.setId(rs.getString("ID"));
 				Boxoffice movieInfo = new Boxoffice();
 				movieInfo.setMovienm(rs.getString("MOVIENM"));
 				Review r = new Review(rNo, bNo, uNo, title, null, score, createDate, user, movieInfo);
@@ -77,7 +77,7 @@ public class ReviewDao {
 				String title  = rs.getString("TITLE");
 				String content  = rs.getString("CONTENT");
 				int score  = rs.getInt("SCORE");
-				Date createDate  = rs.getDate("CREATE_DATE");
+				Date createDate  = new Date(rs.getTimestamp("CREATE_DATE").getTime());
 				User user = new User();
 				user.setId(rs.getString("CREATE_DATE"));
 				Boxoffice movieInfo = new Boxoffice();
@@ -117,9 +117,9 @@ public class ReviewDao {
 				String title  = rs.getString("TITLE");
 				String content  = rs.getString("CONTENT");
 				int score  = rs.getInt("SCORE");
-				Date createDate  = rs.getDate("CREATE_DATE");
+				Date createDate  = new Date(rs.getTimestamp("CREATE_DATE").getTime());
 				User user = new User();
-				user.setId(rs.getString("CREATE_DATE"));
+				user.setId(rs.getString("ID"));
 				Boxoffice movieInfo = new Boxoffice();
 				movieInfo.setMovienm(rs.getString("MOVIENM"));
 				Review r = new Review(rNo, bNo, uNo, title, content, score, createDate, user, movieInfo);
@@ -160,13 +160,13 @@ public class ReviewDao {
 				String movienm              = rs.getString(count++);
 				Date opendt                 = rs.getDate(count++);
 				long salesamt                = rs.getLong(count++);
-				double salesshare           = rs.getDouble(count++);
+				double salesshare            = rs.getDouble(count++);
 				long salesinten              = rs.getLong(count++);
-				double saleschange          = rs.getDouble(count++);
+				double saleschange           = rs.getDouble(count++);
 				long salesacc                = rs.getLong(count++);
 				long audicnt                 = rs.getLong(count++);
 				long audiinten               = rs.getLong(count++);
-				double audichange           = rs.getDouble(count++);
+				double audichange            = rs.getDouble(count++);
 				long audiacc                 = rs.getLong(count++);
 				long scrncnt                 = rs.getLong(count++);
 				long showcnt                 = rs.getLong(count++);
@@ -175,13 +175,11 @@ public class ReviewDao {
 				String yearweektime         = rs.getString(count++);
 				Boxoffice movieInfo = new Boxoffice(bNo, rnum, rank, rankInten, rankOldandnew, moviecd, movienm, opendt, salesamt, salesshare, salesinten, saleschange, salesacc, audicnt, audiinten, audichange, audiacc, scrncnt, showcnt, boxofficeType, showrange, yearweektime);
 				
-				
 				int uNo = 		rs.getInt(count++);
 				String id = 	rs.getString(count++);
 				String password = rs.getString(count++);
 				String name 	= rs.getString(count++);
 				User user = new User(uNo, id, password, name);
-
 				
 				int rNo2  = rs.getInt(count++);
 				int bNo2  = rs.getInt(count++);
@@ -189,7 +187,7 @@ public class ReviewDao {
 				String title  = rs.getString(count++);
 				String content  = rs.getString(count++);
 				int score  = rs.getInt(count++);
-				Date createDate  = rs.getDate(count++);
+				Date createDate  = new Date(rs.getTimestamp(count++).getTime());
 				review = new Review(rNo2, bNo2, uNo2, title, content, score, createDate, user, movieInfo);
 			}
 			
@@ -209,7 +207,6 @@ public class ReviewDao {
 					+ "VALUES(SEQ_REVIEW_NO.NEXTVAL, ?, ?, ?, ?, ?)";
 					
 			PreparedStatement pstmt = conn.prepareStatement(sql); 
-
 			pstmt.setInt(1, review.getbNo());
 			pstmt.setInt(2, review.getuNo());
 			pstmt.setString(3, review.getTitle());

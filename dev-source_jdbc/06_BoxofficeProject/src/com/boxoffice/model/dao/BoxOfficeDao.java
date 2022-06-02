@@ -7,6 +7,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +15,14 @@ import com.boxoffice.common.JDBCTemplate;
 import com.boxoffice.model.vo.Boxoffice;
 
 public class BoxOfficeDao {
+	
 	public List<Boxoffice> selectAll(Connection conn) {
 		List<Boxoffice> list = new ArrayList<>();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			String sql = "SELECT * FROM WEEKLY_BOXOFFICE ORDER BY RANK";
+			String sql = "SELECT * FROM WEEKLY_BOXOFFICE ORDER BY YEARWEEKTIME, RANK";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -54,7 +56,6 @@ public class BoxOfficeDao {
 						audiacc, scrncnt, showcnt, boxofficeType, showrange, yearweektime);
 				list.add(info);
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -238,7 +239,7 @@ public class BoxOfficeDao {
 			pstmt.setString(cnt++, boxoffice.getRankOldandnew());
 			pstmt.setString(cnt++, boxoffice.getMoviecd());
 			pstmt.setString(cnt++, boxoffice.getMovienm());
-			pstmt.setDate(cnt++, boxoffice.getOpendt());
+			pstmt.setTimestamp(cnt++, new Timestamp(boxoffice.getOpendt().getTime()));
 			pstmt.setLong(cnt++, boxoffice.getSalesamt());
 			pstmt.setDouble(cnt++, boxoffice.getSalesshare());
 			pstmt.setLong(cnt++, boxoffice.getSalesinten());

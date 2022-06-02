@@ -11,30 +11,30 @@ public class CommunityController {
 	FavoriteService favoriteService = new FavoriteService();
 	ReviewService reviewService = new ReviewService();
 	
-	boolean setFavorite(int userNo, int movieNo){
+	public boolean setFavorite(int userNo, int movieNo){
 		int result = favoriteService.insert(new Favorite(movieNo, userNo));
 		return result > 0 ? true : false; 
 	}
 
-	boolean removeFavorite(int userNo, int movieNo){
+	public boolean removeFavorite(int userNo, int movieNo){
 		int result = favoriteService.delete(new Favorite(movieNo, userNo));
 		return result > 0 ? true : false; 
 	}
 	
-	List<Favorite> getFavoriteListByMovieNo(int movieNo){
+	public List<Favorite> getFavoriteListByMovieNo(int movieNo){
 		return favoriteService.selectByBno(movieNo);
 	}
 	
-	List<Favorite> getFavoriteListByUserNo(int userNo){
+	public List<Favorite> getFavoriteListByUserNo(int userNo){
 		return favoriteService.selectByUno(userNo);
 	}
 	
-	boolean writeReview(Review review) {
+	public boolean writeReview(Review review) {
 		int result = reviewService.insert(review);
 		return result > 0 ? true : false; 
 	}
 	
-	boolean deleteReview(int rNo) {
+	public boolean deleteReview(int rNo) {
 		int result = reviewService.delete(rNo);
 		return result > 0 ? true : false; 
 	}
