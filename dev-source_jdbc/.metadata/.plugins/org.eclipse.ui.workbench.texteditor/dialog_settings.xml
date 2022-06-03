@@ -6,8 +6,15 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="callWeeklyBoxOfficeListByXML"/>
+		<item key="selection" value="ccceName"/>
 		<list key="findhistory">
+			<item value="ccceName"/>
+			<item value="getAllMvList"/>
+			<item value="All"/>
+			<item value="ccbaKdcd"/>
+			<item value="Connection"/>
+			<item value="ccbaCtcd"/>
+			<item value="regency_area_no"/>
 			<item value="callWeeklyBoxOfficeListByXML"/>
 			<item value="OpenApiManager"/>
 			<item value="진경대사탑비"/>
@@ -16,7 +23,6 @@
 			<item value="getConnection"/>
 			<item value="executeUpdate"/>
 			<item value="executeQuery"/>
-			<item value=";"/>
 		</list>
 		<list key="replacehistory">
 		</list>

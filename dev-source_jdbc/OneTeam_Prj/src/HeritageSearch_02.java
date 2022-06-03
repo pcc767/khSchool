@@ -94,7 +94,6 @@ public class HeritageSearch_02 {
                         System.out.println("regency_area_no : " + eElement.getElementsByTagName("ccbaCtcd").item(0).getTextContent());      //추가
                         System.out.println("regency_admin : " + eElement.getElementsByTagName("ccbaAdmin").item(0).getTextContent());
 
-                        int regency_sn = Integer.parseInt(eElement.getElementsByTagName("sn").item(0).getTextContent());
                         String regency_no = eElement.getElementsByTagName("ccbaKdcd").item(0).getTextContent();
                         String regency_design_no = eElement.getElementsByTagName("ccbaAsno").item(0).getTextContent();
                         String regency_trans_no = eElement.getElementsByTagName("ccbaCpno").item(0).getTextContent();
@@ -105,7 +104,7 @@ public class HeritageSearch_02 {
                         String regency_area_no = eElement.getElementsByTagName("ccbaCtcd").item(0).getTextContent();
                         String regency_admin = eElement.getElementsByTagName("ccbaAdmin").item(0).getTextContent();
 
-                        Heritage heri = new Heritage(regency_sn, regency_no, regency_design_no, regency_trans_no, regency_name_kor,
+                        Heritage heri = new Heritage(regency_no, regency_design_no, regency_trans_no, regency_name_kor,
                                 regency_name_chi, regency_category_name, regency_area, regency_area_no, regency_admin);
 
                         list.add(heri);
@@ -168,8 +167,7 @@ public class HeritageSearch_02 {
                     System.out.println("\nCurrent Element : " + node.getNodeName());
                     Element eElement = (Element) node;
                     if (node.getNodeType() == Node.ELEMENT_NODE) {
-//                    	System.out.println("heritageList : "+heritageList.getLength());
-                    	System.out.println(listHeader.size());
+                    	System.out.println("문화재 번호 : " + hNum);
                         System.out.println("regency_name_kor : " + eElement.getElementsByTagName("ccbaMnm1").item(0).getTextContent());
                         System.out.println("regency_address : " + eElement.getElementsByTagName("ccbaLcad").item(0).getTextContent().strip());
                         System.out.println("regency_type : " + eElement.getElementsByTagName("gcodeName").item(0).getTextContent());
@@ -184,8 +182,7 @@ public class HeritageSearch_02 {
 //                      <result>----------------------------------------------------------------------------------------
                         System.out.println("regency_longitude : " + doc.getElementsByTagName("longitude").item(0).getTextContent());
                         System.out.println("regency_latitude : " + doc.getElementsByTagName("latitude").item(0).getTextContent());
-//                      </result>---------------------------------------------------------------------------------------
-                        System.out.println("문화재 번호 : " + hNum);
+//                      </result>---------------------------------------------------------------------------------------                       
 
                         // setter로 저장
                         listHeader.get(i).setRegency_address(eElement.getElementsByTagName("ccbaLcad").item(0).getTextContent());

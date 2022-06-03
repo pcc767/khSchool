@@ -111,7 +111,7 @@ public class HeritageSearch_Fast_ver {
                         System.out.println("regency_area_no : " + eElement.getElementsByTagName("ccbaCtcd").item(0).getTextContent());      //추가
                         System.out.println("regency_admin : " + eElement.getElementsByTagName("ccbaAdmin").item(0).getTextContent());
 
-                        int regency_sn = Integer.parseInt(eElement.getElementsByTagName("sn").item(0).getTextContent());
+//                        int regency_sn = Integer.parseInt(eElement.getElementsByTagName("sn").item(0).getTextContent());
                         String regency_no = eElement.getElementsByTagName("ccbaKdcd").item(0).getTextContent();
                         String regency_design_no = eElement.getElementsByTagName("ccbaAsno").item(0).getTextContent();
                         String regency_trans_no = eElement.getElementsByTagName("ccbaCpno").item(0).getTextContent();
@@ -122,7 +122,7 @@ public class HeritageSearch_Fast_ver {
                         String regency_area_no = eElement.getElementsByTagName("ccbaCtcd").item(0).getTextContent();
                         String regency_admin = eElement.getElementsByTagName("ccbaAdmin").item(0).getTextContent();
 
-                        Heritage heri = new Heritage(regency_sn, regency_no, regency_design_no, regency_trans_no, regency_name_kor,
+                        Heritage heri = new Heritage(regency_no, regency_design_no, regency_trans_no, regency_name_kor,
                                 regency_name_chi, regency_category_name, regency_area, regency_area_no, regency_admin);
 
                         list.add(heri);

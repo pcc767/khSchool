@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy package &apos;com.teamtest.service&apos; to &apos;OneTeam_Prj/src&apos;&#x0D;&#x0A;- Original project: &apos;99_TeamTest&apos;&#x0D;&#x0A;- Destination element: &apos;OneTeam_Prj/src&apos;&#x0D;&#x0A;- Original element: &apos;99_TeamTest/src/com.teamtest.service&apos;" description="Copy package" destination="=OneTeam_Prj/src" element1="/src&lt;com.teamtest.service" flags="589830" fragments="1" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1654257033911" version="1.0"/>
+</session>

@@ -90,19 +90,17 @@ public class PalaceSearch {
                         System.out.println("castle_no : " + eElement.getElementsByTagName("gung_number").item(0).getTextContent());
                         System.out.println("p_facility_detail_no : " + eElement.getElementsByTagName("detail_code").item(0).getTextContent());
                         System.out.println("p_facility_name_kor : " + eElement.getElementsByTagName("contents_kor").item(0).getTextContent());
-                        System.out.println("p_facility_content : " + eElement.getElementsByTagName("explanation_kor").item(0).getTextContent());
-                        System.out.println("p_facility_imgUrl : " + eElement.getElementsByTagName("imgUrl").item(0).getTextContent());
+                        System.out.println("p_facility_contents_kor : " + eElement.getElementsByTagName("explanation_kor").item(0).getTextContent());
+//                        System.out.println("p_facility_imgUrl : " + eElement.getElementsByTagName("imgUrl").item(0).getTextContent());
 
                         int facility_no = Integer.parseInt(eElement.getElementsByTagName("serial_number").item(0).getTextContent());
                         int castle_no = Integer.parseInt(eElement.getElementsByTagName("gung_number").item(0).getTextContent());
                         int p_facility_detail_no = Integer.parseInt(eElement.getElementsByTagName("detail_code").item(0).getTextContent());
                         String p_facility_name_kor = eElement.getElementsByTagName("contents_kor").item(0).getTextContent();
-                        String p_facility_content = eElement.getElementsByTagName("explanation_kor").item(0).getTextContent();
-                        String p_facility_imgUrl = eElement.getElementsByTagName("imgUrl").item(0).getTextContent();
+                        String p_facility_contents_kor = eElement.getElementsByTagName("explanation_kor").item(0).getTextContent();  
 
-                        Palace pla = new Palace(facility_no, castle_no, p_facility_detail_no, p_facility_name_kor,
-                                p_facility_content, p_facility_imgUrl);
-
+                        Palace pla = new Palace(facility_no, castle_no, p_facility_detail_no, p_facility_name_kor, p_facility_contents_kor);
+                        
                         list.add(pla);
                     }
                 }
@@ -112,7 +110,7 @@ public class PalaceSearch {
                     break;
                 }
 
-                conn.disconnect();
+                conn.disconnect();                
             }           // while end
         } catch (Exception e) {
             e.printStackTrace();
@@ -179,9 +177,9 @@ public class PalaceSearch {
                         System.out.println("p_facility_name_eng : " + eElement.getElementsByTagName("contents_eng").item(0).getTextContent());
                         System.out.println("p_facility_name_jpa : " + eElement.getElementsByTagName("contents_jpa").item(0).getTextContent());
                         System.out.println("p_facility_name_chi : " + eElement.getElementsByTagName("contents_chi").item(0).getTextContent());
-                        System.out.println("p_facility_content_eng : " + eElement.getElementsByTagName("explanation_eng").item(0).getTextContent());
-                        System.out.println("p_facility_content_jpa : " + eElement.getElementsByTagName("explanation_jpa").item(0).getTextContent());
-                        System.out.println("p_facility_content_chi : " + eElement.getElementsByTagName("explanation_chi").item(0).getTextContent());
+                        System.out.println("p_facility_content_eng : " + eElement.getElementsByTagName("explanation_eng").item(0).getTextContent().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+                        System.out.println("p_facility_content_jpa : " + eElement.getElementsByTagName("explanation_jpa").item(0).getTextContent().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
+                        System.out.println("p_facility_content_chi : " + eElement.getElementsByTagName("explanation_chi").item(0).getTextContent().replaceAll("<(/)?([a-zA-Z]*)(\\s[a-zA-Z]*=[^>]*)?(\\s)*(/)?>", ""));
 
                         // input setter
                         listHeader.get(i).setP_facility_name_eng(eElement.getElementsByTagName("contents_eng").item(0).getTextContent());

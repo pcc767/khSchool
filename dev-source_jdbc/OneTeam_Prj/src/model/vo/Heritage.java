@@ -28,10 +28,9 @@ public class Heritage {
 
     public Heritage(){}
 
-    public Heritage(int regency_sn, String regency_no, String regency_design_no, String regency_trans_no, String regency_name_kor,
+    public Heritage(String regency_no, String regency_design_no, String regency_trans_no, String regency_name_kor,
                     String regency_name_chi, String regency_category_name, String regency_area, String regency_area_no,
                     String regency_admin) {
-        this.regency_sn = regency_sn;
         this.regency_no = regency_no;
         this.regency_design_no = regency_design_no;
         this.regency_trans_no = regency_trans_no;
@@ -42,23 +41,7 @@ public class Heritage {
         this.regency_area_no = regency_area_no;
         this.regency_admin = regency_admin;
     }
-//
-//    public Heritage(String regency_address, String regency_type, String regency_type2, String regency_type3, String regency_type4,
-//                    String regency_quantity, String regency_era, String regency_owner, String regency_content,
-//                    String regency_enrolldate, String regency_longitude, String regency_latitude) {
-//        this.regency_address = regency_address;
-//        this.regency_type = regency_type;
-//        this.regency_type2 = regency_type2;
-//        this.regency_type3 = regency_type3;
-//        this.regency_type4 = regency_type4;
-//        this.regency_quantity = regency_quantity;
-//        this.regency_era = regency_era;
-//        this.regency_owner = regency_owner;
-//        this.regency_content = regency_content;
-//        this.regency_enrolldate = regency_enrolldate;
-//        this.regency_longitude = regency_longitude;
-//        this.regency_latitude = regency_latitude;
-//    }
+
 
     public int getRegency_sn() {
         return regency_sn;
