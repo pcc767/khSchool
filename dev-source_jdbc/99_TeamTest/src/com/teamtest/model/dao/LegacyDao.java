@@ -1,8 +1,15 @@
 package com.teamtest.model.dao;
 
+import static com.teamtest.common.JDBCTemplate.close;
+
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import com.teamtest.common.JDBCTemplate;
 import com.teamtest.model.vo.Legacy;
@@ -60,6 +67,80 @@ public class LegacyDao {
 		conn.commit();
 		System.out.println(result);	
 		
+	}
+
+	public List<Legacy> selectByLegacyName(Connection conn, String legency_name_kor) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Legacy> selectByCategoryName(Connection conn, String legency_category_name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Legacy> selectByArea(Connection conn, String legency_area) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<Legacy> selectByEra(Connection conn, String legency_era) {
+		
+		List<Legacy> list = new ArrayList<>();
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "SELECT * FROM tbl_legacy WHERE legacy_era LIKE ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + legency_era + "%");
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				
+				int count = 1;
+				String legacy_no = rs.getString(count++);          
+				String legacy_design_no = rs.getString(count++);    
+				String legacy_trans_no = rs.getString(count++);
+				String legacy_category_name = rs.getString(count++);
+				String legacy_name_kor = rs.getString(count++); 
+				String legacy_name_chi = rs.getString(count++);     
+				String legacy_area = rs.getString(count++);         
+				String legacy_address = rs.getString(count++);      
+				String legacy_admin = rs.getString(count++);        
+				String legacy_type = rs.getString(count++);         
+				String legacy_type2 = rs.getString(count++);        
+				String legacy_type3 = rs.getString(count++);        
+				String legacy_type4 = rs.getString(count++);       
+				String legacy_quantity = rs.getString(count++);
+				String legacy_era = rs.getString(count++);
+				String legacy_owner = rs.getString(count++);
+				String legacy_content = rs.getString(count++);
+				Date legacy_enrolldate = rs.getDate(count++);
+				String legacy_longitude = rs.getString(count++);   
+				String legacy_latitude = rs.getString(count++);     
+				
+				Legacy legacy = new Legacy(legacy_no, legacy_design_no, legacy_trans_no, legacy_category_name, 
+						legacy_name_kor, legacy_name_chi, legacy_area, legacy_address, legacy_admin, legacy_type, 
+						legacy_type2, legacy_type3, legacy_type4, legacy_quantity, legacy_era, legacy_owner, 
+						legacy_content, legacy_enrolldate, legacy_longitude, legacy_latitude);
+			
+				list.add(legacy);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return list;
+	
+	}
+
+	public Legacy selectOne(Connection conn, String legency_no) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

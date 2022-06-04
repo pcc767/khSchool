@@ -1,0 +1,47 @@
+package com.teamtest.controller;
+
+import java.util.List;
+
+import com.teamtest.api.LegacyApiManager;
+import com.teamtest.model.vo.Legacy;
+import com.teamtest.service.LegacyService;
+
+public class LegacyController {
+	
+	private LegacyService legacyService = new LegacyService();
+	
+	public void initLegacy() {
+		
+		List<Legacy> list = LegacyApiManager.callLegacyByXML();
+		
+		for (Legacy legacy : list) {
+			legacyService.insert(legacy);
+		}
+	}
+	
+	public List<Legacy> selectByLegacyName(String regency_name_kor) {
+		return legacyService.selectByLegacyName(regency_name_kor);
+	}
+	
+	public List<Legacy> selectByCategoryName(String regency_category_name) {
+		return legacyService.selectByCategoryName(regency_category_name);
+	}
+	
+	public List<Legacy> selectByArea(String regency_area) {
+		return legacyService.selectByArea(regency_area);
+	}
+	
+	public List<Legacy> selectByEra(String regency_era) {
+		return legacyService.selectByEra(regency_era);
+	}
+	
+	public Legacy selectOne(String regency_no) {
+		return legacyService.selectOne(regency_no);
+	}
+	
+	public static void main(String[] args) {
+		LegacyController lc = new LegacyController();
+		lc.initLegacy();
+	}
+
+}
