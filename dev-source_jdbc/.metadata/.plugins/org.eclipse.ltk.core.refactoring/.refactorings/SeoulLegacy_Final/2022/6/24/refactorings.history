@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;SeoulLegacy_Final&apos;&#x0D;&#x0A;- Original project: &apos;SeoulLegacy_Final&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     seoul.legacy.api.LegacyApiManager.java&#x0D;&#x0A;     seoul.legacy.api.PalaceApiManager.java" description="Delete elements" element1="/src&lt;seoul.legacy.api{LegacyApiManager.java" element2="/src&lt;seoul.legacy.api{PalaceApiManager.java" elements="2" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1654483946448" subPackages="false" version="1.0"/>
+</session>

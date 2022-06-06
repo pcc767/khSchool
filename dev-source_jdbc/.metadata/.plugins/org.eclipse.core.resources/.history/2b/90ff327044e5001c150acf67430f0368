@@ -1,0 +1,50 @@
+package seoul.legacy.model.service;
+
+import static seoul.legacy.common.JDBCTemplate.*;
+
+
+import java.sql.Connection;
+import java.util.List;
+
+import seoul.legacy.model.dao.PalaceDao;
+import seoul.legacy.model.vo.Palace;
+
+
+
+public class PalaceService {
+	
+	private PalaceDao dao = new PalaceDao();
+	private Connection conn = null;
+	
+	public PalaceService() {
+		conn = openConnection();
+	}
+
+	public Connection getConnection() {
+		return conn;
+	}
+
+//	-----------------------------------------------------------------------------
+
+	public List<Palace> selectAll() {
+		Connection conn = getConnection();
+		return dao.selectAll(conn);
+	}
+
+	public Palace selectOne(String palaceName) {
+		return dao.selectOne(getConnection(), palaceName);
+	}
+
+	
+	public int insert(Palace palace){
+		int result = dao.insert(conn, palace);
+		if(result > 0)
+			commit(conn);
+		else
+			rollback(conn);
+
+		return result;
+	}
+	
+
+}

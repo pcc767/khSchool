@@ -31,6 +31,13 @@ public class Legacy {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Legacy(String legacy_name_kor,String legacy_category_name, String legacy_area) {
+		super();
+		this.legacy_name_kor = legacy_name_kor;
+		this.legacy_category_name = legacy_category_name;
+		this.legacy_area = legacy_area;
+	}
 
 	public Legacy(String legacy_no, String legacy_design_no, String legacy_trans_no, String legacy_category_name,
 			String legacy_name_kor, String legacy_name_chi, String legacy_area, String legacy_address,
@@ -220,8 +227,8 @@ public class Legacy {
 		this.legacy_latitude = legacy_latitude;
 	}
 
-	@Override
-	public String toString() {
+	
+	public String detailtoString() {
 		return "Legacy [legacy_no=" + legacy_no + ", legacy_design_no=" + legacy_design_no + ", legacy_trans_no="
 				+ legacy_trans_no + ", legacy_category_name=" + legacy_category_name + ", legacy_name_kor="
 				+ legacy_name_kor + ", legacy_name_chi=" + legacy_name_chi + ", legacy_area=" + legacy_area
@@ -232,6 +239,14 @@ public class Legacy {
 				+ legacy_enrolldate + ", legacy_longitude=" + legacy_longitude + ", legacy_latitude=" + legacy_latitude
 				+ "]";
 	}
+
+	@Override
+	public String toString() {
+		return "Legacy [legacy_name_kor=" + legacy_name_kor +", legacy_category_name=" + legacy_category_name
+				+ ", legacy_area=" + legacy_area + "]";
+	}
+	
+	
 	
 	
 }
