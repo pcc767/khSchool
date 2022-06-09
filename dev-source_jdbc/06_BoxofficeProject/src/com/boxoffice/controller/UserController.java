@@ -27,7 +27,7 @@ public class UserController {
 		loginUser = null;
 	}
 	
-	public static User getLoginUser() {
+	public User getLoginUser() {
 		return loginUser;
 	}
 	

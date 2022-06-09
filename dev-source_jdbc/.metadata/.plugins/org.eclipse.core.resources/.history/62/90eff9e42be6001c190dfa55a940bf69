@@ -1,0 +1,11 @@
+package seoul.legacy.controller;
+
+import seoul.legacy.model.service.ReviewService;
+
+public class ReviewController {
+	
+	private ReviewService reviewService = new ReviewService();
+	
+	
+
+}

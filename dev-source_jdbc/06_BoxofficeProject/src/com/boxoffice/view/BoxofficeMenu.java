@@ -135,7 +135,7 @@ public class BoxofficeMenu {
 		
 		List<Boxoffice> boxList = null;
 		List<Review> reviewList = null; 
-		User user = UserController.getLoginUser();
+		User user = userController.getLoginUser();
 		int userNo = user.getuNo();
 		int movieNo = 0;
 		int rNo = 0;

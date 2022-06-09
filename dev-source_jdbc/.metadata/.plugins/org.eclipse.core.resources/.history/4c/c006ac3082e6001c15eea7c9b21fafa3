@@ -1,0 +1,40 @@
+package seoul.legacy.controller;
+
+import java.util.List;
+
+import seoul.legacy.model.service.UserService;
+import seoul.legacy.model.vo.User;
+import seoul.legacy.model.vo.Zzim;
+
+public class UserController {
+	
+	private UserService userService = new UserService();
+	private static User loginUser = null;
+	
+	public boolean login(String id, String pw) {
+		User user = userService.selectById(id);
+		if(user == null) {
+			return false;
+		}
+		
+		if(user.getUserPw().equals(pw)) {
+			loginUser = user;
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public void logout() {
+		loginUser = null;
+	}
+	
+	public User selectById(String userId) {
+		return userService.selectById(userId);
+	}
+
+	public User getLoginUser() {
+		return loginUser;
+	}
+
+}

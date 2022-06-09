@@ -6,8 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value=""/>
+		<item key="selection" value="legacySearch"/>
 		<list key="findhistory">
+			<item value="legacysearch"/>
+			<item value="try"/>
+			<item value="→"/>
+			<item value="legacySearch"/>
+			<item value="test"/>
 			<item value="상세"/>
 			<item value="ccsiName"/>
 			<item value="ccmaName"/>
@@ -18,18 +23,13 @@
 			<item value="searchByBoxofficeNo"/>
 			<item value="ccceName"/>
 			<item value="All"/>
-			<item value="ccbaKdcd"/>
-			<item value="Connection"/>
-			<item value="ccbaCtcd"/>
-			<item value="regency_area_no"/>
-			<item value="callWeeklyBoxOfficeListByXML"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1098"/>
-		<item key="DIALOG_Y_ORIGIN" value="252"/>
+		<item key="DIALOG_X_ORIGIN" value="1082"/>
+		<item key="DIALOG_Y_ORIGIN" value="212"/>
 		<item key="DIALOG_WIDTH" value="322"/>
 		<item key="DIALOG_HEIGHT" value="391"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

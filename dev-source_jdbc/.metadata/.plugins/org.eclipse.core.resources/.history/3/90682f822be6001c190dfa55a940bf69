@@ -1,0 +1,5 @@
+package seoul.legacy.controller;
+
+public class ReviewController {
+
+}

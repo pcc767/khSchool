@@ -17,7 +17,7 @@
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 	</section>
 	<section name="ExternalProjectImportWizard">
-		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="false"/>
+		<item key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED" value="true"/>
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_NESTED_PROJECTS" value="false"/>
@@ -27,6 +27,7 @@
 			<item value=""/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">
+			<item value="C:\Users\Kooki\Documents\카카오톡 받은 파일\Temp.zip"/>
 			<item value="C:\Users\Kooki\Downloads\JDBCParshingBaseFinal.zip"/>
 			<item value="C:\Users\Kooki\Downloads\06_BoxofficeProject_1.zip"/>
 			<item value="C:\Users\Kooki\Downloads\06_BoxofficeProject.zip"/>
