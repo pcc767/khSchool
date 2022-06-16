@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css 기초</title>
+    <link rel="stylesheet" href="00_css01.css">
+</head>
+
+<body>
+    <h1>css (Cascading Style Sheet)</h1>
+    <div> - html문서의 스타일을 정의한 언어, tag의 스타일(폰트, 크기, 위치등)을 지정하는 문법을 제공</div>
+    <div> - 또한 영역을 지정하고, 화면/프레임을 분할 위해 사용하기도 함.</div>
+    <hr><br>
+
+    <h3>css 사용번 1 - 인라인 스타일</h3>
+    <p> - 각 태그 속성안에 'style' 속성값을 선언하여 인라인으로 스타일을 지정하는 방법</p>
+    <div style="color: red; background-color: aqua">
+        인라인 지정 영역
+    </div>
+    <hr><br>
+
+    <h3>css 사용법 2. 내부 스타일 시트</h3>
+    <p> - html 문서 안에 &lt;style&gt; 태그로 선언하는 방법</p>
+    <style>
+        #id1 {
+            background-color: beige;
+            color: red;
+        }
+    </style>
+
+    <div id="id1">
+        id1을 통해 css1을 통해 css 내부 스타일이 적용되는 영역
+    </div>
+    <div id="id2">
+        id1을 통해 css1을 통해 css 내부 스타일이 적용안되는 영역
+    </div>
+    <hr><br>
+
+    <h3>css 사용법 3. 외부 스타일 시트 - 표준적인 방법(대형 포털에서 사용)</h3>
+    <p> - 별도의 css 확장자 파일을 import하여 사용하는 방법</p>
+    <p> - head에 link 태그를 통해 반드시 참조여부를 선한</p>
+    <div id="id3">
+        외수 스타일 지정 영역
+    </div>
+    <hr><br>
+
+    <h3>문서에 따른 css 적용 우선 순위 = 적용 범위가 가까울수록 높음</h3>
+    <div>1. 인라인 스타일</div>
+    <div>2. 내부 스타일 = 외부 스탕일 우선순위는 같으나, 단 마지막에 선언한 값이 먼저 적용</div>
+    <div>3. 브라우저 기본 값</div>
+    <hr><br>
+
+    <h3>css 적용 문법</h3>
+    <!-- #id1 {
+        background-color: beige;
+        color: red;
+    } -->
+    <div>selector {Property : value;.....N}</div>
+    <div>Selector(선택자) : 스타일을 지정할 태그, id, class들을 지정하는 선택자</div>
+    <div>Property(속성) : 스타일에 적용할 속성, ex)color, font, background</div>
+    <div>value(값) : 스타일에 적용할 실제 값, ex)10px, red, 100%</div>
+    <br><br><br><br>
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

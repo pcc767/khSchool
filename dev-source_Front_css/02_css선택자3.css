@@ -1,0 +1,81 @@
+ /* 일반 구조 선택자 */
+ /* 형제 관계 태그 중 첫번째 태그 선택 */
+ /*******************/
+ /*      test1      */
+ /*******************/
+ 
+ #test1 p:first-child {
+     background-color: red;
+ }
+ /* 형제 관계 태그 중 마지막 태그 선택 */
+ 
+ #test1 :last-child {
+     background-color: yellow;
+ }
+ /* 형제 관계 태그 중 앞에서 수열번째 태그 선택 */
+ 
+ #test1 p:nth-child(2n) {
+     background-color: yellowgreen;
+ }
+ /* 형제 관계 태그 중 뒤에서 수열번째 태그 선택 */
+ 
+ #test1 p:nth-last-child(3n) {
+     color: rgb(145, 255, 0);
+ }
+ /*******************/
+ /*      test2      */
+ /*******************/
+ /* 형태 구조 선택자 */
+ 
+ #test2 p:first-of-type {
+     background-color: red;
+ }
+ 
+ #test2 p:last-of-type {
+     background-color: yellow;
+ }
+ 
+ #test2 p:nth-of-type(2n) {
+     background-color: yellowgreen;
+ }
+ 
+ #test2 p:nth-last-of-type(2n) {
+     color: red;
+ }
+ /*******************/
+ /*      test3      */
+ /*******************/
+ /* 문자 선택자 */
+ 
+ #test3 p::first-letter {
+     font-size: 2em;
+ }
+ 
+ #test3 p:first-line {
+     background-color: yellowgreen;
+ }
+ 
+ #test3 p:after {
+     content: "#### 끝 ####"
+ }
+ 
+ #test3 p {
+     counter-increment: rint;
+ }
+ 
+ #test3 p:before {
+     content: counter(rint) ".";
+ }
+ 
+ #test3 p::selection {
+     background-color: red;
+     color: white;
+ }
+ /*******************/
+ /*      test4      */
+ /*******************/
+ /* 부정 선택자 */
+ 
+ #test4 p:not(:nth-child(2n)) {
+     background-color: orange;
+ }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+</head>
+
+<body>
+
+    <form action="insert.no" method="post" style="width: 400px;">
+        <fieldset>
+            <legend>공지사항 작성하기</legend>
+            <table>
+                <tr>
+                    <td style="width: 80px;" align="center">
+                        <label for="userId">제목</label>
+                    </td>
+                    <td>
+                        <input type="text" name="userId" placeholder="제목을 입력하시오." required><br>
+                    </td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <td style="width: 80px;" align="center">
+                        <label for="content">내용</label>
+                    </td>
+                    <td>
+                        <textarea name="content" id="" cols="30" rows="5" style="width: 172px;" placeholder="내용을 입력하시오." required></textarea>
+                    </td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <td style="width: 80px;">
+                        <label for="uploadFile">첨부파일</label>
+                    </td>
+                    <td>
+                        <input type="file" name="uploadFile" value="파일 선택"><br>
+                    </td>
+                </tr>
+            </table>
+            <table align="center">
+                <td>
+                    <input type="submit" value="작성하기">
+                </td>
+            </table>
+
+        </fieldset>
+    </form>
+
+
+</body>
+
+</html>

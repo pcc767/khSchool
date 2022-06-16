@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form tag</title>
+</head>
+
+<body>
+    <h1>form 관련 태그</h1>
+    <p> - 사용자로부터 text 및 각종 입력을 전달받아 page가 지정한 서버로 전달하는 태그</p>
+    <p> - 주요한 form : text, pw, textarea, button, summit, readio, select 등</p>
+
+    <h3>from 기초 예제</h3>
+    <p> - action : 전달할 서버의 url</p>
+    <p> - method : 전달할 방식을 선택, get은 url을 통한 노출, post는 url과 별개로 데이터를 전달.</p>
+
+    <form action="05_media.html" method="get">
+        <div>
+            <label for="userID">아이디</label>
+            <input type="text" name="userID" id="userID">
+        </div>
+        <div>
+            <label for="password">비밀번호</label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div>
+            <label for="userName">이름</label>
+            <input type="text" name="userName" id="userName">
+        </div>
+        <div>
+            <label for="userAge">나이</label>
+            <input type="number" name="userAge" id="userAge">
+        </div>
+        <div>
+            <input type="submit" value="제출">
+        </div>
+
+    </form>
+    <hr>
+
+    <!-- http://127.0.0.1:5500/05_media.html?userID=kooki&password=1234&userName=kooki&userAge=30 -->
+    <!-- 한글은 utf-8로 인코딩되어 전달됨. -->
+
+    <h3>form 관련 복합예제</h3>
+    <form action="05_media.html" method="get">
+        <fieldset>
+            <legend>회원정보</legend>
+            <div>
+                <label for="userID2">아이디</label>
+                <input type="text" name="userID2" id="userID2" value="test" readonly required>
+            </div>
+            <div>
+                <label for="password2">패스워드</label>
+                <input type="password" name="password2" id="password2" required minlength="4" maxlength="8">
+            </div>
+            <div>
+                <label for="userName">이름</label>
+                <input type="text" name="userName" id="userName" required>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>기타 정보</legend>
+            <div>
+                <label for="email">email</label>
+                <input type="email" name="email" id="email" placeholder="ex)test@text.com">
+            </div>
+            <div>
+                <label for="homepage">홈페이지</label>
+                <input type="url" name="homepage" id="homepage" placeholder="ex)wwww.naver.com">
+            </div>
+            <div>
+                <label for="phone">전화번호</label>
+                <input type="tel" name="phone" id="phone" placeholder="-를 제외한 번호 입력">
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>자기소개</legend>
+            <textarea name="seltInfo" id="seltInfo" cols="80" rows="10" style="resize: none;"></textarea>
+        </fieldset>
+        <div>
+            <input type="reset" value="reset"><br>
+            <button type="submit">제출</button>
+        </div>
+    </form>
+    <hr><br>
+
+    <h3>Button 태그</h3>
+    <p> 1 - Input 태그</p>
+    <p> - css 적용이 어려움으로 작 사용안된다.</p>
+    <input type="submit" value="제출"><br>
+    <input type="reset" value="초기화"><br>
+    <input type="button" value="버튼"><br><br>
+
+    <p> 2 - Button 태그</p>
+    <p> - button은 button태그 추천</p>
+    <button type="submit">제출</button><br>
+    <button type="reset">리셋</button><br>
+    <button type="submit">버튼</button><br>
+    <button type="button"><img src="resources/image/iconsample.PNG" alt=""></button>
+
+    <h3>숫자 관련태그</h3>
+    <form action="05_media.html" method="get">
+        <fieldset>
+            <legend>숫자 태그</legend>
+            <div>
+                <input type="number" name="point" id="point" max="100" min="0">
+            </div>
+            <div>
+                <input type="range" name="point2" id="point" max="100" min="0">
+            </div>
+        </fieldset>
+        <button type="submit">제출</button>
+    </form>
+    <hr><br>
+
+    <h3>날짜/시간 관련태그</h3>
+    <form action="05_media.html" method="get">
+        <fieldset>
+            <legend>날짜/시간 태그</legend>
+            <div>
+                <label for="birthday">생일</label>
+                <input type="date" name="birthday" id="birthday" value="2000-10-10">
+            </div>
+            <div>
+                <label for="reserved">생일</label>
+                <input type="time" name="reserved" id="birtreservedhday" value="14:20">
+            </div>
+            <div>
+                <label for="reserved2">생일</label>
+                <input type="datetime-local" name="reserved2" id="reserved2" value="2022-06-22T18:30">
+                <!-- 날짜/시간 표준 포맷 iso-8601 yyyy-mm-ddThh:mi -->
+
+            </div>
+        </fieldset>
+        <button type="submit">제출</button>
+    </form>
+    <hr><br>
+    <!-- http://127.0.0.1:5500/05_media.html?birthday=2000-10-10&reserved=14%3A20&reserved2=2022-06-24T10%3A33 -->
+
+    <h3>선택관련 태그</h3>
+    <form action="05_media.html" method="get">
+        <fieldset>
+            <legend>라디오</legend>
+            <!-- name를 통해 파라메터의 이름을 알고, value로 구분한다. -->
+            <input type="radio" name="gender" id="gender-male" value="m" checked>
+            <label for="gender-male">남</label>
+            <input type="radio" name="gender" id="gender-female" value="f">
+            <label for="gender-female">여</label>
+        </fieldset>
+
+        <fieldset>
+            <legend>checkBox</legend>
+            <!-- 여러개의 체크박스를 만들때 name이 통일되고, value 각자의 고유값으로 지정-->
+            <input type="checkbox" name="hobby" id="music" value="music" checked>
+            <label for="music">음악감상</label>
+            <input type="checkbox" name="hobby" id="game" value="game">
+            <label for="game">게임</label>
+            <input type="checkbox" name="hobby" id="book" value="book">
+            <label for="book">독서</label>
+            <input type="checkbox" name="hobby" id="climbing" value="climbing">
+            <label for="book">등산</label>
+            <br>
+
+            <!-- 단일 체크박스 name하나로 확인이 가능하다.-->
+            <label for="ckemail">email</label>
+            <input type="checkbox" name="ckemail" id="ckemail">
+        </fieldset>
+        <!-- http://127.0.0.1:5500/05_media.html?gender=m&hobby=game&hobby=book&hobby=climbing&ckemail=on -->
+
+
+        <fieldset>
+            <legend>Select</legend>
+            <label for="nation">국가 : </label>
+            <select name="nation" id="nation">
+                <optgroup label="America">
+                    <option value="us">미국</option>
+                </optgroup>
+                <optgroup label="Asia">
+                    <option value="ko" selected>한국</option>
+                    <option value="ch">중국</option>
+                    <option value="jp">일본</option>
+                </optgroup>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <legend>datalist</legend>
+            <label for="menu">과일선택</label>
+            <input type="text" name="menu" id="menu" list="menu-list">
+            <datalist id="menu-list">
+                <option value="사과">사과</option>
+                <option value="바나나">바나나</option>
+                <option value="파인애플">파인애플</option>
+                <option value="apple">사과</option>
+            </datalist>
+        </fieldset>
+
+        <button type="submit">제출</button>
+    </form>
+
+    <h3>기타</h3>
+    <form action="">
+        <fieldset>
+            <legend>기타</legend>
+            <label for="userColor">컬러 : </label>
+            <!-- input:color#userColor -->
+            <input type="color" name="userColor" id="userColor" value="#00ff62">
+
+            <br>
+            <label for="upFile">파일업로드 : </label>
+            <!-- input:file#upFile[name=upFile] -->
+            <input type="file" name="upFile" id="upFile">
+
+            <br>
+            <input type="hidden" name="notVisible" value="저는 안보이지만,전송은 됩니다.">
+            <input type="text" name="userId" id="userId" value="honggd" disabled>
+        </fieldset>
+        <input type="submit" value="전송">
+    </form>
+
+
+
+
+
+
+
+</body>
+
+</html>

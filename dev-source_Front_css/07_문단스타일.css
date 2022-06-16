@@ -1,0 +1,46 @@
+.align1 {
+    text-align: left;
+}
+
+.align2 {
+    text-align: right;
+}
+
+.align3 {
+    text-align: center;
+}
+
+.align4 {
+    /* 라인이 정해진 크기만큼 채우는 기능 */
+    text-align: justify;
+}
+
+.line_height1 {
+    line-height: normal;
+}
+
+.line_height2 {
+    line-height: 50px;
+}
+
+.line_height3 {
+    line-height: 2em;
+}
+
+.line_height4 {
+    line-height: 300%;
+}
+
+.bg1 {
+    text-overflow: clip;
+    border: 1px solid black;
+    width: 200px;
+}
+
+.bg2 {
+    white-space: nowrap;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid #000000;
+}

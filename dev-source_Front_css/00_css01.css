@@ -1,0 +1,15 @@
+/* id 선택자 */
+
+#id3 {
+    color: red;
+    background: brown;
+}
+
+
+/* class 선택자 */
+
+.class2 .class3 {
+    font-size: large;
+    color: yellow;
+    background: brown;
+}

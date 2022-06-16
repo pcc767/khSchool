@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form tag</title>
+</head>
+
+<body>
+    <h1>form tag</h1>
+    <hr>
+    <h3>form tag</h3>
+    <p> - 사용자가 입력한 값에 대한 처리 방식과 실제 처리할 서버의 url을 명시하는 태그</p>
+    <p> - action : 실제 서버가 처리해야할 url 혹은 주소정보를 기입</p>
+    <p> - method : get/post를 통해 서버에 전달할 방식으로 기입(default : get)</p>
+    <p> - submit : form의 입력된 데이터를 서버로 전달하는 트리거(버튼) - input의 속성</p>
+
+    <form action="#" method="get">
+        <!-- # : 자신 페이지로 요청하는 키워드-->
+        <!-- input 요소들이 써지는 곳 -->
+        <input type="text" name="id" id="id"><br>
+        <input type="password" name="pw" id="pw"><br>
+        <input type="submit" value="제출"><br>
+    </form>
+    <hr><br>
+
+    <h3>fieldset, legend tag(나중가면 안쓰는 태그)</h3>
+    <p> fieldset : form 요소의 그룹을 묶어주는 태그</p>
+    <p> legend : form 요소 그룹의 명칭을 붙여주는 태그</p>
+
+    <form action="#" method="get">
+        <fieldset>
+            <legend>로그인</legend>
+            <input type="text" name="id" id="id"><br>
+            <input type="password" name="pw" id="pw"><br>
+            <input type="submit" value="제출"><br>
+        </fieldset>
+    </form>
+    <hr><br>
+
+
+
+</body>
+
+</html>
