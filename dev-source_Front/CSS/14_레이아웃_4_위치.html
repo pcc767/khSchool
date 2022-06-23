@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>layout position</title>
+</head>
+
+<body>
+    <h1>레이아웃 위치</h1>
+    <hr><br>
+
+    <h3>1. 절대 / 상대 위치</h3>
+    <p> - 절대위치 : 레이아웃 배치시 절대 위치(x,y)를 기반으로 태그를 배치시키는 방법</p>
+    <p> - 상대위치 : 부모 혹은 다른 레이아웃을 기준으로 상대적인 위치를 정하는 방법</p>
+
+    <style>
+        .base {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background-color: deeppink;
+        }
+        
+        .absolute_layout1 {
+            position: absolute;
+            top: 50px;
+            left: 100px;
+        }
+        
+        .absolute_layout2 {
+            position: absolute;
+            top: 150px;
+            left: 200px;
+        }
+        
+        .relative_layout1 {
+            position: relative;
+            top: 100px;
+            background-color: aliceblue;
+        }
+        /* .relative_layout2 {
+            position: relative;
+            top: 100px;
+            left: 100px;
+            background-color: cornflowerblue;
+        }
+         */
+        
+        .outter {
+            height: 350px;
+            border: 1px solid black;
+            position: relative;
+        }
+    </style>
+
+    <div class="outter">
+        <div class="base absolute_layout1">절대위치1</div>
+        <div class="base absolute_layout2">절대위치2</div>
+        <div class="base relative_layout1">상대위치1</div>
+        <div class="base relative_layout1">상대위치2</div>
+    </div>
+
+    <div> - 디자인 계열 : margin, padding을 통해 위치 지정한다.</div>
+    <div> - 엔지니어(개발자) : 절대/상대 기준으로도 코딩하는 것이 익숙함.</div>
+
+    <h3>2. 고정위치(fixed)</h3>
+    <div> - 드래그가 가능한 긴 웹페이지에서 드래그가 되어도 특정 위치에 고정하는 속성</div>
+    <style>
+        .fixed_area1 {
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+            border: 1px solid black;
+            position: fixed;
+        }
+        
+        .fixed_area2 {
+            width: 100px;
+            height: 100px;
+            background-color: deepskyblue;
+            border: 1px solid black;
+            position: fixed;
+            top: 200px;
+            left: 100px;
+        }
+    </style>
+
+    <!-- <div class="fixed_area1">고정위치 1</div> -->
+    <!-- <div class="fixed_area2">고정위치 2</div> -->
+
+    <h3>3. Visibility 속성</h3>
+    <div> - 페이지에 특정 객체를 보이거나 보이지 않게 하는 속성</div>
+    <div> - 만일 보이지 않더라도 공간을 차기하는 옵션이 존재함.</div>
+    <div> - 또한 보이지 않는 경우, 버튼이면 이벤트가 발생하지 않은.</div>
+
+    <style>
+        .visible1 {
+            width: 100px;
+            height: 100px;
+            border: black solid 1px;
+            background-color: blanchedalmond;
+        }
+        
+        .hidden {
+            width: 100px;
+            height: 100px;
+            border: black solid 1px;
+            background-color: blanchedalmond;
+            visibility: hidden;
+        }
+    </style>
+
+    <div class="visible1">보이는 영역1</div>
+    <div class="hidden" onclick="alert('test');">보이는 영역1</div>
+    <div class="visible1">보이는 영역</div>
+    <hr><br>
+
+
+    <h3>4. z-index</h3>
+    <div> - 레이아웃간 보이는 우선순위를 설정하는 값(z값이라 불림)</div>
+    <div> - 값이 클수록 우선순위가 높아져 페이지 앞으로 보임</div>
+    <style>
+        .outter {
+            border: 1px solid black;
+            position: relative;
+            height: 600px;
+        }
+        
+        .base2 {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        
+        .z_test1 {
+            z-index: 300;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            background-color: yellow;
+        }
+        
+        .z_test2 {
+            z-index: 500;
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            background-color: blue;
+        }
+        
+        .z_test3 {
+            z-index: 700;
+            position: absolute;
+            top: 150px;
+            left: 150px;
+            background-color: red;
+        }
+        
+        .z_test4 {
+            z-index: 1000;
+            position: absolute;
+            top: 200px;
+            left: 200px;
+            background-color: gray;
+        }
+    </style>
+
+    <div class="outter" style="position: relative;">
+        <div class="base2 z_test1">영역1</div>
+        <div class="base2 z_test2">영역2</div>
+        <div class="base2 z_test3">영역3</div>
+        <div class="base2 z_test4">영역4</div>
+    </div>
+    <hr><br>
+
+    <h3>5. float 속성</h3>
+    <div> - 페이지내의 요소간의 정렬 기준을 오른쪽/왼쪽으로 지정하는 방법</div>
+    <style>
+        .float_bass {
+            border: 1px solid black;
+        }
+        
+        .float_test1 {
+            float: left;
+        }
+        
+        .float_test2 {
+            float: right;
+        }
+        
+        .float_test3 {
+            float: both;
+        }
+    </style>
+
+    <div>
+        <div class="float_bass float_test1">float영역1-left</div>
+        <div class="float_bass float_test1">float영역2-left</div>
+        <!-- <div class="float_bass float_test3">float영역5-both</div> -->
+
+        <div class="float_bass float_test2">float영역3-right</div>
+        <div class="float_bass float_test2">float영역4-right</div>
+        <!-- <div class="float_bass float_test3">float영역6-both</div> -->
+    </div>
+    <hr><br>
+
+    <h3>실무적으로 위치 잡는 방법 Tip</h3>
+    <div> - padding이나 margin값을 통해 +/-로 위치를 조정한다.</div>
+    <style>
+        .test1 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: red;
+        }
+        
+        .test2 {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+            background-color: blue;
+            margin: -100px;
+            margin-left: 50px;
+        }
+    </style>
+
+    <div>
+        <div class="test1">test1</div>
+        <div class="test2">test2</div>
+        <div class="test1">test1</div>
+    </div>
+
+
+
+</body>
+
+</html>

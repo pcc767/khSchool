@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>데이터 입출력</title>
+    <style>
+        .divclass {
+            width: 500px;
+            height: 200px;
+            background-color: blanchedalmond;
+            border: 1px solid black;
+        }
+    </style>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    <h1>데이터 입출력</h1>
+    <div> - 자바스크립트를 통해 html이나 콘솔을 통해 사용자 데이터를 입출력하는 방식</div>
+    <hr><br>
+
+    <h2>데이터 출력법</h2>
+    <hr>
+
+    <h3>1. document.write() 사용</h3>
+    <div> - 브라우저상으로 문구를 출력하는 기본적인 방법</div>
+    <script>
+        document.write('<br> html로 문구를 출력하는 방법.');
+    </script>
+    <hr><br>
+
+    <h3>2. window.alert()</h3>
+    <div> - 별도의 브라우저 메세지 창으로 출력하는 방법.(window 생략 가능)</div>
+    <div> - ※ 주의 : 사용성이 좋지 않아 최근 스타일에는 맞지 않는 기법, 학습용/디버깅 권장!!</div>
+    <script>
+        // window.alert('alert 출력하는 방법입니다.');
+        // alert('window. 생략 가능');
+        // 잘 사용 안한다.
+    </script>
+    <hr><br>
+
+    <h3>3. innerHTML★★★★</h3>
+    <div> - HTML 태그 객체를 지정하여 출력하는 방법</div>
+    <div> - 주로 id로 찾아서 객체를 조작하는 것이 일반적</div>
+
+    <div id="div1" class="divclass">
+        기본 문장
+    </div>
+    <button onclick="btnClick()">button</button>
+    <script>
+        document.getElementById('div1').innerHTML = 'script를 통해 div1에 html을 추가하는 방법<br>'
+        var count = 0;
+
+        function btnClick() {
+            count++;
+            document.getElementById('div1').innerHTML += '버튼이' + count + '번 클릭되었습니다.<br>'
+        }
+    </script>
+
+    <h3>4. console.log</h3>
+    <div> - 개발자 도구에서 console로 출력하는 방법이다.</div>
+    <div> - 일반 사용자에게 보여지지 않으며, 개발이 끝나면 지우는 것이 바람직하다.!</div>
+    <script>
+        console.log('console로 출력하는 방법입니다.');
+        console.error('console로 error를 출력하는 방법입니다.');
+        console.warn('워닝입니다, 노란색으로 나오고 경고문입니다.');
+    </script>
+    <hr><br>
+
+    <h2>데이터 입력법</h2>
+    <hr>
+
+    <h3>1. HTML input태그를 통해 읽어오는 방법★★★★</h3>
+    <div> - HTML 태그 중 input이 가능한 태그에서 사용자 입력 값을 읽어오는 방법</div>
+    <div> - 보통 submin(서버전달)을 하기 전에 js 이벤트를 받아 처리하는 것이 일반적</div>
+
+    <form name="formTest" action="#" method="get">
+        <input type="text" name="textInput" id="textInput" placeholder="입력">
+        <br>
+        <button onclick="btnClick2()">확인</button>
+    </form>
+
+    <script>
+        function btnClick2() {
+            var textInput = document.getElementById('textInput');
+            alert('입력받은 내용 : ' + textInput.value);
+
+        }
+    </script>
+
+    <h3>2. window.confirm()</h3>
+    <div> - 사용자에게 메세지 창으로 Y/N으로 확인 받는 방법, 요새는 안쓴다.!!!</div>
+    <button onclick="btnClick3()">button</button>
+    <script>
+        function btnClick3() {
+            var result = confirm('자바스크립트 쉽죠?');
+            alert('입력값 : ' + result);
+        }
+    </script>
+
+    <h3>3. window.prompt()</h3>
+    <div> - 사용자에게 텍스트 값을 입력받는 방법, 요새는 안쓴다!!2</div>
+    <button onclick="btnClick4()">버튼</button>
+    <script>
+        function btnClick4() {
+            var result = prompt('자바스크립트 참 쉽죠? 예 아니오로 답변하세요.');
+            alert('입력 받은 내용 : ' + result);
+        }
+    </script>
+    <hr><br>
+
+
+
+    <br><br><br><br><br><br><br><br>
+
+
+</body>
+
+</html>

@@ -43,4 +43,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     border: 1px solid #000000;
+    /* width: 300px;
+    border: 1px solid;
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
+    text-overflow: ellipsis; */
 }

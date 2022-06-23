@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 태그 접근 방법</title>
+    <script src="JS06_HTML태그접근1.js"></script>
+    <style>
+        div {
+            margin: 10px;
+            padding: 10px;
+            border: 1px black solid;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML 태그 접근법</h1>
+    <hr><br>
+
+    <h3>접근용 태그=객체</h3>
+    <div id="div1" name="div">
+        <h2 id="div1_h2" class="div1_class">div 영역1 - h2 입니다.</h2>
+        <p id="div1_p1" class="div1_class"><b>div1 - P 태그 안입니다.</b></p>
+    </div>
+
+    <div id="div2" name="div">
+        <h2 id="div2_h2" name="div2_h2_name">div 영역2 - h2 입니다.</h2>
+        <p id="div2_p1" name="div2_p1_name"><b>div2 - P 태그 안입니다.</b></p>
+    </div>
+    <hr><br>
+
+    <h3>1. getElementById() ★★★★★ </h3>
+    <p> - ID인자를 통해 태그 객체를 가져오는 방법으로 js에서 가장 보편적으로 활용됨!!</p>
+    <script>
+        var var1 = document.getElementById('div1');
+        var var2 = document.getElementById('div1_h2');
+        var var3 = document.getElementById('div1_p1');
+
+        console.log(var1);
+        console.log(var2);
+        console.log(var3);
+
+        document.write('div1 : ' + var1 + '<hr><br>');
+        document.write('div1 HTML : ' + var1.innerHTML + '<hr><br>'); // 태그를 포함한 모든 HTML
+        document.write('div1 Text : ' + var1.innerText + '<hr><br>'); // text값만 가져옴!
+    </script>
+    <hr><br>
+
+    <h3>2. getElementsByName() : 이름으로 가져오기</h3>
+    <p> - name을 통해서 태그 객체'들'을 가져오는 방법 (Element's'가 붙으면 배열로 가져온다!) </p>
+    <script>
+        var arr1 = document.getElementsByName('div');
+        var arr2 = document.getElementsByName('div2_h2_name');
+        var arr3 = document.getElementsByName('div2_p1_name');
+
+        document.write('div : ' + arr1[0] + '<br>');
+        document.write('div : ' + arr1[1] + '<br>');
+        document.write('div2_h2_name : ' + arr2[0] + '<br>');
+        document.write('div2_p1_name : ' + arr3[0] + '<br>');
+
+        for (let i = 0; i < arr1.length; i++) {
+            document.write('div : ' + arr1[i].innerText + '<br>');
+        }
+    </script>
+    <hr><br>
+
+    <h3>3. getElementsByTagName</h3>
+    <p> - 태그 이름 값을 통해 객체들을 가져오는 방법</p>
+    <script>
+        var h2List = document.getElementsByTagName('h2');
+
+        console.log("getElementsByTagName");
+        console.log(h2List);
+
+        document.write("h2 : " + h2List + "<br>");
+
+        for (let i = 0; i < h2List.length; i++) {
+            document.write("h2 : " + h2List[i].innerText + "<br>");
+        }
+    </script>
+    <hr><br>
+
+    <h3>4. getElementsByClassName</h3>
+    <p> - Class의 이름을 가진 객체들을 가져오는 방법</p>
+    <script>
+        var divList = document.getElementsByClassName("div1_class");
+        console.log("getElementsByClassName");
+        console.log(divList);
+
+        document.write("div : " + divList + "<br>");
+
+        for (let i = 0; i < divList.length; i++) {
+            document.write("div1_class : " + divList[i].innerText + "<br>");
+        }
+    </script>
+
+    <h3>5. 요소값 변경하기</h3>
+    <p> - 가져온 객체를 통해 내부 요소를 변경할 수 있음</p>
+    <script>
+        var element = document.getElementById('div1_h2');
+        element.innerHTML = '<h3 style="color:red"> 바뀐 HTML!</h3>';
+
+        var element = document.getElementById('div1_p1');
+        element.innerText = '바뀐 문자열 입니다!!';
+    </script>
+
+</body>
+
+</html>

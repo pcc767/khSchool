@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 태그접근 2</title>
+    <style>
+        div {
+            border: 1px black solid;
+            width: 500px;
+            height: 100px;
+            background-color: rgb(241, 241, 241);
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>HTML 태그접근 - Form 요소 접근 방법</h1>
+    <hr><br>
+
+    <h3>1. input 태그 값 활용</h3>
+    <form action="#">
+        입력 : <input type="text" name="inputName" id="inputName" placeholder="이름">
+        <button onclick="test1()">제출</button>
+    </form>
+    <button onclick="test2();">변경</button>
+    <div id="div1"></div>
+    <script>
+        function test1() {
+            var inputName = document.getElementById('inputName');
+            var div1 = document.getElementById('div1');
+            div1.innerHTML += inputName.value + '<br>';
+            inputName.value = '';
+        }
+
+        function test2() {
+            var inputName = document.getElementById('inputName');
+            inputName.placeholder = '비밀번호';
+            inputName.type = 'password';
+        }
+    </script>
+    <hr><br>
+
+    <h3>2. 체크박스 값 활용</h3>
+    <input type="checkbox" name="hobby" value="game" id="game"> <label for="game">게임</label>
+    <input type="checkbox" name="hobby" value="music" id="music"> <label for="music">음악</label>
+    <input type="checkbox" name="hobby" value="movie" id="movie"> <label for="movie">영화</label>
+    <br>
+    <button onclick="test3();">제출</button>
+    <div id="div2"></div>
+    <script>
+        function test3() {
+            var hobbyList = document.getElementsByName('hobby');
+            var div2 = document.getElementById('div2');
+            var result = '';
+
+            for (var i = 0; i < hobbyList.length; i++) {
+                if (hobbyList[i].checked == true) {
+                    result += hobbyList[i].value + '<br>';
+                    hobbyList[i].checked = false;
+                }
+            }
+            div2.innerHTML = result;
+        }
+    </script>
+    <hr><br>
+
+    <h3>3. HTML 요소에 스타일 지정</h3>
+    <button onclick="test4();">버튼</button>
+    <div id="div3"></div>
+
+    <script>
+        var count = 0;
+
+        function test4() {
+            var div3 = document.getElementById('div3');
+
+            count++;
+            let value = count % 3;
+
+            if (value == 0) {
+                div3.style.backgroundColor = 'red';
+            } else if (value == 1) {
+                div3.style.backgroundColor = 'blue';
+            } else {
+                div3.style.backgroundColor = 'green';
+            }
+
+            div3.style.width = (100 * count) + 'px';
+            div3.style.height = (50 * count) + 'px';
+            div3.style.border = count + 'px solid black';
+        }
+    </script>
+
+</body>
+
+</html>

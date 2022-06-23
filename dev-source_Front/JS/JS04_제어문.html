@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제어문</title>
+</head>
+
+<body>
+    <h1>제어문</h1>
+    <hr><br>
+
+    <h3>1. 조건문 - if문</h3>
+    <input type="text" id="inputValue" name="inputValue">
+    <br>
+    <button onclick="test();">제출</button>
+    <script>
+        function test() {
+            var value = document.getElementById('inputValue').value;
+
+            if (isNaN(value) == true) {
+                alert('숫자가 아닙니다.!');
+                return;
+            }
+
+            if (value > 0) {
+                alert('양수입니다.');
+            } else if (value < 0) {
+                alert('음수입니다.');
+            } else {
+                alert('0 입니다.')
+            }
+
+        }
+    </script>
+    <hr><br>
+
+    <h3>2. 조건문 - switch문</h3>
+    <input type="text" id="inputValue1" name="inputValue">
+    <br>
+    <button onclick="test1();">제출</button>
+    <script>
+        function test1() {
+            var value = document.getElementById('inputValue1').value;
+
+            switch (value) {
+                case '1':
+                case '2':
+                case '3':
+                    alert('1~3입니다.')
+                    break;
+                case '10':
+                    alert('10입니다.')
+                    break;
+                default:
+                    alert('모르는 값입니다.')
+                    break;
+            }
+        }
+    </script>
+    <hr><br>
+
+    <h3>3. 반복문 - for</h3>
+    <input type="text" id="inputValue3" name="inputValue3" placeholder="시작">
+    <input type="text" id="inputValue4" name="inputValue4" placeholder="종료">
+    <button onclick="test3()">버튼</button>
+
+    <script>
+        function test3() {
+            var value1 = document.getElementById("inputValue3").value;
+            var value2 = document.getElementById("inputValue4").value;
+
+            // 기본 문법
+            for (let i = 0; i < 10; i++) {
+                console.log(i);
+            }
+
+            //시작 종료값 sum 해보기
+            var sum = 0;
+            for (let i = value1; i <= value2; i++) { // 문자 type인데 반복문은 문제 없이 돌아간다?
+                console.log(typeof(i));
+                sum += Number(i); // 반드시 casting 필요
+            }
+            alert('sum : ' + sum);
+        }
+    </script>
+    <hr><br>
+
+    <h3>4. 반복문 - while</h3>
+    <input type="text" id="inputValue5" name="inputValue5" placeholder="시작">
+    <input type="text" id="inputValue6" name="inputValue6" placeholder="종료">
+    <button onclick="test4()">버튼</button>
+
+    <script>
+        function test4() {
+            var value1 = document.getElementById("inputValue5").value;
+            var value2 = document.getElementById("inputValue6").value;
+
+            let i = 0;
+            while (i < 10) {
+                console.log(i);
+                i++;
+            }
+
+            var sum = 0;
+            i = value1;
+            while (i <= value2) {
+                sum += Number(i);
+                i++;
+                console.log(typeof(i))
+            }
+            alert('sum : ' + sum);
+        }
+    </script>
+    <hr><br>
+
+</body>
+
+</html>

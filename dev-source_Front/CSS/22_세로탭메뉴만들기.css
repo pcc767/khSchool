@@ -1,0 +1,89 @@
+body {
+    box-sizing: border-box;
+}
+
+.navi {
+    list-style-type: none;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+}
+
+.navi li {
+    float: left;
+    position: relative;
+    padding: 0;
+    line-height: 40px;
+    background-color: #600;
+}
+
+.navi li a {
+    display: block;
+    font-family: "맑은 고딕";
+    font-weight: 600;
+    font-size: 14px;
+    padding: 5px 25px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+}
+
+.navi li a:hover {
+    color: #f90;
+}
+
+.navi li ul {
+    position: absolute;
+    left: 0px;
+    width: 120px;
+    list-style-type: none;
+    background-color: #d8afaf;
+    padding: 0;
+    margin: 0;
+    border-radius: 0 0 20px 20px;
+    display: none;
+}
+
+.navi li:hover ul {
+    display: block;
+}
+
+.navi li ul li {
+    float: none;
+    background: none;
+    position: static;
+    height: 0px;
+    line-height: 30px;
+}
+
+.navi li:hover ul li {
+    height: 30px;
+    line-height: 30px;
+    padding: 5px 0;
+}
+
+.navi li ul li a {
+    font-family: "굴림";
+    font-weight: 600;
+    font-size: 14px;
+    color: #900;
+}
+
+.navi li ul li a:hover {
+    background-color: #900;
+}
+
+.navi li ul {
+    transition: all 1s;
+}
+
+.navi li ul li {
+    transition: height 0.5s;
+}
+
+.t {
+    width: var(--fw);
+    height: var(--fh);
+    padding-left: 10px;
+    border-left: 1px solid red;
+}

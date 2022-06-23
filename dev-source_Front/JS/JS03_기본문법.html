@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기본 문법</title>
+</head>
+
+<body>
+    <h1>자바스크립트의 기본 문법</h1>
+    <hr><br>
+
+    <h3>변수</h3>
+    <div> - JS에서 데이터를 담을수 있는 공간, Client 메모리에 생성되고 활용됨.</div>
+    <div> - Type은 처음에 갖지 않는 특성이 있고, 값이 실제 Asign(=) 될때 변수의 Type이 결정됨.</div>
+    <div> - 전역변수 사용시 특정한 키워드 없이 선언하면 된다. ex) value = 10;</div>
+    <div> - var : 일반적인 변수 : script가 선언된 곳에서 활용되고 버려짐 ex) var value = 10;</div>
+    <div> - let : 임시 변수로 이름을 중복해서 사용할 수 없는 변수 ex) let value = 10;</div>
+    <div> - const : 상수로 선언시 활용, 값이 한번 정해지면 변경 불가!! (에러 발생!)</div>
+
+    <script>
+        // num0;    // 선언만으로는 변수 사용 불가하여 Error 발생!!!! 반드시 한번은 초기화 하고 사용!!!!
+        num1 = 10; // 전역변수 사용시
+        var num2 = 20; // 일반적으로 var를 붙이는 것을 추천
+        var num3 = num1 + num2;
+        // document.write('num0 : ' + num0 + '<br>');       // 선언만된 num0을 사용하기 때문에 Error발생~~
+        document.write('num1 : ' + num1 + '<br>');
+        document.write('num2 : ' + num2 + '<br>');
+
+        str1 = 'hello '; //global(전역) 함수
+        var str2 = 'javascript ';
+        var str3 = str1 + str2 + 'world';
+        document.write('str1 : ' + str1 + '<br>');
+        document.write('str2 : ' + str2 + '<br>');
+        document.write('str3 : ' + str3 + '<br>');
+
+        //문자열 + 숫자 = 문자, 문자/숫자가 혼합될때는 반드시 원하는 결과가 나오게끔 괄호가 중요
+        document.write(str3 + num3 + 1000 + '<br>');
+        document.write(1000 + num3 + str3 + '<br>');
+        document.write((1000 + num3) + str3 + '<br>');
+
+        let var1 = 10; // let = ES6 문법으로 약간 최신식(2016)
+        var2 = 20;
+        const con1 = 30;
+
+        document.write('val1 : ' + var1 + '<br>');
+        document.write('val2 : ' + var2 + '<br>');
+        document.write('con1 : ' + con1 + '<br>');
+
+        var1 = "안녕하세요";
+        var2 = "하이";
+        // con1 = "안녕?";  상수에 다시 정의 하는 경우 에러 발생
+
+        document.write('val1 : ' + var1 + '<br>');
+        document.write('val2 : ' + var2 + '<br>');
+        document.write('con1 : ' + con1 + '<br>');
+
+        // let이 활용되는 범위 TEST 결론 : 블록 안에서만 임시값이 허용 됨.!!!!
+        let letValue = 10;
+        var varValue = 20;
+        const conValue = 30;
+        document.write('letValue : ' + letValue + '<br>'); //10
+        document.write('varValue : ' + varValue + '<br>'); //20
+        document.write('conValue : ' + conValue + '<br>'); //30
+
+        {
+            let letValue;
+            var varValue;
+            document.write('letValue : ' + letValue + '<br>'); //undefined
+            document.write('varValue : ' + varValue + '<br>'); //20
+        }
+
+        document.write('letValue : ' + letValue + '<br>'); //10
+        document.write('varValue : ' + varValue + '<br>'); //20
+    </script>
+    <hr><br>
+
+    <h3>script를 끊어지는 경우에도 앞에서 선언한 변수는 페이지 끝까지 사용할수 있다.</h3>
+    <script>
+        // script의 시작 블록은 Global 영역으로 지정됨. - java에 static로 이해
+        document.write('val1 : ' + var1 + '<br>');
+        document.write('val2 : ' + var2 + '<br>');
+        document.write('con1 : ' + con1 + '<br>');
+        document.write('letValue : ' + letValue + '<br>'); //10
+        document.write('varValue : ' + varValue + '<br>'); //20
+    </script>
+    <hr><br>
+
+    <h3>자료형 확인 : typeof</h3>
+    <div> - 변수의 Type을 확인하기 위해 사용되는 함수, 변수를 인자로 받고 예외처리 할때 주로 활용됨</div>
+
+    <script>
+        document.write('문자열 1 : ' + typeof('hello') + '<br>');
+        document.write('문자열 2 : ' + typeof(str1) + '<br>');
+        document.write('문자열 3 : ' + typeof(var1) + '<br>');
+
+        document.write('숫자 1 : ' + typeof(123) + '<br>');
+        document.write('숫자 1 : ' + typeof(num1) + '<br>');
+        document.write('숫자 1 : ' + typeof(10.123) + '<br>');
+        document.write('숫자 1 : ' + typeof(-1234) + '<br>');
+
+        if (typeof(var1) == 'string') {
+            document.write('문자열 입니다.<br>')
+        } else {
+            document.write('문자열이 아닙니다.<br>')
+        }
+
+        var isValue = true;
+        document.write('논리값 1 : ' + typeof(true) + '<br>');
+        document.write('논리값 2 : ' + typeof(false) + '<br>');
+        document.write('논리값 3 : ' + typeof(isValue) + '<br>');
+
+        var isNull;
+        document.write('값이 없는 변수 : ' + typeof(isNull) + '<br>');
+        document.write('숫자 아닌지 확인 : ' + isNaN(isNull) + '<br>'); //isNaN
+        document.write('Null 확인 법 : ' + (isNull == null) + '<br>'); //isNull
+    </script>
+
+    <h3>문자열</h3>
+    <script>
+        var str = 'Hello javascript world!!';
+
+        document.write(str.toUpperCase() + '<br>'); // 대문자
+        document.write(str.toLowerCase() + '<br>'); // 소문자
+        document.write(str.length + '<br>'); // 길이
+        document.write(str.indexOf('j') + '<br>'); // 문자(열) 찾기 (앞으로 부터) 
+        document.write(str.indexOf('java') + '<br>'); // 문자(열) 찾기 (앞으로 부터) 
+        document.write(str.indexOf('l') + '<br>'); // 문자(열) 찾기 (앞으로 부터) 
+        document.write(str.lastIndexOf('l') + '<br>'); // 문자(열) 찾기 (뒤로 부터) 
+        document.write(str.charAt(1) + '<br>'); // 위치 문자 가져오기
+        document.write(str.substr(1, 4) + '<br>'); // 문자열 자르기
+        document.write(str.replace('javascript', 'c++') + '<br>'); // 문자열 교체
+        document.write(str.split('') + '<br>'); // 문자열이 없는 경우 문자열을 모두 분리
+        document.write(str.split(' ') + '<br>'); // '' 공백기준으로 문자열 자르기
+
+        let array = str.split(' ');
+        document.write(array + '<br>');
+        document.write(array.length + '<br>');
+        document.write(array[0] + '<br>');
+        document.write(array[1] + '<br>');
+        document.write(array[2] + '<br>');
+        document.write(array[3] + '<br>'); // 인덱스에 데이터는 없지만 에러없이 작동된다. undefined
+        document.write(array[4] + '<br>'); // 인덱스에 데이터는 없지만 에러없이 작동된다. undefined
+    </script>
+
+    <h3>숫자</h3>
+    <script>
+        document.write('절대값 : ' + Math.abs(-10) + '<br>');
+        document.write('랜덤값 : ' + Math.random() + '<br>');
+        document.write('랜덤값(1~100) : ' + Math.floor((Math.random() * 100 + 1)) + '<br>');
+        document.write('반올림1 : ' + Math.round(3.46) + '<br>');
+        document.write('반올림2 : ' + Math.round(3.56) + '<br>');
+        document.write('반올림3 : ' + (Math.round(3.46 * 10) / 10) + '<br>'); //소수점 원하는 자리 맞추기.
+        document.write('내림1 : ' + Math.floor(3.46) + '<br>');
+        document.write('내림2 : ' + Math.floor(3.56) + '<br>');
+        document.write('올림1 : ' + Math.ceil(3.46) + '<br>');
+        document.write('올림2 : ' + Math.ceil(3.56) + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>숫자 - 문자열 변환</h3>
+    <script>
+        var num1 = 10;
+        document.write(num1 + '<br>');
+        document.write(typeof(num1) + '<br>');
+        document.write('' + num1 + '<br>');
+        document.write(typeof('' + num1) + '<br>'); //방법1 문자열 + 숫자 변환법 추천
+        document.write(typeof(String('' + num1)) + '<br>'); //방법2 String() 활용
+
+        document.write('' + num1 + 20 + '<br>'); //1020
+        document.write(num1 + 20 + '<br>'); //30
+        document.write((num1 + 20) + '<br>'); // 괄호 사용 권장
+        document.write(String(num1) + 20 + '<br>'); // 괄호 사용 권장
+    </script>
+    <hr><br>
+
+    <h3>문자열 - 숫자 변환</h3>
+    <script>
+        var str1 = '10';
+        document.write(str1 + ' ' + typeof(str1) + '<br>');
+        document.write(Number(str1) + ' ' + typeof(Number(str1)) + '<br>');
+        document.write(parseInt(str1) + ' ' + typeof(parseInt(str1)) + '<br>');
+        document.write(parseFloat(str1) + ' ' + typeof(parseFloat(str1)) + '<br>');
+
+        // 실수 parse 주의점 : Int로 하면 소수점이 잘린다.!!
+        str1 = '123.456';
+        document.write(str1 + ' ' + typeof(str1) + '<br>');
+        document.write(Number(str1) + ' ' + typeof(Number(str1)) + '<br>');
+        document.write(parseInt(str1) + ' ' + typeof(parseInt(str1)) + '<br>');
+        document.write(parseFloat(str1) + ' ' + typeof(parseFloat(str1)) + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>삼중등호(===) 연산자</h3>
+    <div> - 데이터의 Type까지 비교하는 연산자</div>
+    <div> - JS에서 '==' 연산자는 type과 상관 없이 문자열(js 데이터 저장 구조)로 값이 일치하는지 확인 함</div>
+    <div> - 10 == "10" 일 경우 실제 저장 값이 "10"이므로 true가 나옴</div>
+    <br>
+    <script>
+        document.write(10 == '10'); //true
+        document.write('<br>');
+        document.write(10 != '10'); //false
+        document.write('<br>');
+
+        // 삼중등호 연산자, Type까지 같아야 true
+        document.write(10 === '10'); //false - type 달라서
+        document.write('<br>');
+        document.write(10 !== '10'); //true - type 달라서
+        document.write('<br>');
+        document.write(10 === 10); //true - type, 값 일치
+        document.write('<br>');
+    </script>
+    <hr><br>
+
+    <h3>문자열 연결 연산자</h3>
+    <script>
+        var str = "문자열 " + "연결은 " + "연결 연산자 " + " '+'" + "를 사용합니다.";
+        document.write(str);
+    </script>
+
+
+
+    <br><br><br><br><br><br><br><br>
+</body>
+
+</html>

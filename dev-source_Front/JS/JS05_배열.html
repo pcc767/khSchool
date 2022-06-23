@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열 (Array)</title>
+</head>
+
+<body>
+    <h1>배열 (Array)</h1>
+    <hr><br>
+
+    <h3>기본 배열 사용법</h3>
+    <div> - JS 배열 특징 : 데이터 Type 구분 안함. 크기가 지정되지 않아도 자동으로 확장 시켜줌</div>
+
+    <script>
+        var arr1 = [10, 3.5, '홍길동', true, [1, 2, 3, 4], document];
+        document.write('전체 데이터 출력 : ' + arr1 + '<br>');
+        document.write('[0] : ' + arr1[0] + '<br>');
+        document.write('[1] : ' + arr1[1] + '<br>');
+        document.write('[2] : ' + arr1[2] + '<br>');
+        document.write('[3] : ' + arr1[3] + '<br>');
+        document.write('[4] : ' + arr1[4] + '<br>');
+        document.write('[5] : ' + arr1[5] + '<br>');
+        document.write('[6] : ' + arr1[6] + '<br>'); // undefined 출력 = 데이터 없음!!
+        document.write('[7] : ' + arr1[7] + '<br><br>');
+
+        for (var i = 0; i < arr1.length; i++) {
+            document.write('[' + i + '] : ' + arr1[i] + '<br>');
+        }
+    </script>
+    <hr><br>
+
+    <h3>배열의 선언</h3>
+    <div> - 배열의 선언시 크기를 지정하지 않고도 활용 가능</div>
+
+    <script>
+        var arr2 = new Array();
+        var arr3 = new Array(3);
+        var arr4 = []; // 이걸 추천!
+
+        arr2[0] = '딸기';
+        arr2[1] = '바나나';
+        arr2[2] = '키위';
+        document.write('arr2 : ' + arr2 + '<br>');
+
+        arr3[0] = '딸기';
+        arr3[1] = '바나나';
+        arr3[2] = '키위';
+        arr3[3] = '사과';
+        arr3[4] = '망고';
+        arr3[5] = '토마토';
+        arr3[6] = '오렌지';
+        document.write('arr3 : ' + arr3 + '<br>');
+
+        arr4[0] = '딸기';
+        arr4[1] = '바나나';
+        arr4[2] = '키위';
+        arr4[3] = '사과';
+        document.write('arr4 : ' + arr4 + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>배열의 선언과 초기화 방법</h3>
+    <script>
+        var arr5 = [10, 20, 30, 40, 50];
+        var arr6 = new Array(40, 50, 60, 70, 80);
+        document.write('arr5 : ' + arr5 + '<br>');
+        document.write('arr6 : ' + arr6 + '<br>');
+    </script>
+    <hr><br>
+
+    <h2>배열 주요 메소드(기능)</h2>
+
+    <h3>push() : 배열의 마지막 index에 값 넣기</h3>
+    <h3>pop() : 배열의 마지막 index에 값 빼기</h3>
+    <script>
+        var arr1 = [1, 2, 3];
+        arr1.push(4);
+        arr1.push(5);
+        document.write('arr1 : ' + arr1 + '<br>');
+        var value = arr1.pop();
+        document.write('arr1 : ' + arr1 + '<br>');
+        document.write('value : ' + value + '<br>');
+    </script>
+
+    <h3>unshift() : 배열의 처음 index에 값 넣기</h3>
+    <h3>shift() : 배열의 처음 index에 값 빼기</h3>
+    <script>
+        var arr1 = [1, 2, 3];
+        arr1.unshift(0);
+        arr1.unshift(-1)
+        document.write('arr1 : ' + arr1 + '<br>');
+        var value = arr1.shift();
+        document.write('arr1 : ' + arr1 + '<br>');
+        document.write('value : ' + value + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>indexOf() : 배열에서 요소가 위치한 인덱스를 찾아 리턴, 값이 없으면 -1(음수)</h3>
+    <script>
+        var arr1 = ["사과", "바나나", "딸기", "키위", "블루베리", "파인애플"];
+        document.write('바나나 위치 : ' + arr1.indexOf('바나나') + '<br>'); // 1
+        document.write('바나나 : ' + arr1[arr1.indexOf('바나나')] + '<br>');
+        document.write('키위 위치 : ' + arr1.indexOf('키위') + '<br>');
+        document.write('값이 없으면? (-1) : ' + arr1.indexOf('오이') + '<br>');
+    </script>
+    <hr><br>
+
+    <h3> concat() : 두개 또는 세개의 배열을 결합</h3>
+    <script>
+        var arr1 = ['사과', '바나나', '딸기'];
+        var arr2 = ['키위', '블루베리', '파인애플'];
+        var arr3 = arr1.concat(arr2);
+        var arr4 = arr1.concat(arr2).concat(arr3);
+        var arr5 = arr1 + arr2; // 이거 배열 아님!! 문자열임!
+
+        document.write('arr1 + arr2 : ' + arr3 + '<br>');
+        document.write('arr1 + arr2 : ' + arr3.length + '<br>');
+        document.write('arr1 + arr2 + arr3 : ' + arr4 + '<br>');
+        document.write('arr1 + arr2 + arr3 : ' + arr4.length + '<br>');
+        document.write('arr5 : ' + typeof(arr5) + '<br>'); // string
+        document.write('arr5 : ' + arr5 + '<br>');
+        document.write('arr5 : ' + arr5.length + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>join() : 배열을 결합하여 문자열로 반환</h3>
+    <script>
+        var arr1 = ['사과', '바나나', '딸기'];
+        var str1 = '' + arr1; // 문자열로 변환하는 법 추천
+        document.write('문자열 : ' + arr1.join() + '<br>');
+        document.write('문자열 : ' + str1 + '<br>');
+        document.write('typeof : ' + typeof(arr1.join()) + '<br>');
+        document.write('typeof : ' + typeof(str1) + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>reverse() : 배열의 순서를 뒤집는 메소드</h3>
+    <script>
+        var arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        document.write('원래 방향 : ' + arr1 + '<br>');
+        document.write('반대 방향 : ' + arr1.reverse() + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>sort() : 배열의 값을 내림차순, 오름차순으로 정렬하는 함수★★★★★</h3>
+    <div> - 특징 : 알아서 내림차순으로 정렬하지만, 사용자가 우선순위 지정도 가능함</div>
+    <div> ※ 주의점 : 기본 sort는 문자열 기준으로 정렬됨!! -> 숫자 제대로 정렬 안됨!!! </div>
+    <script>
+        var arr1 = [10, 492, 20, 3212, 12, 322, 4, 262, 800];
+        var arr2 = ["홍길동", "박길동", "김동길", "차길동", "김길동", "홍동길", "최길동", "팍길동", "이길동"];
+
+        // 숫자 오름차순 함수
+        sortNumASC = function(l, r) {
+            return l - r; // 큰면 양수, 작으면 음수, 같으면 0
+        }
+
+        // 숫자 내림차순 함수
+        sortNumDESC = function(l, r) {
+            return r - l;
+        }
+
+        // 문자 오름차순
+        sortStrASC = function(l, r) {
+            if (l > r) {
+                return 1;
+            } else if (l < r) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+
+        // 문자 내림차순
+        sortStrDESC = function(l, r) {
+            if (l < r) {
+                return 1;
+            } else if (l > r) {
+                return -1;
+            } else {
+                return 0;
+            }
+        }
+
+        // 숫자 정렬
+        document.write('원래 차순 : ' + arr1 + '<br>');
+        document.write('기본 차순(오름) : ' + arr1.sort() + ' - NG 문자기준으로 정렬됨!!<br>');
+        document.write('오름 차순 : ' + arr1.sort(sortNumASC) + '<br>');
+        document.write('내림 차순 : ' + arr1.sort(sortNumDESC) + '<br><br>');
+
+        // 문자 정렬
+        document.write('원래 차순 : ' + arr2 + '<br>');
+        document.write('기본 차순(오름) : ' + arr2.sort() + '<br>');
+        document.write('오름 차순 : ' + arr2.sort(sortStrASC) + '<br>');
+        document.write('내림 차순1 : ' + arr2.sort(sortStrDESC) + '<br>');
+        document.write('내림 차순2(정석) : ' + arr2.sort().reverse() + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>slice() : 배열의 요소를 잘라내는 메소드, 원본배열 변화 없음</h3>
+    <h3>splice() : 배열의 요소를 완벽하게 제거하는 메소드=(delete, remove), 원본 배열 변화 존재!</h3>
+    <script>
+        // sclice
+        var arr1 = ["사과", "키위", "토마토", "블루베리", "파인애플"];
+        document.write('원본 : ' + arr1 + '<br>');
+        var arr2 = arr1.slice(2, 4); // 시작점, 끝점 (index 기준)
+        document.write('slice 이후 arr1 : ' + arr1 + '<br>');
+        document.write('slice 이후 arr2 : ' + arr2 + '<br>');
+
+        // splice1
+        var arr1 = ["사과", "키위", "토마토", "블루베리", "파인애플"];
+        document.write('원본 : ' + arr1 + '<br>');
+        var arr2 = arr1.splice(2, 2); // 삭제할 index 시작점, 삭제할 데이터 갯수 
+        document.write('splice 이후 arr1 : ' + arr1 + '<br>');
+        document.write('splice 이후 arr2 : ' + arr2 + '<br>');
+
+        // splice2
+        var arr1 = ["사과", "키위", "토마토", "블루베리", "파인애플"];
+        document.write('원본 : ' + arr1 + '<br>');
+        var arr2 = arr1.splice(2, 2, '배'); // 삭제할 index 시작점, 삭제할 데이터 갯수, 삭제된 곳에 넣을 데이터 
+        document.write('splice 이후 arr1 : ' + arr1 + '<br>');
+        document.write('splice 이후 arr2 : ' + arr2 + '<br>');
+
+        // splice3
+        var arr1 = ["사과", "키위", "토마토", "블루베리", "파인애플"];
+        document.write('원본 : ' + arr1 + '<br>');
+        var arr2 = arr1.splice(2, 2, '배', '바나나', '딸기', '키위'); // 삭제할 index 시작점, 삭제할 데이터 갯수, 삭제된 곳에 넣을 데이터 
+        // var arr2 = arr1.splice(2, 2, ['배', '바나나']); // 삭제할 index 시작점, 삭제할 데이터 갯수, 삭제된 곳에 넣을 데이터 
+        document.write('splice 이후 arr1 : ' + arr1 + '<br>');
+        document.write('splice 이후 arr2 : ' + arr2 + '<br>');
+    </script>
+    <hr><br>
+
+    <h3>toString() : 배열을 문자열로 반환</h3>
+    <script>
+        var arr1 = ["사과", "키위", "토마토", "블루베리", "파일애플"];
+        document.write("원본 : " + arr1 + "<br>");
+        document.write("원본 : " + arr1.toString() + "<br>");
+    </script>
+    <hr><br>
+
+    <h3>find() : 조건을 찾아서 반환하는 함수</h3>
+    <script>
+        const ages = [3, 10, 12, 14, 16, 18, 20];
+
+        function checkAge(age) {
+            if (age == 18) {
+                return age;
+            }
+        }
+
+        var arr1 = ages.find(checkAge);
+        document.write("ages : " + ages + "<br>");
+        document.write("arr1 : " + arr1 + "<br>");
+    </script>
+
+
+</body>
+
+</html>

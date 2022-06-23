@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Basic</title>
+</head>
+
+<body>
+    <h1>layout 1 - basic attributes</h1>
+    <hr><br>
+    <h3>1. width / height</h3>
+    <p> - 요소의 너비와 높이를 설정</p>
+    <style>
+        .test1 {
+            width: 200px;
+            height: 100px;
+            text-align: center;
+            border: black solid 1px;
+        }
+        
+        .test2 {
+            width: 30%;
+            height: 5em;
+            text-align: center;
+            border: black solid 1px;
+        }
+    </style>
+    <div class="test1">test1 영역</div>
+    <div class="test2">test2 영역</div>
+    <hr><br>
+
+    <h3>2. 화면 배치요소 방법(block, inline)</h3>
+    <div> - block : 한줄 또는 영역으로 지정하는 요소로 시작태그와 끝 태그가 항상 존재.</div>
+    <div> - inline : block 요소에 속해 있는 요소로 한 개의 요소를 수평으로 배치할때 사용.</div>
+    <div> - 실무 Tip : block요소 = div태그 / inline = span태그로 감싸서 활용.</div>
+    <div> - display : inline / block 요소의 속성을 변경할때 사용. inline-block / none(default) 속성이 중요하다.</div>
+    <br>
+
+    <style>
+        .block_test1 {
+            display: inline;
+        }
+        
+        .block_test2 {
+            display: inline-block;
+        }
+        
+        .block_test3 {
+            display: block;
+        }
+        
+        .area {
+            width: 100px;
+            height: 100px;
+            background-color: salmon;
+            border: 1px solid black;
+        }
+        
+        .area2 {
+            border: 1px solid black;
+            text-align: center;
+        }
+    </style>
+
+    <div class="area">일반 div 영역입니다.</div>
+    <div class="area block_test1">div1 영역입니다. inline 영역입니다.</div>
+    <span class="area block_test2">span영역입니다. inline-block 영역입니다.</span>
+    <div class="area block_test3">div2영역입니다. block 영역입니다.</div>
+    <span class="area">일반 span1 영역입니다.</span>
+    <span class="area">일반 span2 영역입니다.</span>
+    <span class="area">일반 span3 영역입니다.</span>
+    <hr><br>
+
+    <h3>실무적인 방법</h3>
+    <div> - div와 span을 중심으로 레이아웃을 구성하고 컨텐츠를 내부에 구성한다.</div>
+    <br>
+    <div class="area2" style="margin: 10px;">
+        <span class="area2" style="display: inline-block; width: 200px; height: 100px">
+            <a href="00_css01.html">Link 1 입니다.</a>
+        </span>
+        <span class="area2" style="display: inline-block; width: 200px; height: 100px">
+            <a href="00_css01.html">Link 2 입니다.</a>
+        </span>
+    </div>
+    <div class="area2" style="margin: 10px;">
+        <span class="area2" style="display: inline-block; width: 200px; height: 100px">
+            <a href="00_css01.html">Link 3 입니다.</a>
+        </span>
+        <span class="area2" style="display: inline-block; width: 200px; height: 100px">
+            <a href="00_css01.html">Link 4 입니다.</a>
+        </span>
+    </div>
+
+
+
+</body>
+
+</html>

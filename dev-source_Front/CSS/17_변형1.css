@@ -1,0 +1,74 @@
+img {
+    width: 250px;
+    /* height: 170px; 너비만 지정하면 비율이 자율 조정됨*/
+    border: 1px solid black;
+}
+
+.trans1:hover {
+    /* HTML5 표준을 지키는 브라우저 기본적인 스타일 */
+    transform: translateX(100px);
+    /* 크롬 계열*/
+    -webkit-transform: translateX(100px);
+    /* MS익스플로러 계열 */
+    -ms-transform: translateX(100px);
+}
+
+.trans2:hover {
+    transform: translateY(100px);
+}
+
+.trans3:hover {
+    transform: translate(-100px, -100px);
+}
+
+.trans4:hover {
+    transform: scaleX(2);
+}
+
+.trans5:hover {
+    transform: scaleY(0.5);
+}
+
+.trans6:hover {
+    transform: scale(3, 3);
+}
+
+
+/* -------------------------------------------------- */
+
+.trans7:hover {
+    animation: rotate_image 1s linear infinite;
+    transform-origin: 50% 50%;
+}
+
+@keyframes rotate_image {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* transform: rotate(-45deg);
+    transition: all 1s;
+} */
+
+
+/* -------------------------------------------------- */
+
+.trans7:active {
+    transform: rotate(45deg);
+    transition: all 1s;
+}
+
+.trans8:hover {
+    transform: skewX(45deg);
+}
+
+.trans9:hover {
+    transform: skewY(-45deg);
+}
+
+.trans10:hover {
+    transform: skew(30deg, 30deg);
+    transition: all 1s;
+}
