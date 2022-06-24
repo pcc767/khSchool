@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            height: 500px;
+            width: 500px;
+            background-color: lightgray;
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>객체 배열 = JSON 호환 Type</h1>
+    <hr>
+
+    <h3>기본객체 배열 (구형 스타일)</h3>
+    <label for="name">이름 순 정렬</label><input type="checkbox" name="name" id="name"><br>
+    <label for="age">나이 순 정렬</label><input type="checkbox" name="age" id="age"><br>
+    <button onclick="test1()"> 실행 </button>
+    <div id="div1"></div>
+
+    <script>
+        function test1() {
+            var user1 = {
+                name: '홍길동',
+                age: 30,
+                tel: '010-1234-5678',
+            }
+            var user2 = {
+                name: '최길동',
+                age: 25,
+                tel: '010-4321-5678',
+                hobby: '게임',
+            }
+            var user3 = {
+                name: '김길동',
+                age: 33,
+                tel: '010-4312-5678',
+                address: '서울시 강남구 역삼동 어딘가',
+            }
+
+            var userArray = [];
+            userArray.push(user1);
+            userArray.push(user2);
+            userArray.push(user3);
+
+            var isCheckName = document.getElementById("name").checked;
+            var isCheckAge = document.getElementById("age").checked;
+
+            if (isCheckName) {
+                userArray = userArray.sort(function(l, r) {
+                    if (l.name > r.name) {
+                        return 1;
+                    } else if (l.name < r.name) {
+                        return -1;
+                    } else {
+                        return 0;
+                    }
+                });
+            }
+
+            if (isCheckAge) {
+                userArray = userArray.sort(function(l, r) {
+                    return l.age - r.age;
+                });
+            }
+
+            printUserArray(userArray);
+        }
+
+        function printUserArray(array) {
+            var str = '';
+            for (var i in array) { // 배열일 경우는 index로 0,1,2,3.. 가져온다.
+                for (var key in array[i]) { // 객체일 경우는 key
+                    str += key + ' : ' + array[i][key] + '<br>';
+                }
+                str += '<br>';
+            }
+
+            // json 출력법
+            var json = JSON.stringify(array);
+            document.getElementById('div1').innerHTML = str + '<br>' + json;
+
+            // json 파싱법
+            var jsonObj = JSON.parse(json);
+            document.getElementById('div1').innerHTML += '<br>' + jsonObj[0]['name'];
+        }
+    </script>
+
+    <h2>함수를 활용하여 객체를 생성하는 방법</h2>
+    <fieldset>
+        <legend>회원 정보 입력</legend>
+        <label for="name">이름 : </label>
+        <input type="text" name="uname" id="uname"><br>
+        <label for="age">나이 : </label>
+        <input type="text" name="uage" id="uage"><br>
+        <label for="tel">전화번호 : </label>
+        <input type="text" name="tel" id="tel"><br><br>
+        <button onclick="input();">데이터 입력</button>
+        <button onclick="print();">데이터 출력</button>
+    </fieldset>
+    <div id="div2"></div>
+
+    <script>
+        var memberArray = [];
+
+        function input() {
+            var member = {
+                uname,
+                uage,
+                tel,
+            }
+
+            for (var key in member) {
+                var inputTag = document.getElementById(key);
+                member[key] = inputTag.value;
+                // console.log(inputTag);        //키값 확인.
+                inputTag.value = '';
+            }
+            memberArray.push(member);
+
+            var div2 = document.getElementById('div2');
+            div2.innerHTML += "입력 완료<br>";
+        }
+
+        function print() {
+            var str = '';
+            for (var i in memberArray) { // array는 index로 땡겨온다!
+                for (var key in memberArray[i]) { // object는 key로 땡겨온다! 
+                    str += key + ' : ' + memberArray[i][key] + '<br>';
+                }
+                str += '<br>';
+            }
+            var div2 = document.getElementById('div2');
+            div2.innerHTML += str;
+        }
+
+        // 참고
+        // https://velog.io/@lilyoh/js-object-%EC%9A%94%EC%86%8C%EC%97%90-%EC%A0%91%EA%B7%BC%ED%95%98%EA%B3%A0-%EC%88%9C%ED%9A%8C%ED%95%98%EA%B8%B0
+    </script>
+
+
+</body>
+
+</html>

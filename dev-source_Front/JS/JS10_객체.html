@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>객체 Object</title>
+    <style>
+        div {
+            background-color: lightgray;
+            border: 1px solid black;
+            height: 200px;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>객체 Object (Java에서의 Map, JSON)</h1>
+    <p> - 객체지향 문법의 객체를 의미하고, 필드에 멤버변수와 메소드(함수)가 결합된 형태로 문법 제공</p>
+    <p> - vs 절차지향은 데이터(구조체)와 함수로 구성되어 있으며, 데이터와 함수가 분리된 형태</p>
+    <hr><br>
+
+    <h3>객체의 선언과 호출</h3>
+    <p> - 객체는 객체형(object)로 식별되고, 키값을 통해 속성(메소드, 멤버변수)를 식별 가능</p>
+    <p> - 중괄호흫 사용해서 객체를 표현하고, 내부에는 메소드 멤버변수를 선언 가능</p>
+    <p> - ES6 표준 문법 이후에는 class를 통해 객체를 구현할수도 있다.</p>
+
+    <button onclick="test1(member);"> 실행1 </button>
+    <button onclick="test2(user);"> 실행2 </button>
+    <div id="div1"></div>
+
+    <script>
+        var member1 = new Object();
+        var member2 = {};
+        document.write(typeof(member1) + '<br>');
+        document.write(typeof(member2) + '<br>');
+
+        // 1. 객체 선언하는 방법 (기본적인 방법)
+        // var member3 = {
+        //     name,
+        //     age,
+        //     tel,
+        // };
+
+        // 2. 선언과 동시에 초기화 하는 방법
+        var member = {
+            name: '홍길동',
+            age: 31,
+            tel: '010-1234-5678',
+            hobby: ['게임', '영화보기'],
+        };
+
+        // 3. class를 활용하여 객체를 선언하는 방법
+        class User {
+            constructor(name, age, tel) {
+                this.name = name;
+                this.age = age;
+                this.tel = tel;
+            }
+        };
+        var user = new User('최길동', 21, '010-3455-1333');
+        user.name = '황길동';
+
+        function test1() {
+            // member = old 문법
+            var div1 = document.getElementById('div1');
+            div1.innerHTML = '객체 출력 : ' + member + '<br>';
+
+            // 객체 접근 방법1 - ['속성명'] 활용
+            div1.innerHTML += '이름 : ' + member['name'] + '<br>';
+            div1.innerHTML += '나이 : ' + member['age'] + '<br>';
+            div1.innerHTML += '전번 : ' + member['tel'] + '<br>';
+            div1.innerHTML += '취미 : ' + member['hobby'] + '<br>';
+            div1.innerHTML += '취미1 : ' + member['hobby'][0] + '<br>';
+            div1.innerHTML += '취미2 : ' + member['hobby'][1] + '<br><br>';
+
+
+            // 객체 접근 방법2 - '.'을 활용
+            div1.innerHTML += '이름 : ' + member.name + '<br>';
+            div1.innerHTML += '나이 : ' + member.age + '<br>';
+            div1.innerHTML += '전번 : ' + member.tel + '<br>';
+            div1.innerHTML += '취미 : ' + member.hobby + '<br>';
+            div1.innerHTML += '취미1 : ' + member.hobby[0] + '<br>';
+            div1.innerHTML += '취미2 : ' + member.hobby[1] + '<br>';
+        }
+
+        function test2() {
+            var div1 = document.getElementById('div1');
+            console.log(user);
+            div1.innerHTML = user + '<br>';
+            div1.innerHTML += '이름 : ' + user.name + '<br>';
+            div1.innerHTML += '나이 : ' + user.age + '<br>';
+            div1.innerHTML += '전번 : ' + user.tel + '<br>';
+        }
+    </script>
+    <hr><br>
+
+    <h3>객체의 메소드 선언</h3>
+    <p> - 객체의 속성중 함수 자료형을 포함시켜 생성</p>
+
+    <button onclick="test3(member2);">실행1</button>
+    <button onclick="test4(user2);">실행2</button>
+    <div id="div2"></div>
+
+    <script>
+        var member2 = {
+            name: '박길동',
+            age: 20,
+            tel: '010-4143-3678',
+            print: function(element) { // ':' 을 활용하여 함수 추가
+                element.innerHTML += '이름 : ' + this.name + '<br>';
+                element.innerHTML += '나이 : ' + this.age + '<br>';
+                element.innerHTML += '전번 : ' + this.tel + '<br>';
+            }
+        };
+
+        class User2 {
+            constructor(name, age, tel) {
+                this.name = name;
+                this.age = age;
+                this.tel = tel;
+            }
+
+            // setter 만드는 법
+            set name(val) {
+                this._name = val + '님';
+            }
+
+            // getter 만드는 법
+            get name() {
+                return '[' + this._name + ']';
+            }
+
+            print1() {
+                return this.name + ', ' + this.age + ', ' + this.tel;
+            }
+
+            print2(element) {
+                element.innerHTML += '이름 : ' + this.name + '<br>';
+                element.innerHTML += '나이 : ' + this.age + '<br>';
+                element.innerHTML += '전번 : ' + this.tel + '<br>';
+            }
+        };
+
+        var user2 = new User2('성길동', '31', '010-4232-1414');
+
+        function test3() {
+            var div2 = document.getElementById('div2');
+            member2.print(div2);
+        }
+
+        function test4() {
+            var div2 = document.getElementById('div2');
+            div2.innerHTML = user2.print1() + '<br>';
+            user2.print2(div2);
+        }
+    </script>
+    <hr><br>
+
+    <h3>객체의 반복문 활용</h3>
+    <p> - 객체 속성을 접근하기 위해선 'i'로 접근 불가! -> for in을 통해 접근 가능하다!</p>
+    <button onclick="test5(member3)">실행</button>
+    <div id="div5"></div>
+    <script>
+        var member3 = {
+            name: '홍길동',
+            age: 20,
+            tel: '010-4122-4334',
+            hobby: ['게임', '영화보기', '음악감성', '산책', '헬스', '수영'],
+            print: function(element) {
+                for (var key in this) {
+                    // 함수 제외시키는 법 1. 이름으로 필터링
+                    // if (key == 'print') {
+                    //     continue;
+                    // }
+
+                    // 함수 제외시키는 법 2. type으로 필터링 << 이걸 써야함!
+                    if (typeof(this[key]) == 'function') {
+                        continue;
+                    }
+                    element.innerHTML += key + ' : ' + this[key] + '<br>';
+                }
+            }
+        };
+
+        function test5(member) {
+            var div5 = document.getElementById("div5");
+            member.print(div5);
+        }
+    </script>
+    <hr><br>
+
+
+    <h3>객체 입력활용</h3>
+    <input type="text" name="name" id="name" placeholder="이름 입력"><br>
+    <input type="text" name="kor" id="kor" placeholder="국어 점수"><br>
+    <input type="text" name="eng" id="eng" placeholder="영어 점수"><br>
+    <input type="text" name="math" id="math" placeholder="수학 점수"><br>
+
+    <button onclick="test6();">실행1</button>
+    <button onclick="test7();">실행2</button>
+    <div id="div6"></div>
+
+    <script>
+        var student = {
+            name,
+            kor,
+            eng,
+            math,
+        };
+
+        function test6() {
+            student.name = document.getElementById('name').value;
+            student.kor = document.getElementById('kor').value;
+            student.eng = document.getElementById('eng').value;
+            student.math = document.getElementById('math').value;
+
+            var div6 = document.getElementById('div6');
+            div6.innerHTML = '';
+
+            for (var key in student) {
+                div6.innerHTML += key + ' : ' + student[key] + '<br>';
+            }
+        }
+
+        function test7() {
+            for (var key in student) {
+                student[key] = document.getElementById(key).value;
+            }
+
+            var div6 = document.getElementById('div6');
+            div6.innerHTML = '';
+
+            for (var key in student) {
+                div6.innerHTML += key + ' : ' + student[key] + '<br>';
+            }
+        }
+    </script>
+    <hr><br>
+
+
+    <h3>객체의 속성 추가와 제거</h3>
+    <p> - 객체 생성된 이후에 속성을 추가하거나 제거하는 방법</p>
+    <button onclick="test8();">실행</button>
+    <div id="div8"></div>
+    <script>
+        function test8() {
+            // var user = new Object(); // key - value set
+            var user = {}; // key - value set
+            printUser(user);
+
+            // 추가하는 법
+            user.name = '서길동';
+            user.age = 28;
+            user.hobby = ['음악감상', '게임', '헬스'];
+            printUser(user);
+
+            // 삭제하는 법
+            delete(user.hobby);
+            printUser(user);
+        }
+
+        function printUser(user) {
+            var div8 = document.getElementById('div8');
+            for (var key in user) {
+                div8.innerHTML += key + ' : ' + user[key] + '<br>';
+            }
+            div8.innerHTML += '<br>';
+        }
+    </script>
+
+
+
+</body>
+
+</html>

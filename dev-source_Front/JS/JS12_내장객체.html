@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장 객체</title>
+    <style>
+        div {
+            height: 500px;
+            border: 1px solid black;
+            background-color: lightgray;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>내장 객체</h1>
+    <p> - 태그나 스타일, 데이터 처리에 관련된 객체</p>
+    <hr>
+
+    <h3>String 객체의 HTML 관련 메소드</h3>
+    <div id="div1"></div>
+    <script>
+        var div1 = document.getElementById("div1");
+        var str1 = "Hello JavaScript World!!";
+        var str2 = new String("Hello JavaScript World!!");
+
+        div1.innerHTML += str1 + "<br>";
+        div1.innerHTML += str2 + "<br><br>";
+        div1.innerHTML += " anchor() : " + str1.anchor() + "<br>";
+        div1.innerHTML += " big() : " + str1.big() + "<br>";
+        div1.innerHTML += " bold() : " + str1.bold() + "<br>";
+        div1.innerHTML += " fontcolor('red') : " + str1.fontcolor('red') + "<br>";
+        div1.innerHTML += " fontsize(15) : " + str1.fontsize(15) + "<br>";
+        div1.innerHTML += " italics() : " + str1.italics() + "<br>";
+        div1.innerHTML += " link() : " + str1.link("http://www.naver.com") + "<br>";
+        div1.innerHTML += " small() : " + str1.small() + "<br>";
+        div1.innerHTML += " strike() : " + str1.strike() + "<br>";
+        div1.innerHTML += " sub() : " + str1.sub() + "<br>";
+        div1.innerHTML += " sup() : " + str1.sup() + "<br>";
+    </script>
+
+    <h3>Number 객체의 HTML 관련 메소드 (toFixed 중요)</h3>
+    <div id="div2"></div>
+    <script>
+        var num1 = 123;
+        var num2 = 123.456783333333333333333333333333;
+        var num3 = new Number(1234);
+
+        var div2 = document.getElementById("div2");
+        div2.innerHTML += "num1 원본 : " + num1 + "<br>";
+        div2.innerHTML += "num2 원본 : " + num2 + "<br>";
+        div2.innerHTML += "num3 원본 : " + num3 + "<br>";
+
+        // 지수형태로 출력
+        div2.innerHTML += "num1 : " + num1.toExponential() + "<br>";
+        div2.innerHTML += "num2 : " + num2.toExponential() + "<br>";
+
+        // 고정소수점 출력------------------------------------------------
+        div2.innerHTML += "num1 : " + num1.toFixed() + "<br>";
+        div2.innerHTML += "num2 : " + num2.toFixed() + "<br>";
+        div2.innerHTML += "num1 : " + num1.toFixed(2) + "<br>";
+        div2.innerHTML += "num2 : " + num2.toFixed(2) + "<br>";
+        // --------------------------------------------------------------
+        // 자동으로 지수 또는 고정소수점 표현하는 법
+        div2.innerHTML += "num1 : " + num1.toPrecision() + "<br>";
+        div2.innerHTML += "num2 : " + num2.toPrecision() + "<br>";
+        div2.innerHTML += "num2 : " + new Number(3289500037901428149081).toPrecision() + "<br>";
+
+        // Number의 주요 속성값
+        div2.innerHTML += "Number.MAX_VALUE : " + Number.MAX_VALUE + "<br>";
+        div2.innerHTML += "Number.MIN_VALUE : " + Number.MIN_VALUE + "<br>";
+        div2.innerHTML += "Number.NaN : " + Number.NaN + "<br>";
+        div2.innerHTML += "Number.POSITIVE_INFINITY : " + Number.POSITIVE_INFINITY + "<br>";
+        div2.innerHTML += "Number.NEGATIVE_INFINITY : " + Number.NEGATIVE_INFINITY + "<br>";
+    </script>
+    <hr><br>
+
+    <h3>Date객체의 HTML 관련 메소드</h3>
+    <div id="div3"></div>
+    <script>
+        var div3 = document.getElementById("div3");
+
+        var date1 = new Date(); //현재시간
+        var date2 = new Date('2022.06.24');
+        var date3 = new Date('2022-06-24 20:00:11');
+        var date4 = new Date('2022/06/24 20:!3:00');
+        var date5 = new Date('June 24, 2022');
+        var date6 = new Date('June 24, 2022 20:13:');
+
+        div3.innerHTML += 'date 1 : ' + date1 + '<br>';
+        div3.innerHTML += 'date 2 : ' + date2 + '<br>';
+        div3.innerHTML += 'date 3 : ' + date3 + '<br>';
+        div3.innerHTML += 'date 4 : ' + date4 + '<br>';
+        div3.innerHTML += 'date 5 : ' + date5 + '<br>';
+        div3.innerHTML += 'date 6 : ' + date6 + '<br>';
+
+        //현지 시간으로 format으로 출력하는 방법
+        div3.innerHTML += 'toLocaleDateString : ' + date1.toLocaleDateString() + '<br>';
+        div3.innerHTML += 'toLocaleTimeString : ' + date1.toLocaleTimeString() + '<br>';
+        div3.innerHTML += 'toLocaleString : ' + date1.toLocaleString() + '<br>';
+
+        // 데이터 가져오는 법
+        div3.innerHTML += "getFullYear() : " + date1.getFullYear() + "<br>";
+        div3.innerHTML += "getMonth() : " + date1.getMonth() + "<br>"; // 월은 0부터
+        div3.innerHTML += "getDate() : " + date1.getDate() + "<br>";
+        div3.innerHTML += "getDay() : 요일 : " + date1.getDay() + "<br>";
+        div3.innerHTML += "getHours() : " + date1.getHours() + "<br>";
+        div3.innerHTML += "getMinutes() : " + date1.getMinutes() + "<br>";
+        div3.innerHTML += "getSeconds() : " + date1.getSeconds() + "<br>";
+        div3.innerHTML += "getMilliseconds() : " + date1.getMilliseconds() + "<br>";
+        div3.innerHTML += "getTime() : " + date1.getTime() + "<br>";
+
+        // 응용예제
+        date1.setFullYear(2012); // setXXX 사용사면 시간데이터 수정이 가능하다.
+        div3.innerHTML += 'setFullYear() : ' + date1.getFullYear() + '<br>';
+        div3.innerHTML += '날짜 간격 구하기 1 : ' + (new Date() - date1) + '<br>';
+        div3.innerHTML += '날짜 간격 구하기 2 : ' + new Date(new Date() - date1) + '<br>';
+        var interval1 = new Date() - date1;
+        var intervalDate = Math.floor(interval1 / (1000 * 60 * 60 * 24)); // 일로 환산
+        div3.innerHTML += '날짜 간격 구하기3 : ' + intervalDate + '<br>';
+    </script>
+
+
+
+</body>
+
+</html>
