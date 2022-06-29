@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery 개요</title>
+    <!-- jQuery 라이브러리 로드하는 방법 -->
+
+    <!-- 1. 파일로 로드하는 방법(공식홈페이지에서 다운 가능함.) -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+
+    <!-- 2. CDN (Contents Delivery Network)를 통한 인터넷 상에서 로드하는 방법-->
+    <!-- 최신버전 가져오는 방법-->
+    <!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
+
+    <!-- 3. CDN + 특정버전 + 보안기능-->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+
+</head>
+
+<body>
+    <h1>JQuery의 개요</h1>
+    <p> - 경량 JavaScript 라이브러리로 복잡한 JS코드를 단축표현 및 반복문법을 제공함</p>
+    <p> - 개발자가 편리하고 생산성 있도록 만들어주는 라이브러리이다. </p>
+
+    <h3>JQuery의 장점</h3>
+    <p> 1) DOM 관련 처리를 쉽게 할수 있음 -> 생산성, 편리성 증대</p>
+    <p> 2) Ajax 통신 또는 UI 이벤트를 쉽게 구현 가능 하다.</p>
+    <p> 3) 별도의 플러그인 없이 차트, 슬라이드쇼, 테이블들을 구현 가능 (하나 난 쓸래..)</p>
+
+    <h3>JQuery의 단점</h3>
+    <p> 1) 웹표준이 아니다. 2) 숙련도가 필요하다. 3) 웹 프론트의 복잡성 증가</p>
+
+    <h3>JQuery 로드 방법</h3>
+    <p> 1. 파일로 로드하는 방법 (공식 홈페이지에서 다운로드 가능)</p>
+    <!-- <script src="js/jquery-3.6.0.min.js"></script> -->
+
+    <p> 2. CDN (Contents Delivery Network)를 통한 인터넷 상에서 로드하는 방법</p>
+    <!-- 최신버전 가져오는 방법-->
+    <!-- <script src="https://code.jquery.com/jquery-latest.js"></script> -->
+
+    <p> 3. CDN + 특정버전 + 보안기능</p>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <hr><br>
+
+
+    <h3>코드 실습부</h3>
+    <!-- <div id="div1" class="div_class">div1 영역입니다.</div>
+    <div id="div2" class="div_class">div2 영역입니다.</div>
+    <div id="div3" class="div_class">div3 영역입니다.</div>
+    <div id="div4" class="div_class">div4 영역입니다.</div>
+    <div id="div5" class="div_class">div5 영역입니다.</div> -->
+
+    <script>
+        //1. div의 id를 통해서 객체 가져오는 방법
+        //javascript 방법
+        document.getElementById('div1').style.backgroundColor = 'orange';
+        //jQuery 방법
+        $('#div2').css('background', 'blue');
+
+        //2. div의 class를 활용하는 방법.
+        //javascript 방법
+        var divs = document.getElementsByClassName('div_class');
+        for (let i = 0; i < divs.length; i++) {
+            divs[i].style.fontWeight = 'bold';
+        }
+        //jQuery 방법
+        $('.div_class').css('color', 'gray').css('font-style', 'italic');
+    </script>
+    <hr><br>
+
+    <h3>#(docmemt).ready()</h3>
+    <p> - html 페이지를 모두 로드하고 나서 ready 메소드를 실행하는 개념으로 document.onload 이벤트와 동일</p>
+    <p> - 왜 사용하느냐? : html script를 load할 경우 태그가 렌더링 되기 전에 호출되면 js가 동작하지 않기 때문에</p>
+    <p> - ready 함수 호출을 통해 html렌더링 이후 모두 로드 된 상태에서 js코드를 호출하기 위해 사용한다.</p>
+    <p> -> 호출 순서를 컨트롤 하기 위해서.</p>
+
+    <script>
+        // 1. 가장 원초적인 방법.
+        jQuery(document).ready(function() {
+            //chain 기법을 통한 여러줄의 css를 한번에 호출하는 기법.
+            jQuery('#div3').css('background-color', 'green').css('color', 'red');
+        });
+
+        // 2. jQuery 생략하고 $로 표시하는 방법.
+        $(document).ready(function() {
+            $('#div4').css('background-color', 'blue').css('color', 'white');
+        });
+
+        // 3. docuemt, ready 네이밍 생략하는 방법 ★★★★★★, 관례적인 문법!!
+        $(function() {
+            $('#div5').css('background-color', 'orange').css('color', 'blue');
+        });
+    </script>
+
+    <h3>코드 실습부</h3>
+    <div id="div1" class="div_class">div1 영역입니다.</div>
+    <div id="div2" class="div_class">div2 영역입니다.</div>
+    <div id="div3" class="div_class">div3 영역입니다.</div>
+    <div id="div4" class="div_class">div4 영역입니다.</div>
+    <div id="div5" class="div_class">div5 영역입니다.</div>
+    <div>ready 함수로 호출하지 않는 경우 코드 순서에 따라 jQuery가 안먹힌다.!</div>
+
+
+
+</body>
+
+</html>

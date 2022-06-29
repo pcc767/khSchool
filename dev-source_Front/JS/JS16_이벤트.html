@@ -167,9 +167,21 @@
     <input id="mberEmail" name="mberEmail" title="이메일 입력" onkeyup="fn_inputKey(9, this);" onkeydown="javascript:if (event.keyCode == 13) { fn_search(); }" placeholder="sample@sample.com" class="input-text w340px mb-block" type="text" value="" maxlength="40"
     />
 
+    <h3>정규식을 이용한 문자양식 체크하는 방법</h3>
 
-
-
+    <h3>추가 코드 (String util을 통해 정규식 활용)</h3>
+    <p>이메일 형식 확인</p>
+    <input type="text" onkeyup="fn_inputKey(9, this);" />
+    <br>
+    <p>전화번호 형식 확인</p>
+    <input type="text" onkeyup="fn_inputKey(6, this);" />
+    <br>
+    <p>영문(ID) 형식 확인</p>
+    <input type="text" onkeyup="fn_inputKey(5, this);" />
+    <br>
+    <p>한글(이름) 형식 확인</p>
+    <input type="text" onkeyup="fn_inputKey(2, this);" />
+    <br>
 
 </body>
 
