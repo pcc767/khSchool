@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Hello servlet world</h1>
+	
+	<a href="first.do">first Servlet call</a>
+	<hr><br>
+	<a href="second.do">second Servlet call</a>
+	<hr><br>
+	
+	<h3>Life Cycle</h3>
+	<a href="life.do">Life Cycle</a>
+	<hr><br>
+	
+	<h3>사용자 파라메터 받아오기</h3>
+	<div>'/'로 시작하는 경우 주소 프로젝트 명칭부터(처음부터) 다시 써야함.</div>
+	<a href="/views/userForm.html">form1 - get(링크 안된다.)</a>
+	<br>
+	<div>'/'로 시작하는 경우 주소 프로젝트 명칭부터(처음부터) 다시 써야함.</div>
+	<a href="/01_ServletBasic/views/userForm.html">form1 - get</a>
+	<br>
+	<div>'/'쓰지 않거나.</div>
+	<a href="views/userForm2.html">form1 - post</a>
+	<div>'./'쓰거나</div>
+	<a href="./views/userForm2.html">form1 - post</a>
+	
+	
+</body>
+</html>

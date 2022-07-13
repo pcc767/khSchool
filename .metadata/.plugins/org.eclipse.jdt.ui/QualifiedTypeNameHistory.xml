@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.awt.print.Book"/>
-    <fullyQualifiedTypeName name="com.kh.ex01.basic_thread.MyThread"/>
-    <fullyQualifiedTypeName name="com.kh.ex01.basic_thread.RunnableClass"/>
-    <fullyQualifiedTypeName name="java.lang.Thread"/>
-    <fullyQualifiedTypeName name="java.lang.Runnable"/>
     <fullyQualifiedTypeName name="com.kh.pratice.list.library.controller.BookController"/>
     <fullyQualifiedTypeName name="com.kh.pratice.list.library.view.BookMenu"/>
     <fullyQualifiedTypeName name="java.lang.Comparable"/>
@@ -60,4 +55,9 @@
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="com.kh.ex05.csv.LineInfo"/>
+    <fullyQualifiedTypeName name="com.kh.practice.set.model.vo.Lottery"/>
+    <fullyQualifiedTypeName name="com.kh.practice.set.view.LotteryMenu"/>
+    <fullyQualifiedTypeName name="controller.LotteryController"/>
+    <fullyQualifiedTypeName name="view.LotteryMenu"/>
+    <fullyQualifiedTypeName name="model.vo.Lottery"/>
 </qualifiedTypeNameHistroy>

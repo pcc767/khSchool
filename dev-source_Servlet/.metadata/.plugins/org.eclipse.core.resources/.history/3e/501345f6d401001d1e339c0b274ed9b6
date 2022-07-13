@@ -1,0 +1,5 @@
+package com.data.controller.ex04;
+
+public class LoginCheckServlet {
+
+}

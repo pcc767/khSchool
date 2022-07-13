@@ -1,0 +1,5 @@
+package com.servlet.basic;
+
+public class FirstServlet {
+
+}

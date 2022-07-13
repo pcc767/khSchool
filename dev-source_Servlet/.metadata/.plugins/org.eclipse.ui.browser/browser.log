@@ -1,0 +1,113 @@
+
+7월 11, 2022 19:23:19.827 NEW SESSION
+7월 11, 2022 19:23:19.827 [15132:13620:0711/192319.825:ERROR:device_event_log_impl.cc(214)] [19:23:19.825] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 11, 2022 19:23:19.827 [15132:13620:0711/192319.826:ERROR:device_event_log_impl.cc(214)] [19:23:19.826] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 19:23:19.827 [15132:13620:0711/192319.826:ERROR:device_event_log_impl.cc(214)] [19:23:19.826] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 19:24:18.311 [3336:10080:0711/192418.311:ERROR:device_event_log_impl.cc(214)] [19:24:18.311] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 11, 2022 19:24:18.312 [3336:10080:0711/192418.312:ERROR:device_event_log_impl.cc(214)] [19:24:18.312] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 19:24:18.313 [3336:10080:0711/192418.313:ERROR:device_event_log_impl.cc(214)] [19:24:18.313] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 19:25:16.174 [3336:6904:0711/192516.173:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 11, 2022 19:48:35.581 [9796:8548:0711/194835.581:ERROR:device_event_log_impl.cc(214)] [19:48:35.581] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 11, 2022 19:48:35.581 [9796:8548:0711/194835.581:ERROR:device_event_log_impl.cc(214)] [19:48:35.581] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 19:48:35.582 [9796:8548:0711/194835.582:ERROR:device_event_log_impl.cc(214)] [19:48:35.582] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 19:49:33.351 [9796:8236:0711/194933.351:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 11, 2022 19:54:14.71 [18404:12524:0711/195414.071:ERROR:device_event_log_impl.cc(214)] [19:54:14.070] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 11, 2022 19:54:14.72 [18404:12524:0711/195414.072:ERROR:device_event_log_impl.cc(214)] [19:54:14.071] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 19:54:14.72 [18404:12524:0711/195414.072:ERROR:device_event_log_impl.cc(214)] [19:54:14.072] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 19:55:11.897 [18404:13488:0711/195511.897:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 11, 2022 20:22:11.755 [5744:12092:0711/202211.755:ERROR:device_event_log_impl.cc(214)] [20:22:11.755] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 11, 2022 20:22:11.756 [5744:12092:0711/202211.756:ERROR:device_event_log_impl.cc(214)] [20:22:11.756] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 20:22:11.756 [5744:12092:0711/202211.756:ERROR:device_event_log_impl.cc(214)] [20:22:11.756] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 20:22:22.680 [2796:8592:0711/202222.680:ERROR:device_event_log_impl.cc(214)] [20:22:22.680] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 11, 2022 20:22:22.681 [2796:8592:0711/202222.681:ERROR:device_event_log_impl.cc(214)] [20:22:22.681] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 20:22:22.681 [2796:8592:0711/202222.681:ERROR:device_event_log_impl.cc(214)] [20:22:22.681] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 20:23:20.463 [2796:9360:0711/202320.463:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 11, 2022 20:29:47.390 [10140:12896:0711/202947.390:ERROR:device_event_log_impl.cc(214)] [20:29:47.390] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 11, 2022 20:29:47.392 [10140:12896:0711/202947.391:ERROR:device_event_log_impl.cc(214)] [20:29:47.391] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 20:29:47.392 [10140:12896:0711/202947.392:ERROR:device_event_log_impl.cc(214)] [20:29:47.392] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 20:31:40.491 [1144:18168:0711/203140.491:ERROR:device_event_log_impl.cc(214)] [20:31:40.491] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 11, 2022 20:31:40.492 [1144:18168:0711/203140.492:ERROR:device_event_log_impl.cc(214)] [20:31:40.492] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 20:31:40.493 [1144:18168:0711/203140.492:ERROR:device_event_log_impl.cc(214)] [20:31:40.493] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 11, 2022 20:32:38.395 [1144:3012:0711/203238.395:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 11, 2022 20:37:19.542 [1144:18168:0711/203719.541:ERROR:device_event_log_impl.cc(214)] [20:37:19.541] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: ��Ұ� �����ϴ�. (0x490)
+7월 11, 2022 20:51:35.885 [1144:18168:0711/205135.885:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+7월 11, 2022 20:55:35.988 [1144:18168:0711/205535.988:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+7월 11, 2022 20:55:35.988 [1144:18168:0711/205535.988:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+7월 12, 2022 01:09:27.648 NEW SESSION
+7월 12, 2022 01:09:27.648 [13884:15832:0712/010927.647:ERROR:device_event_log_impl.cc(214)] [01:09:27.647] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 01:09:27.649 [13884:15832:0712/010927.647:ERROR:device_event_log_impl.cc(214)] [01:09:27.647] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 01:10:25.551 [13884:10696:0712/011025.551:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+
+7월 12, 2022 15:15:35.359 NEW SESSION
+7월 12, 2022 15:15:35.359 [14532:4164:0712/151535.358:ERROR:device_event_log_impl.cc(214)] [15:15:35.357] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 15:15:35.360 [14532:4164:0712/151535.359:ERROR:device_event_log_impl.cc(214)] [15:15:35.358] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 15:16:33.240 [14532:8916:0712/151633.240:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 12, 2022 15:22:15.239 [14532:4164:0712/152215.238:ERROR:device_event_log_impl.cc(214)] [15:22:15.238] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: ��Ұ� �����ϴ�. (0x490)
+7월 12, 2022 15:22:24.661 [14532:4164:0712/152224.660:ERROR:device_event_log_impl.cc(214)] [15:22:24.555] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: ��� ������ �����Ͱ� �����ϴ�. (0x103)
+7월 12, 2022 15:22:24.668 [14532:4164:0712/152224.668:ERROR:device_event_log_impl.cc(214)] [15:22:24.668] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: ��� ������ �����Ͱ� �����ϴ�. (0x103)
+7월 12, 2022 15:22:24.677 [14532:4164:0712/152224.677:ERROR:device_event_log_impl.cc(214)] [15:22:24.676] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: ��Ұ� �����ϴ�. (0x490)
+7월 12, 2022 16:12:29.499 [3196:16236:0712/161229.499:ERROR:device_event_log_impl.cc(214)] [16:12:29.499] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 16:12:29.500 [3196:16236:0712/161229.500:ERROR:device_event_log_impl.cc(214)] [16:12:29.500] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 16:12:29.501 [3196:16236:0712/161229.500:ERROR:device_event_log_impl.cc(214)] [16:12:29.501] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 16:13:17.352 [15416:4820:0712/161317.352:ERROR:device_event_log_impl.cc(214)] [16:13:17.351] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 16:13:17.354 [15416:4820:0712/161317.354:ERROR:device_event_log_impl.cc(214)] [16:13:17.354] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 16:13:17.355 [15416:4820:0712/161317.354:ERROR:device_event_log_impl.cc(214)] [16:13:17.354] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 16:14:15.155 [15416:2484:0712/161415.155:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 12, 2022 18:13:04.410 [17504:3184:0712/181304.409:ERROR:device_event_log_impl.cc(214)] [18:13:04.409] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 18:13:04.410 [17504:3184:0712/181304.410:ERROR:device_event_log_impl.cc(214)] [18:13:04.410] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 18:13:04.411 [17504:3184:0712/181304.411:ERROR:device_event_log_impl.cc(214)] [18:13:04.411] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 18:14:02.158 [17504:7404:0712/181402.158:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 12, 2022 18:52:24.365 [17504:3184:0712/185224.364:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+7월 12, 2022 18:58:37.910 [2536:8780:0712/185837.910:ERROR:device_event_log_impl.cc(214)] [18:58:37.909] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 18:58:37.911 [2536:8780:0712/185837.911:ERROR:device_event_log_impl.cc(214)] [18:58:37.911] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 18:58:37.911 [2536:8780:0712/185837.911:ERROR:device_event_log_impl.cc(214)] [18:58:37.911] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:22:59.354 [11608:8908:0712/202259.354:ERROR:device_event_log_impl.cc(214)] [20:22:59.354] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 20:23:04.366 [11608:8908:0712/202304.366:ERROR:device_event_log_impl.cc(214)] [20:23:04.366] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: ������ ���� �Ǵ� ���� ���α׷� ��û ������ I/O �۾��� ��ҵǾ����ϴ�. (0x3E3)
+7월 12, 2022 20:23:04.367 [11608:8908:0712/202304.366:ERROR:device_event_log_impl.cc(214)] [20:23:04.366] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:23:04.367 [11608:8908:0712/202304.367:ERROR:device_event_log_impl.cc(214)] [20:23:04.367] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:23:57.195 [11608:8356:0712/202357.195:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 12, 2022 20:25:39.260 [12256:17584:0712/202539.260:ERROR:device_event_log_impl.cc(214)] [20:25:39.260] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 20:25:39.260 [12256:17584:0712/202539.260:ERROR:device_event_log_impl.cc(214)] [20:25:39.261] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:25:39.262 [12256:17584:0712/202539.261:ERROR:device_event_log_impl.cc(214)] [20:25:39.261] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:35:07.459 [1836:14900:0712/203507.459:ERROR:device_event_log_impl.cc(214)] [20:35:07.459] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 20:35:07.460 [1836:14900:0712/203507.460:ERROR:device_event_log_impl.cc(214)] [20:35:07.460] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:35:07.461 [1836:14900:0712/203507.460:ERROR:device_event_log_impl.cc(214)] [20:35:07.461] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:37:09.928 [15556:14784:0712/203709.928:ERROR:device_event_log_impl.cc(214)] [20:37:09.928] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 20:37:09.929 [15556:14784:0712/203709.928:ERROR:device_event_log_impl.cc(214)] [20:37:09.928] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:37:09.929 [15556:14784:0712/203709.929:ERROR:device_event_log_impl.cc(214)] [20:37:09.929] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:40:41.964 [11836:13780:0712/204041.964:ERROR:device_event_log_impl.cc(214)] [20:40:41.963] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 20:40:41.965 [11836:13780:0712/204041.965:ERROR:device_event_log_impl.cc(214)] [20:40:41.964] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:40:41.965 [11836:13780:0712/204041.965:ERROR:device_event_log_impl.cc(214)] [20:40:41.965] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:48:51.145 [3312:8396:0712/204851.144:ERROR:device_event_log_impl.cc(214)] [20:48:51.144] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 12, 2022 20:48:51.145 [3312:8396:0712/204851.145:ERROR:device_event_log_impl.cc(214)] [20:48:51.145] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:48:51.146 [3312:8396:0712/204851.146:ERROR:device_event_log_impl.cc(214)] [20:48:51.145] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 12, 2022 20:49:49.38 [3312:2888:0712/204949.037:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 12, 2022 20:53:57.820 [3312:8396:0712/205357.820:ERROR:device_event_log_impl.cc(214)] [20:53:57.814] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: ��Ұ� �����ϴ�. (0x490)
+7월 12, 2022 20:54:00.803 [3312:8396:0712/205400.803:ERROR:device_event_log_impl.cc(214)] [20:54:00.801] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: ��Ұ� �����ϴ�. (0x490)
+7월 12, 2022 20:54:00.808 [3312:8396:0712/205400.808:ERROR:device_event_log_impl.cc(214)] [20:54:00.807] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: ��� ������ �����Ͱ� �����ϴ�. (0x103)
+7월 12, 2022 20:54:10.362 [3312:8396:0712/205410.362:ERROR:device_event_log_impl.cc(214)] [20:54:10.360] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: ��Ұ� �����ϴ�. (0x490)
+
+7월 13, 2022 24:14:02.465 NEW SESSION
+7월 13, 2022 24:14:02.465 [16584:8312:0713/001402.464:ERROR:device_event_log_impl.cc(214)] [00:14:02.464] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 13, 2022 24:14:02.465 [16584:8312:0713/001402.464:ERROR:device_event_log_impl.cc(214)] [00:14:02.464] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 13, 2022 24:15:00.347 [16584:11468:0713/001500.345:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 13, 2022 24:37:43.743 [10212:7128:0713/003743.743:ERROR:device_event_log_impl.cc(214)] [00:37:43.742] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 13, 2022 24:37:43.744 [10212:7128:0713/003743.743:ERROR:device_event_log_impl.cc(214)] [00:37:43.743] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 13, 2022 24:38:41.520 [10212:10580:0713/003841.520:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 13, 2022 24:44:32.918 [10212:7128:0713/004432.917:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+
+7월 13, 2022 15:07:50.462 NEW SESSION
+7월 13, 2022 15:07:50.462 [10412:2724:0713/150750.460:ERROR:device_event_log_impl.cc(214)] [15:07:50.460] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 13, 2022 15:07:50.463 [10412:2724:0713/150750.461:ERROR:device_event_log_impl.cc(214)] [15:07:50.461] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 13, 2022 15:08:48.465 [10412:5032:0713/150848.465:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+7월 13, 2022 15:22:10.282 [10412:2724:0713/152210.281:ERROR:device_event_log_impl.cc(214)] [15:22:10.281] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: ��Ұ� �����ϴ�. (0x490)
+7월 13, 2022 15:22:10.296 [10412:2724:0713/152210.296:ERROR:device_event_log_impl.cc(214)] [15:22:10.283] USB: usb_service_win.cc:307 SetupDiEnumDeviceInterfaces: ��� ������ �����Ͱ� �����ϴ�. (0x103)
+7월 13, 2022 15:22:11.209 [10412:2724:0713/152211.209:ERROR:device_event_log_impl.cc(214)] [15:22:11.209] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: ��Ұ� �����ϴ�. (0x490)
+7월 13, 2022 15:26:18.974 [10412:2724:0713/152618.974:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+7월 13, 2022 15:40:51.145 [10412:2724:0713/154051.144:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+7월 13, 2022 15:40:51.146 [10412:2724:0713/154051.144:ERROR:interface_endpoint_client.cc(665)] Message 1 rejected by interface blink.mojom.WidgetHost
+7월 13, 2022 20:37:15.77 [9116:12508:0713/203715.076:ERROR:device_event_log_impl.cc(214)] [20:37:15.063] USB: usb_service_win.cc:415 Could not read device interface GUIDs: ������ ������ ã�� �� �����ϴ�. (0x2)
+7월 13, 2022 20:37:15.79 [9116:12508:0713/203715.078:ERROR:device_event_log_impl.cc(214)] [20:37:15.078] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 13, 2022 20:37:15.79 [9116:12508:0713/203715.079:ERROR:device_event_log_impl.cc(214)] [20:37:15.078] USB: usb_device_handle_win.cc:1048 Failed to read descriptor from node connection: �ý��ۿ� ������ ��ġ�� �۵����� �ʽ��ϴ�. (0x1F)
+7월 13, 2022 20:38:12.850 [9116:16508:0713/203812.850:ERROR:util.cc(127)] Can't create base directory: C:\Program Files\Google\GoogleUpdater

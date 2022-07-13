@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Get 방식 요청과 Post방식 요청의 차이점 실습</h1>
+	<fieldset>
+		<legend>get 방식 전송</legend>
+		<div> - URL을 통해 데이터를 전달하는 방법 = ?dataname=data&...</div>
+		<div> - 단점 : 네트워크 경로에서 데이터를 볼 수 있다.(보안에 취약), 길이 제한</div>
+		<div> - 장점 : 히스토리가 남아 페이지 탐색하기 적합하다. 간결하고 빠르다.</div>
+		<div> - 활용 : 일반적인 페이징 탐색이나 대부분의 요청은 get 방식으로 처리한다.(일반적)</div>
+		
+		<form action="../login.do" method="get">
+			<label>
+				id : <input type="text" name="id"/>
+			</label><br>
+			<label>
+				pw : <input type="text" name="pw"/>
+			</label><br>
+			<input type="submit" value="로그인">
+		</form>
+	</fieldset>
+	<hr><br>
+	
+	
+	<fieldset>
+		<legend>Post 방식 전송</legend>
+		<div> - URL과 분리된 다른 경로를 통해 데이터를 전달하는 방법</div>
+		<div> - 장점 : 데이터의 제한이 없다. 보안적으로 get방식보다 안전하다.</div>
+		<div> - 단점 : 처리가 복잡하다, 느리다, 히스토리가 남지안아 탐색에는 부적합하다.(보안에 적합)</div>
+		<div> - 활용 : 사용자의 입력/데이터를 전달하는 과정에서만 활용하는 것이 적합하다.</div>
+		<div> - ★Form이나 javascript를 통해서만 임의적으로 전달할수 있다.</div>
+		
+		<form action="/02_Data/login.do" method="post">
+			<label>
+				id : <input type="text" name="id"/>
+			</label><br>
+			<label>
+				pw : <input type="text" name="pw"/>
+			</label><br>
+			<input type="submit" value="로그인">
+		</form>
+	</fieldset>
+	<hr><br>
+
+</body>
+</html>

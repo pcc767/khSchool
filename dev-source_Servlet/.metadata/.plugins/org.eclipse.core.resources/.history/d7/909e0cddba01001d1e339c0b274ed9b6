@@ -1,0 +1,158 @@
+package com.data.controller.ex02;
+
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/testperson.do")
+public class TestPersonServlet extends HttpServlet{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("TestPersonServlet - doGet 호출!!");
+		
+		//요청 처리하는 패턴
+		//1. encoding 설정하기
+		req.setCharacterEncoding("UTF-8");
+		resp.setCharacterEncoding("UTF-8");
+		
+		//2. 파라메터 처리하기 getParameter or getParameterValues
+		Person preson = makePerson(req);
+		
+		
+	}
+	
+	private Preson makePerson(HttpServletRequest req) {
+		// 파싱할때는 반드시 try-catch문으로 묶어서 한다.
+		try {
+			Preson p = new Person();
+			p.setName(req.getParameter("name"));
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return null;
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("doPost호출!!");
+		req.setCharacterEncoding("UTF-8");  //post는 반드시 인코딩 처리가 필요하다.
+		doGet(req, resp);
+	}
+
+}
+
+
+class Person{
+	private String name;
+	private int age;
+	private double height;
+	private String color;
+	private List<String> foods;
+	private String animal;
+	
+	
+	public Person() {
+	}
+	
+	
+	public Person(String name, int age, double height, String color, List<String> foods, String animal) {
+		this.name = name;
+		this.age = age;
+		this.height = height;
+		this.color = color;
+		this.foods = foods;
+		this.animal = animal;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public int getAge() {
+		return age;
+	}
+	
+	public void setAge(int age) {
+		this.age = age;
+	}
+	
+	public void setAge(String age) {
+		this.age = Integer.parseInt(age);
+	}
+	
+	public double getHeight() {
+		return height;
+	}
+	public void setHeight(double height) {
+		this.height = height;
+	}
+	
+	public void setHeight(String height) {
+		this.height = Double.parseDouble(height);
+	}
+	
+	public String getColor() {
+		return color;
+	}
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
+	public List<String> getFoods() {
+		return foods;
+	}
+	
+//	
+//	public void setFoods(String[] foods) {
+//		this.foods = foods;
+//	}
+	
+	public String getAnimal() {
+		return animal;
+	}
+	
+	public void setAnimal(String animal) {
+		this.animal = animal;
+	}
+	
+	@Override
+	public String toString() {
+		return "Person [name=" + name + ", age=" + age + ", height=" + height + ", color=" + color + ", foods=" + foods
+				+ ", animal=" + animal + "]";
+	}
+	
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

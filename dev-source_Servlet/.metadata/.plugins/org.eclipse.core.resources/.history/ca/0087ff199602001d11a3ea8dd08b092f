@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!-- HTML 주석 : 일반 브라우저에서 사용자도 소스코드 보기로 볼 수 있다. -->
+	<%-- JSP 주석 : JSP에서만 보여지는 주석, 자바코드나 HTML에서는 노출되지 않음. --%>
+	
+	<h1>JSP 스크립트 요소(Element) 실습</h1>
+
+</body>
+</html>

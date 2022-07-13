@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Hello JSP Index Page</h1>
+	<hr><br>
+	
+	<h3>JSP(Java Server Page)</h3>
+	- HTML 언어를 기반으로 Java 언어를 결합할수 있는 도구, 사용할때 Java로 변환되어 컴파일된다.<br>
+	- 기본적으로 HTTPServlet을 상속하고, Servlet의 모든 기능을 상속한다.<br>
+	- 단, 주로 View를 그리기위해 활용됨으로 복잡한 로직(=비지니스 로직)은 Servlet(Controller)에서 처리한다<br>
+	- MVC2 패턴 구성시 View-JSP, Controller-Servlet, Model_DAO, Service, VO <br>
+	<hr><br>
+	
+	<h3>1. JSP 스크립트 요소(Element) 표현법</h3>
+	 - 선언문 :    <!-- <%! 선언식; %> --> &lt;%! 선언식; %&gt; 멤버변수와 메소드를 선언 할 수 있다.<br> 
+	 - 스크립트식 : <!-- <% 자바언어; %> --> &lt;% 자바언어; %&gt; 로컬 영역에서 일반적인 구문을 모두 사용가능.<br> 
+     - 표현식 :    <!-- <%= 변수 %> -->&lt;%= 변수 %&gt; 자바에서 작성한 값(문자열, 숫자, 상수)을 출력하고, ';' 없이 사용<br>
+     ※ 주의 : 가급적 선언문을 활용하지 않고, 스크립트식을 사용하여 메모리 관리 수행.<br>
+     <a href="views/element">스크립트 내용 상세보기</a>
+      <!-- 
+     	Class A{
+     		<선언문>
+     		void doGet(){
+     			<스크립트식>
+     			sysout(<표현식>);
+     		}
+     	}
+      -->
+
+
+</body>
+</html>

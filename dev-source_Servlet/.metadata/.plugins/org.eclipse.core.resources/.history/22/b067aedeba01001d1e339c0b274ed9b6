@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>Servlet Date 처리하기</h1>
+	<div> - 사용자 파라메터 처리, 내부 데이터 전달법(Session, Attribute)</div>
+	<hr><br>
+	
+	<h3><a href="views/getpost.html">1. get/post 처리하기</a></h3>
+	
+
+</body>
+</html>

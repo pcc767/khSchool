@@ -1,0 +1,5 @@
+package com.servlet.basic2;
+
+public class LifeCycleServlet {
+
+}

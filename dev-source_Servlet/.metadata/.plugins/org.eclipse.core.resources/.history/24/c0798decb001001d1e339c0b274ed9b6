@@ -1,0 +1,5 @@
+package com.data.controller.ex01;
+
+public class GetPostServlet {
+
+}

@@ -1,0 +1,5 @@
+package com.cookie.controller;
+
+public class DeleteCookieSetvlet {
+
+}

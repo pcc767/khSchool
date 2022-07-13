@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Hello servlet world</h1>
+	
+	<a href="first.do">first Servlet call</a>
+	<hr><br>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Hello JSP Index Page!</h1>
+	<hr><br>
+	
+	<h3>JSP(Java Server Pages)란?</h3>
+	- HTML 언어를 기반으로 Java 언어를 결합할수 있는 도구(문법), 사용할때 Java로 변환된어 컴파일된다.<br>
+	- 기본적으로 HTTPServlet을 상속하고, Servlet의 모든 기능을 상속한다. <br>
+	- 단, 주로 View를 그리기 위해 활용됨으로 복잡한 로직(=비지니스 로직)은 Servlet(Controller)에서 처리한다.<br>
+	- MVC2 패턴 구성시 View-JSP, Controller-Servlet, Model-DAO, Service, VO <br>
+	<hr><br>
+	
+	<h3>1. JSP 스크립트 요소(Element) 표현법</h3>
+	 - 선언문 : <!-- <%! 선언식; %> --> &lt;%! 선언식; %&gt; 멤버변수와 메소드를 선언 할 수 있다.<br> 
+	 - 스크립트식 : <!-- <% 자바언어; %> --> &lt;% 자바언어; %&gt; 로컬 영역에서 일반적인 구문을 모두 사용가능.<br> 
+     - 표현식 : <!-- <%= 변수 %> -->&lt;%= 변수 %&gt; 자바에서 작성한 값(문자열, 숫자, 상수)을 출력하고, ';' 없이 사용<br>
+     ※ 주의 : 가급적 선언문을 활용하지 않고, 스크립트식을 사용하여 메모리 관리 수행.<br>
+     <a href="views/element">스크립트 내용 상세보기</a>
+      <!-- 
+     	Class A{
+     		<선언문>
+     		void doGet(){
+     			<스크립트식>
+     			sysout(<표현식>);
+     		}
+     	}
+      -->
+      
+     <h3>2. 지시어(Directive)</h3>
+		<!-- 
+		<%@ page language="java" contentType="text/html; charset=UTF-8"
+	   		pageEncoding="UTF-8"%>
+		 -->
+	 <h3>page 태그 : 현재 JSP 페이지 컨테이너에 필요한 각종 속성을 기술하는 태그</h3>
+	 
+	   ■ page 태그 주요 속성<br> 
+		- language : JSP 페이지 내부에서 사용할 언어를 지정한다. (초기확장을 위해 만들어지고 안쓴다!)<br>
+		- contentType : 웹브라우저에서 해당 페이지의 프로토콜, 표현식, 인코딩 확인하기 위해 사용<br>
+		- pageEncoding : jsp에서 사용할 인코딩을 표시함 -> java 컴파일 용도 및 전송용<br>
+		- import : 자바의 import와 같이 외부 class를 로드할 때 사용됨 <br>
+		  ※ Tip, 자동완성 방법 추천 : 기존 단축키 먹히지 않음으로 Class 이름 끝에 자동완성을 쓰면 완성됨<br>
+		- errorPage : JSP 페이지에서 예외가 발생한경우 처리할 페이지를 지정할 수 있다.<br>
+		- isErrorPage : 자신이 에러페이지라는 것을 알리는 구문<br>
+		     
+      <h3>include 태그 : JSP 페이지 내부에서 다른 JSP나 HTML페이지를 로드할때 사용하는 지시어 헤더,풋터 활용</h3>
+      <h3>taglib 태그 : JSP 태그 외에 확장할수 있는 태그를 import 할때 사용, ex) 액션태그, EL, JSTL</h3>
+      
+      <h3>에러 페이지 설정법 : web.xml -> error-page 정의 필요</h3>
+        <!-- 
+		<error-page>
+			<error-code>404</error-code>
+		 	<location>/views/error/error404.jsp</location>
+		</error-page>
+	 -->
+	 <a href="views/directive">지시어 실습</a>
+	 <hr><br>
+	
+	
+	
+</body>
+</html>
