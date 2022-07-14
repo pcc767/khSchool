@@ -1,0 +1,44 @@
+<%@page import="java.util.Enumeration"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>JSP 내장객체</h2>
+	<hr>
+	
+	<h3>1. request 객체</h3>
+	<h3>1.1 request - HTTP header 관련 메소드</h3>
+		- 사용자 http 프로토콜 header에 접근하여 브라우저 정보 및 사용자 정보를 가저옴<br>
+	
+	<%
+		Enumeration<String> names = request.getHeaderNames();
+	
+		while(names.hasMoreElements()){
+			String name = names.nextElement();
+			out.append(name + ":" + request.getHeader(name)+"<br>");
+		}
+	%>
+	<hr><br>
+	
+	<h3>1.2 request - URL, URI 관련 메소드</h3>
+		서버 도메인명★ : <%= request.getServerName() %><br>
+		서버 포트번호★ : <%= request.getServerPort() %><br>
+		웹 애플리케이션 경로(Context Path)★★★ : <%= request.getContextPath() %><br>
+		서버 URL : <%= request.getRequestURL() %><br>
+		서버 URI : <%= request.getRequestURI() %><br>
+		프로토콜 : <%= request.getProtocol() %><br>
+		요청방식(get,post) : <%= request.getMethod() %><br>
+		요청쿼리 : <%= request.getQueryString() %><br>
+		클라이언트 호스트명 : <%= request.getRemoteHost() %><br>
+		클라이언트 IP 주소 : <%= request.getRemoteAddr() %><br>
+	<hr><br>
+	
+
+</body>
+</html>

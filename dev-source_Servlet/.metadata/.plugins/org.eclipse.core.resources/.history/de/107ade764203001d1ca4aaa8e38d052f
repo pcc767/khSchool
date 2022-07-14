@@ -1,0 +1,30 @@
+<%@page import="java.util.Enumeration"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>JSP 내장객체</h2>
+	<hr>
+	
+	<h3>1. request 객체</h3>
+	<h3>1.1 request - HTTP header 관련 메소드</h3>
+		- 사용자 http 프로토콜 header에 접근하여 브라우저 정보 및 사용자 정보를 가저옴<br>
+	
+	<%
+		Enumeration<String> names = request.getHeaderNames();
+	
+		while(names.hasMoreElements()){
+			String name = names.nextElement();
+			out.append(name + ":" + request.getHeader(name));
+		}
+	%>
+	<hr><br>
+
+</body>
+</html>

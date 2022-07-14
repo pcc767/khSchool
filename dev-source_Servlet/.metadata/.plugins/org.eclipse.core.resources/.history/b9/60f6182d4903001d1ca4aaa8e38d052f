@@ -1,0 +1,13 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+    
+    <%
+		application.setAttribute("name", "홍길돌");		//제일 긴 생명주기
+		session.setAttribute("name", "최길돌");			//세션이 해지될때 까지	
+		request.setAttribute("name", "김길돌");			//다음 페이지에도 전달 될 수 있음. 단 foward에서만.
+		pageContext.setAttribute("name", "박길돌");		//페이지 그려질 동안만 유호
+		
+		pageContext.forward("scopeTest3.jsp");
+		//request.getRequestDispatcher("scopeTest3").foward()
+	%>

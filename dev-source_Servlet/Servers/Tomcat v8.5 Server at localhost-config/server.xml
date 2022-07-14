@@ -152,7 +152,7 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="01_ServletBasic" path="/01_ServletBasic" reloadable="true" source="org.eclipse.jst.jee.server:01_ServletBasic"/><Context docBase="02_Data" path="/02_Data" reloadable="true" source="org.eclipse.jst.jee.server:02_Data"/><Context docBase="03_SessionCookie" path="/03_SessionCookie" reloadable="true" source="org.eclipse.jst.jee.server:03_SessionCookie"/><Context docBase="04_JSP" path="/04_JSP" reloadable="true" source="org.eclipse.jst.jee.server:04_JSP"/></Host>
+      <Context docBase="01_ServletBasic" path="/01_ServletBasic" reloadable="true" source="org.eclipse.jst.jee.server:01_ServletBasic"/><Context docBase="02_Data" path="/02_Data" reloadable="true" source="org.eclipse.jst.jee.server:02_Data"/><Context docBase="03_SessionCookie" path="/03_SessionCookie" reloadable="true" source="org.eclipse.jst.jee.server:03_SessionCookie"/><Context docBase="04_JSP" path="/04_JSP" reloadable="true" source="org.eclipse.jst.jee.server:04_JSP"/><Context docBase="05_Filter" path="/05_Filter" reloadable="true" source="org.eclipse.jst.jee.server:05_Filter"/></Host>
     </Engine>
   </Service>
 </Server>
