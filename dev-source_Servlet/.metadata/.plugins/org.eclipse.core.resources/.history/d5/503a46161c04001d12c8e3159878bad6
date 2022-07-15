@@ -1,0 +1,60 @@
+package com.kh.mvc.member.model.dao;
+
+import static com.kh.common.jdbc.JDBCTemplate.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Date;
+
+import com.kh.mvc.member.model.vo.Member;
+
+public class MemberDAO {
+	
+	public Member findMemberById(Connection conn, String id) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM MEMBER WHERE ID=? AND STATUS='Y'";
+		
+		try {
+			pstmt = conn.prepareStatement(query);	//기본 쿼리 셋팅
+			pstmt.setString(1,id);	 // ? 구간을 특정 문자열로 채워주는 코드
+			rs = pstmt.executeQuery(); 	// 실제 db에 쿼리를 요청하여 결과값을 받아오는 코드
+			
+			if(rs.next()) {
+				Member member = new Member();
+				
+				member.setNo(rs.getInt("no"));
+				member.setId(rs.getString("id"));
+				member.setPassword(rs.getString("password"));
+				member.setRole(rs.getString("role"));
+				member.setName(rs.getString("name"));
+				member.setPhone(rs.getString("phone"));
+				member.setEmail(rs.getString("email"));
+				member.setAddress(rs.getString("address"));
+				member.setHobby(rs.getString("hobby"));
+				member.setStatus(rs.getString("status"));
+				member.setEnroll_date(rs.getDate("enroll_date"));
+				member.setModify_date(rs.getDate("modify_date"));
+				
+				return member;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return null;
+	}
+
+	public static void main(String[] args) {
+		Connection conn = getConnection();
+		MemberDAO dao = new MemberDAO();
+		
+		Member member = dao.findMemberById(conn, "admin");
+		System.out.println(member);
+	}
+
+}

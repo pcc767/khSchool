@@ -1,0 +1,259 @@
+package com.kh.mvc.board.model.dao;
+
+import static com.kh.common.jdbc.JDBCTemplate.close;
+import static com.kh.common.jdbc.JDBCTemplate.getConnection;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import com.kh.common.util.PageInfo;
+import com.kh.mvc.board.model.vo.Board;
+
+public class BoardDAO {
+	
+	// 게시물의 갯수를 가져오는 쿼리문
+	public int getBoardCount(Connection conn) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT COUNT(*) FROM BOARD WHERE STATUS='Y'";
+		int result = 0;
+
+		try {
+			pstmt = conn.prepareStatement(query); 
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return result;
+	}
+
+
+	// 게시물의 리스트를 가져오는 메소드
+	public List<Board> findAll(Connection conn, PageInfo pageInfo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Board> list = new ArrayList<Board>();
+		
+		String query = 
+				  "SELECT RNUM, NO, TITLE, ID, CREATE_DATE, ORIGINAL_FILENAME, READCOUNT, STATUS "
+				+ "FROM ( "
+				+ "    SELECT ROWNUM AS RNUM, NO, TITLE, ID, CREATE_DATE, ORIGINAL_FILENAME, READCOUNT, STATUS "
+				+ "    FROM ( "
+				+ "        SELECT  B.NO, B.TITLE, M.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS "
+				+ "        FROM BOARD B JOIN MEMBER M ON(B.WRITER_NO = M.NO) "
+				+ "        WHERE B.STATUS = 'Y' ORDER BY B.NO DESC "
+				+ "    ) "
+				+ ") "
+				+ "WHERE RNUM BETWEEN ? and ?";
+
+		try {
+			pstmt = conn.prepareStatement(query); 
+			pstmt.setInt(1, pageInfo.getStartList());
+			pstmt.setInt(2, pageInfo.getEndList());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Board board = new Board();
+				board.setRowNum(rs.getInt("RNUM"));
+				board.setNo(rs.getInt("NO"));
+				board.setTitle(rs.getString("TITLE"));
+				board.setWriter_id(rs.getString("ID"));
+				board.setCreate_date(rs.getDate("CREATE_DATE"));
+				board.setOriginal_filename(rs.getString("ORIGINAL_FILENAME"));
+				board.setReadcount(rs.getInt("READCOUNT"));
+				board.setStatus(rs.getString("STATUS"));
+				list.add(board);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return list;
+	}
+	
+	// 게시물의 갯수를 가져오는 쿼리문 
+	// searchMap : key=탐색할 컨텐츠, value=키워드
+	// 탐색 가능한 컨텐츠 : title, content, writer
+	public int getBoardCount(Connection conn, Map<String, String> searchMap) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT  COUNT(*) "
+				+ "FROM BOARD B "
+				+ "JOIN MEMBER M ON(B.WRITER_NO = M.NO) "
+				+ "WHERE 1=1 "
+				+ "AND B.STATUS = 'Y' ";
+		
+		if(searchMap.containsKey("title")) {
+			query += "AND B.TITLE LIKE ? "; 
+		}
+		if(searchMap.containsKey("content")) {
+			query += "AND B.CONTENT LIKE ? "; 
+		}
+		if(searchMap.containsKey("writer")) {
+			query += "AND M.ID LIKE ? "; 
+		}
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(query); 
+			int count = 1;
+			if(searchMap.containsKey("title")) {
+				pstmt.setString(count++, "%"+searchMap.get("title")+"%");
+			}
+			if(searchMap.containsKey("content")) {
+				pstmt.setString(count++, "%"+searchMap.get("content")+"%");
+			}
+			if(searchMap.containsKey("writer")) {
+				pstmt.setString(count++, "%"+searchMap.get("writer")+"%");
+			}
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return result;
+	}
+	
+	
+	// 게시물의 리스트를 가져오는 메소드
+	
+	/*
+	 * 
+	 * SELECT RNUM, NO, TITLE, ID, CREATE_DATE, ORIGINAL_FILENAME, READCOUNT, STATUS  
+		FROM (
+		    SELECT ROWNUM AS RNUM, NO, TITLE, ID, CREATE_DATE, ORIGINAL_FILENAME, READCOUNT, STATUS 
+		    FROM (
+		      SELECT  B.NO, B.TITLE, M.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS
+		        FROM BOARD B JOIN MEMBER M ON(B.WRITER_NO = M.NO) 
+		        WHERE 1 = 1 
+		        AND B.STATUS = 'Y'
+		        --	AND M.ID LIKE '%admin%' 
+		        --	AND B.TITLE LIKE '%구매%' 
+		        -- AND B.CONTENT LIKE '%아이폰%' 
+		        ORDER BY B.NO DESC
+		    )
+		)
+		WHERE RNUM BETWEEN 1 and 10;
+	 */
+	public List<Board> findAll(Connection conn, PageInfo pageInfo, Map<String, String> searchMap) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Board> list = new ArrayList<Board>();
+		
+		String queryBefore = 
+				"SELECT RNUM, NO, TITLE, ID, CREATE_DATE, ORIGINAL_FILENAME, READCOUNT, STATUS "
+						+ "FROM ( "
+						+ "    SELECT ROWNUM AS RNUM, NO, TITLE, ID, CREATE_DATE, ORIGINAL_FILENAME, READCOUNT, STATUS "
+						+ "    FROM ( "
+						+ "        SELECT  B.NO, B.TITLE, M.ID, B.CREATE_DATE, B.ORIGINAL_FILENAME, B.READCOUNT, B.STATUS "
+						+ "        FROM BOARD B JOIN MEMBER M ON(B.WRITER_NO = M.NO) "
+						+ "		   WHERE 1 = 1 "
+						+ "		   AND B.STATUS = 'Y' ";
+		
+		String queryAfter = "	   ORDER BY B.NO DESC"
+						+ "    ) "
+						+ ") "
+						+ "WHERE RNUM BETWEEN ? and ?";
+		
+		if(searchMap.containsKey("title")) {
+			queryBefore += "AND B.TITLE LIKE ? "; 
+		}
+		if(searchMap.containsKey("content")) {
+			queryBefore += "AND B.CONTENT LIKE ? "; 
+		}
+		if(searchMap.containsKey("writer")) {
+			queryBefore += "AND M.ID LIKE ? "; 
+		}
+		String query = queryBefore + queryAfter;
+		
+		try {
+			pstmt = conn.prepareStatement(query); 
+			int count = 1;
+			if(searchMap.containsKey("title")) {
+				pstmt.setString(count++, "%"+searchMap.get("title")+"%");
+			}
+			if(searchMap.containsKey("content")) {
+				pstmt.setString(count++, "%"+searchMap.get("content")+"%");
+			}
+			if(searchMap.containsKey("writer")) {
+				pstmt.setString(count++, "%"+searchMap.get("writer")+"%");
+			}
+			pstmt.setInt(count++, pageInfo.getStartList());
+			pstmt.setInt(count++, pageInfo.getEndList());
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Board board = new Board();
+				board.setRowNum(rs.getInt("RNUM"));
+				board.setNo(rs.getInt("NO"));
+				board.setTitle(rs.getString("TITLE"));
+				board.setWriter_id(rs.getString("ID"));
+				board.setCreate_date(rs.getDate("CREATE_DATE"));
+				board.setOriginal_filename(rs.getString("ORIGINAL_FILENAME"));
+				board.setReadcount(rs.getInt("READCOUNT"));
+				board.setStatus(rs.getString("STATUS"));
+				list.add(board);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return list;
+	}
+	
+
+	public static void main(String[] args) {
+		Connection conn = getConnection();
+		BoardDAO dao = new BoardDAO();
+		
+		// 게시물 갯수
+		int count = dao.getBoardCount(conn);
+		System.out.println("총 게시물 수 : " + count);
+		System.out.println("-----------------------------------------------");
+		
+		// 게시물 리스트
+		PageInfo info = new PageInfo(1, 10, count, 10);
+		List<Board> list = dao.findAll(conn, info);
+		for(Board b : list) {
+			System.out.println(b.toString());
+		}
+		System.out.println("-----------------------------------------------");
+		
+		// 게시물 갯수 - 검색
+		Map<String, String> searchMap = new HashMap<String, String>();
+//		searchMap.put("title", "판매");
+		searchMap.put("content", "아이폰");
+//		searchMap.put("writer", "admin");
+		count = dao.getBoardCount(conn, searchMap);
+		System.out.println("검색된 총 게시물 수 : " + count);
+		System.out.println("-----------------------------------------------");
+		
+		// 게시물 리스트 검색
+		info = new PageInfo(1, 10, count, 10);
+		list = dao.findAll(conn, info, searchMap);
+		for(Board b : list) {
+			System.out.println(b.toString());
+		}
+		System.out.println("-----------------------------------------------");
+	}
+}

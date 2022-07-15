@@ -1,0 +1,110 @@
+package com.kh.mvc.member.model.dao;
+
+import static com.kh.common.jdbc.JDBCTemplate.*;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.Date;
+
+import com.kh.mvc.member.model.vo.Member;
+
+public class MemberDAO {
+	
+	public Member findMemberById(Connection conn, String id) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT * FROM MEMBER WHERE ID=? AND STATUS='Y'";
+		
+		try {
+			pstmt = conn.prepareStatement(query);	//기본 쿼리 셋팅
+			pstmt.setString(1,id);	 // ? 구간을 특정 문자열로 채워주는 코드
+			rs = pstmt.executeQuery(); 	// 실제 db에 쿼리를 요청하여 결과값을 받아오는 코드
+			
+			if(rs.next()) {
+				Member member = new Member();
+				
+				member.setNo(rs.getInt("no"));
+				member.setId(rs.getString("id"));
+				member.setPassword(rs.getString("password"));
+				member.setRole(rs.getString("role"));
+				member.setName(rs.getString("name"));
+				member.setPhone(rs.getString("phone"));
+				member.setEmail(rs.getString("email"));
+				member.setAddress(rs.getString("address"));
+				member.setHobby(rs.getString("hobby"));
+				member.setStatus(rs.getString("status"));
+				member.setEnroll_date(rs.getDate("enroll_date"));
+				member.setModify_date(rs.getDate("modify_date"));
+				
+				return member;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return null;
+	}
+	
+	
+	
+	public int insertMember(Connection conn, Member member) {
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO MEMBER VALUES(SEQ_UNO.NEXTVAL,?,?,DEFAULT,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT)";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);	
+			pstmt.setString(1, member.getId()); 
+			pstmt.setString(2, member.getPassword()); 
+			pstmt.setString(3, member.getName()); 
+			pstmt.setString(4, member.getPhone()); 
+			pstmt.setString(5, member.getEmail()); 
+			pstmt.setString(6, member.getAddress()); 
+			pstmt.setString(7, member.getHobby()); 
+			result = pstmt.executeUpdate(); 	
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+	
+		}
+		return result;
+	}
+
+	public static void main(String[] args) {
+		Connection conn = getConnection();
+		MemberDAO dao = new MemberDAO();
+		
+		//조회하기
+		Member member = dao.findMemberById(conn, "admin");
+		System.out.println(member.toString().replace("," , ",\n"));
+		System.out.println("----------------------------------------\n");
+		
+		//회원 가입하기
+		Member member2 = new Member();
+		member2.setId("test12");
+		member2.setPassword("1234");
+		member2.setName("홍길동");
+		member2.setPhone("010-1234-1234");
+		member2.setEmail("test@test.com");
+		member2.setAddress("서울시 강남구 역삼동");
+		member2.setHobby("게임,야구");
+		
+		int result = dao.insertMember(conn, member2);
+		Member member3 = null;
+		if(result ==1) {
+			System.out.println("회원가입 성공");
+			member3 = dao.findMemberById(conn, member.getId());
+			System.out.println(member3.toString().replace("," , ",\n"));
+		}else {
+			System.out.println("회원가입 실패!");
+		}
+	}
+
+}

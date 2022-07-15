@@ -1,0 +1,24 @@
+package com.kh.mvc.board.model.dao;
+
+import java.sql.Connection;
+import java.util.List;
+
+import com.kh.mvc.board.model.vo.Board;
+
+public class BoardDAO {
+	
+	// 게시물의 갯수를 가져오는 쿼리문
+		public int getBoardCount(Connection conn) {
+			return 0;
+		}
+		
+
+
+	
+	
+		public List<Board> findAll(Connection conn, PageInfo pageInfo) {
+			
+		}
+
+
+}

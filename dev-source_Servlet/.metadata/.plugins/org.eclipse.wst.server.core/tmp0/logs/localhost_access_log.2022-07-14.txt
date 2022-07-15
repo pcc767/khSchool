@@ -75,3 +75,10 @@
 127.0.0.1 - - [14/Jul/2022:18:26:46 +0900] "GET / HTTP/1.1" 404 807
 0:0:0:0:0:0:0:1 - - [14/Jul/2022:18:26:48 +0900] "GET /05_Filter/views/member/enroll.jsp HTTP/1.1" 200 756
 0:0:0:0:0:0:0:1 - - [14/Jul/2022:18:26:54 +0900] "POST /05_Filter/views/member/enrollResult.jsp HTTP/1.1" 200 391
+0:0:0:0:0:0:0:1 - - [14/Jul/2022:18:56:42 +0900] "GET /05_Filter/index.html HTTP/1.1" 200 325
+0:0:0:0:0:0:0:1 - - [14/Jul/2022:18:57:04 +0900] "GET /05_Filter/views/member/enroll.jsp HTTP/1.1" 200 756
+0:0:0:0:0:0:0:1 - - [14/Jul/2022:18:59:05 +0900] "GET /05_Filter/views/member/enroll.jsp HTTP/1.1" 200 756
+0:0:0:0:0:0:0:1 - - [14/Jul/2022:18:59:20 +0900] "POST /05_Filter/views/member/enrollResult.jsp HTTP/1.1" 200 391
+127.0.0.1 - - [14/Jul/2022:19:02:23 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [14/Jul/2022:19:02:28 +0900] "GET /05_Filter/views/member/enroll.jsp HTTP/1.1" 200 756
+0:0:0:0:0:0:0:1 - - [14/Jul/2022:19:02:38 +0900] "POST /05_Filter/views/member/enrollResult.jsp HTTP/1.1" 200 391
