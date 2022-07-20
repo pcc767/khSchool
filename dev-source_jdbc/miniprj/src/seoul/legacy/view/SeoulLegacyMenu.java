@@ -81,158 +81,16 @@ public class SeoulLegacyMenu {
 			}
 		}
 	}
-
-	public void inputMember() {
-		while (true) {
-			System.out.println("\n<<< 회원 가입 >>>");
-			System.out.print("ID : ");
-			String id = Utility.scannerString();
-			if (uc.checkId(id) == false) {
-				System.out.println("중복된 아이디 입니다.\n다시 입력해 주세요.");
-				continue;
-			}
-			System.out.print("Password : ");
-			String pw = Utility.scannerString();
-			System.out.print("Name : ");
-			String name = Utility.scannerString();
-			System.out.print("Email : ");
-			String email = Utility.scannerString();
-			System.out.print("Phone : ");
-			String phone = Utility.scannerString();
-
-			boolean isJoin = uc.addUser(new User(id, pw, name, email, phone));
-			if (isJoin) {
-				System.out.println("회원 가입에 성공 하셨습니다.");
-				break;
-			} else {
-				System.out.println("회원 가입에 실패 하셨습니다.");
-			}
-		}
-	}
-
-	public void login() {
-		while (true) {
-			System.out.println("\n<<< 로그인 >>>");
-			System.out.print("ID : ");
-			String id = Utility.scannerString();
-			System.out.print("Password : ");
-			String pw = Utility.scannerString();
-			isLogin = uc.login(id, pw);
-			if (isLogin == true) {
-				System.out.println(UserController.getLoginUser().getUserName() + " 님 환영합니다.");
-				break;
-			} else {
-				System.out.print("등록되지 않은 회원입니다.\n다시 입력하시곘습니까?(Y/N) : ");
-				String yn = Utility.scannerString();
-
-				if (yn.toUpperCase().equals("Y")) {// ??????? 머선 129
-					continue;
-				} else {
-					break;
-				}
-			}
-		}
-	}
-
-	public void userData() { // 유저 정보
-		while (true) {
-			String userMenu = "\n<<< " + UserController.getLoginUser().getUserName()
-					+ " >>>\n1. 개인 정보\n2. 찜 목록\n3. 리뷰 목록\n4. 뒤로 가기\n→ ";
-			System.out.print(userMenu);
-			int menuNum = Utility.scannerInt();
-
-			switch (menuNum) {
-			case 1:
-				System.out.println(UserController.getLoginUser().toString());
-				break;
-			case 2:
-				userZzim();
-				break;
-			case 3:
-				userReview();
-				break;
-			case 4:
-				return;
-			default:
-				System.out.println(wrongInput);
-				break;
-			}
-
-		}
-	}
-
-	public void userZzim() { // 유저 정보 - 찜 목록
-		while (true) {
-			List<Zzim> zList = zc.searchPrivZzim(UserController.getLoginUser().getUserId());
-
-			if (zList.size() < 1) {
-				System.out.println("조회된 결과가 없습니다.");
-				break;
-			}
-			System.out.println();
-			for (int i = 0; i < zList.size(); i++) {
-				System.out.println((i + 1) + " ▷ " + zList.get(i).toString());
-			}
-			System.out.println();
-			System.out.print("번호 선택 → ");
-			int index = Utility.scannerInt() - 1;
-
-			if (index < 0 || index >= zList.size()) {
-				System.out.println(wrongInput);
-				continue;
-			}
-
-			System.out.println(lc.printDetail(zList.get(index).getLegacyNo()));
-			System.out.println();
-			System.out.print("토막 후기를 추가 하시겠습니까? (Y/N) → ");
-			String yN = Utility.scannerString();
-			if (yN.toUpperCase().equals("Y")) {
-				legacy = lc.searchByNo(index);
-				addReview();
-				legacy = null;
-			}
-			break;
-		}
-	}
-
-	public void userReview() { // 유저정보 - 리뷰 목록
-		while (true) {
-			List<Review> rList = rc.privReviewList(UserController.getLoginUser().getUserId());
-			if (rList.size() < 1) {
-				System.out.println("조회된 결과가 없습니다.\n");
-				break;
-			}
-			for (int i = 0; i < rList.size(); i++) {
-				System.out.println((i + 1) + " ▷ " + rList.get(i).idToString());
-			}
-
-			System.out.print("번호 선택 → ");
-			int index = Utility.scannerInt() - 1;
-			if (index < 0 || index >= rList.size()) {
-				System.out.println(wrongInput);
-				continue;
-			}
-			int lNo = rList.get(index).getLegacyNo();
-
-			System.out.println(lc.printDetail(lNo));
-
-			System.out.print("찜을 추가 하시겠습니까? (Y/N) → ");
-			String yN = Utility.scannerString();
-
-			if (yN.toUpperCase().equals("Y")) {
-				boolean result = zc.addZzim(UserController.getLoginUser().getUserId(), lNo);
-				if (result == true) {
-					System.out.println("찜 추가에 성공하였습니다.\n");
-					System.out.println(lc.printDetail(lNo));
-				} else {
-					System.out.println("찜은 중복해서 추가할 수 없습니다.\n");
-				}
-			} else {
-				break;
-			}
-		}
-	}
-
+	
+	/**
+	 * 1. searchLegacy - 문화재 검색
+	 * 	1-1. searchName
+	 * 	1-2. typeSearch
+	 * 	 1-2-1. searchCategory
+	 * 	 1-2-2. searchArea
+	 * 	 1-2-3. searchEra
+	 */
+	
 	public void searchLegacy() { // 문화재 검색 메뉴
 		while (true) {
 			String menu = "\n<<< 문화재 검색 >>>\n" + "\n1. 이름 검색" + "\n2. 간편 검색" + "\n3. 뒤로 가기" + "\n입력 : ";
@@ -254,7 +112,7 @@ public class SeoulLegacyMenu {
 			}
 		}
 	}
-
+	
 	public void searchName() { // 이름 검색
 		while (true) {
 			System.out.println("\n<<< 이름 검색 >>>");
@@ -271,39 +129,7 @@ public class SeoulLegacyMenu {
 			break;
 		}
 	}
-
-	private void legacySearch(List<Legacy> list, String keyword) {
-
-		System.out.println("\n[ " + keyword + " 검색 결과 ]\n");
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println((i + 1) + " - " + list.get(i).toString() + "\n");
-		}
-		System.out.println("[ " + keyword + " 검색완료 ] 자료 수 : " + list.size() + " 개\n");
-
-		while (true) {
-			System.out.print("상세 정보 보기(뒤로가기 : 0) ▷ ");
-			int chooseNum = Utility.scannerInt() - 1;
-			if (chooseNum == -1) {
-				return;
-			}
-			if (chooseNum >= list.size()) {
-				System.out.println("범위를 벗어났습니다.\n");
-				continue;
-			}
-
-			legacy = list.get(chooseNum);
-			System.out.println(legacy.getLegacy_no() + " " + legacy.getLegacy_name_kor());
-			System.out.println("\n" + lc.printDetail(legacy.getLegacy_no()) + "\n");
-
-			if (isLogin == true) {
-				addCommunity();
-				break;
-			} else {
-				return;
-			}
-		}
-	}
-
+	
 	public void typeSearch() {
 		while (true) {
 				String menu = "\n<<< 간편 검색 >>>\n" + "\n1. 종목 검색" + "\n2. 지역 검색" + "\n3. 시대 검색" + "\n4. 뒤로가기"
@@ -328,10 +154,9 @@ public class SeoulLegacyMenu {
 					System.out.println(wrongInput);
 					break;
 				}
-
 		}
 	}
-
+	
 	public void searchCategory() {
 		System.out.println("\n<<< 종목 검색 >>>");
 
@@ -341,7 +166,6 @@ public class SeoulLegacyMenu {
 		for (int i = 0; i < categoryCode.length; i++) {
 			System.out.print((i + 1) + " - " + categoryCode[i]);
 			if (i % 2 == 0) {
-
 				if (i > 5) {
 					System.out.print("\t\t");
 					continue;
@@ -420,6 +244,278 @@ public class SeoulLegacyMenu {
 			break;
 		}
 	}
+	
+	/**
+	 * 2. palaceList - 궁궐 검색
+	 */
+
+	public void palaceList() {
+		System.out.println("\n<<< 궁궐 >>>\n");
+		List<Palace> pList = pc.printAll();
+		for (int i = 0; i < pList.size(); i++) {
+			System.out.println((i + 1) + " ▷ " + pList.get(i).toString());
+			System.out.println();
+		}
+		int menuNum = 0;
+		while (true) {
+			System.out.print("보고 싶은 궁궐 선택 ▷ ");
+			menuNum = Utility.scannerInt() - 1;
+			if (menuNum < pList.size() && menuNum > -1) {
+				break;
+			}
+			System.out.println(wrongInput);
+		}
+		Palace palace = pList.get(menuNum);
+
+		int pNo = palace.getPalaceNo();
+
+		List<Facility> fList = fc.searchByPNo(pNo);
+
+		for (int i = 0; i < fList.size(); i++) {
+			System.out.println((i + 1) + " - " + fList.get(i).toString());
+		}
+		System.out.println();
+		System.out.print("번호를 선택하세요 ▷ ");
+		int chooseNum = 0;
+		while (true) {
+			chooseNum = Utility.scannerInt() - 1;
+			if (chooseNum < fList.size() && chooseNum > -1) {
+				break;
+			}
+			System.out.print(wrongInput);
+		}
+		System.out.println(fList.get(chooseNum).detailToString());
+	}
+	
+	/**
+	 * 3. topTen - 서울시 문화재 Top-10
+	 */
+	
+	public void topTen() {
+		System.out.println("<<< TOP - 10 >>>");
+		List<Legacy> temp = lc.topTen();
+
+		for (int i = 0; i < temp.size(); i++) {
+			System.out.println((i + 1) + " : " + temp.get(i));
+			System.out.println();
+		}
+		int menuNum = 0;
+		while (true) {
+			System.out.print("상세 조회 → ");
+			menuNum = Utility.scannerInt() - 1;
+			if (menuNum < temp.size() && menuNum > -1) {
+				break;
+			}
+			System.out.println(wrongInput);
+		}
+		System.out.println(lc.printDetail(temp.get(menuNum).getLegacy_no()));
+
+		legacy = temp.get(menuNum);
+
+		if (isLogin == true) {
+			addCommunity();
+		}
+	}
+	
+	/**
+	 * 4. userData - 개인정보
+	 */
+	
+	public void userData() { // 유저 정보
+		while (true) {
+			String userMenu = "\n<<< " + UserController.getLoginUser().getUserName()
+					+ " >>>\n1. 개인 정보\n2. 찜 목록\n3. 리뷰 목록\n4. 뒤로 가기\n→ ";
+			System.out.print(userMenu);
+			int menuNum = Utility.scannerInt();
+
+			switch (menuNum) {
+			case 1:
+				System.out.println(UserController.getLoginUser().toString());
+				break;
+			case 2:
+				userZzim();
+				break;
+			case 3:
+				userReview();
+				break;
+			case 4:
+				return;
+			default:
+				System.out.println(wrongInput);
+				break;
+			}
+
+		}
+	}
+	
+	/**
+	 * 5. inputMember - 회원가입.
+	 */
+
+	public void inputMember() {
+		while (true) {
+			System.out.println("\n<<< 회원 가입 >>>");
+			System.out.print("ID : ");
+			String id = Utility.scannerString();
+			if (uc.checkId(id) == false) {
+				System.out.println("중복된 아이디 입니다.\n다시 입력해 주세요.");
+				continue;
+			}
+			System.out.print("Password : ");
+			String pw = Utility.scannerString();
+			System.out.print("Name : ");
+			String name = Utility.scannerString();
+			System.out.print("Email : ");
+			String email = Utility.scannerString();
+			System.out.print("Phone : ");
+			String phone = Utility.scannerString();
+
+			boolean isJoin = uc.addUser(new User(id, pw, name, email, phone));
+			if (isJoin) {
+				System.out.println("회원 가입에 성공 하셨습니다.");
+				break;
+			} else {
+				System.out.println("회원 가입에 실패 하셨습니다.");
+			}
+		}
+	}
+	
+	/**
+	 * 6. login - 회원가입.
+	 */
+
+	public void login() {
+		while (true) {
+			System.out.println("\n<<< 로그인 >>>");
+			System.out.print("ID : ");
+			String id = Utility.scannerString();
+			System.out.print("Password : ");
+			String pw = Utility.scannerString();
+			isLogin = uc.login(id, pw);
+			if (isLogin == true) {
+				System.out.println(UserController.getLoginUser().getUserName() + " 님 환영합니다.");
+				break;
+			} else {
+				System.out.print("등록되지 않은 회원입니다.\n다시 입력하시곘습니까?(Y/N) : ");
+				String yn = Utility.scannerString();
+
+				if (yn.toUpperCase().equals("Y")) {// ??????? 머선 129
+					continue;
+				} else {
+					break;
+				}
+			}
+		}
+	}
+
+	
+
+	public void userZzim() { // 유저 정보 - 찜 목록
+		while (true) {
+			List<Zzim> zList = zc.searchPrivZzim(UserController.getLoginUser().getUserId());
+
+			if (zList.size() < 1) {
+				System.out.println("조회된 결과가 없습니다.");
+				break;
+			}
+			System.out.println();
+			for (int i = 0; i < zList.size(); i++) {
+				System.out.println((i + 1) + " ▷ " + zList.get(i).toString());
+			}
+			System.out.println();
+			System.out.print("번호 선택 → ");
+			int index = Utility.scannerInt() - 1;
+
+			if (index < 0 || index >= zList.size()) {
+				System.out.println(wrongInput);
+				continue;
+			}
+
+			System.out.println(lc.printDetail(zList.get(index).getLegacyNo()));
+			System.out.println();
+			System.out.print("토막 후기를 추가 하시겠습니까? (Y/N) → ");
+			String yN = Utility.scannerString();
+			if (yN.toUpperCase().equals("Y")) {
+				legacy = lc.searchByNo(index);
+				addReview();
+				legacy = null;
+			}
+			break;
+		}
+	}
+
+	public void userReview() { // 유저정보 - 리뷰 목록
+		while (true) {
+			List<Review> rList = rc.privReviewList(UserController.getLoginUser().getUserId());
+			if (rList.size() < 1) {
+				System.out.println("조회된 결과가 없습니다.\n");
+				break;
+			}
+			for (int i = 0; i < rList.size(); i++) {
+				System.out.println((i + 1) + " ▷ " + rList.get(i).idToString());
+			}
+
+			System.out.print("번호 선택 → ");
+			int index = Utility.scannerInt() - 1;
+			if (index < 0 || index >= rList.size()) {
+				System.out.println(wrongInput);
+				continue;
+			}
+			int lNo = rList.get(index).getLegacyNo();
+
+			System.out.println(lc.printDetail(lNo));
+
+			System.out.print("찜을 추가 하시겠습니까? (Y/N) → ");
+			String yN = Utility.scannerString();
+
+			if (yN.toUpperCase().equals("Y")) {
+				boolean result = zc.addZzim(UserController.getLoginUser().getUserId(), lNo);
+				if (result == true) {
+					System.out.println("찜 추가에 성공하였습니다.\n");
+					System.out.println(lc.printDetail(lNo));
+				} else {
+					System.out.println("찜은 중복해서 추가할 수 없습니다.\n");
+				}
+			} else {
+				break;
+			}
+		}
+	}
+
+	
+
+
+	private void legacySearch(List<Legacy> list, String keyword) {
+
+		System.out.println("\n[ " + keyword + " 검색 결과 ]\n");
+		for (int i = 0; i < list.size(); i++) {
+			System.out.println((i + 1) + " - " + list.get(i).toString() + "\n");
+		}
+		System.out.println("[ " + keyword + " 검색완료 ] 자료 수 : " + list.size() + " 개\n");
+
+		while (true) {
+			System.out.print("상세 정보 보기(뒤로가기 : 0) ▷ ");
+			int chooseNum = Utility.scannerInt() - 1;
+			if (chooseNum == -1) {
+				return;
+			}
+			if (chooseNum >= list.size()) {
+				System.out.println("범위를 벗어났습니다.\n");
+				continue;
+			}
+
+			legacy = list.get(chooseNum);
+			System.out.println(legacy.getLegacy_no() + " " + legacy.getLegacy_name_kor());
+			System.out.println("\n" + lc.printDetail(legacy.getLegacy_no()) + "\n");
+
+			if (isLogin == true) {
+				addCommunity();
+				break;
+			} else {
+				return;
+			}
+		}
+	}
 
 	public void addCommunity() {
 		String menu = "<<< "+ legacy.getLegacy_name_kor() +" 커뮤니티 메뉴 >>>" + "\n1. 토막 후기 보기\n2. 찜 추가\n3. 토막 후기 작성\n4. 뒤로가기\n→ ";
@@ -469,69 +565,9 @@ public class SeoulLegacyMenu {
 
 	}
 
-	public void topTen() {
-		System.out.println("<<< TOP - 10 >>>");
-		List<Legacy> temp = lc.topTen();
+	
 
-		for (int i = 0; i < temp.size(); i++) {
-			System.out.println((i + 1) + " : " + temp.get(i));
-			System.out.println();
-		}
-		int menuNum = 0;
-		while (true) {
-			System.out.print("상세 조회 → ");
-			menuNum = Utility.scannerInt() - 1;
-			if (menuNum < temp.size() && menuNum > -1) {
-				break;
-			}
-			System.out.println(wrongInput);
-		}
-		System.out.println(lc.printDetail(temp.get(menuNum).getLegacy_no()));
-
-		legacy = temp.get(menuNum);
-
-		if (isLogin == true) {
-			addCommunity();
-		}
-	}
-
-	public void palaceList() {
-		System.out.println("\n<<< 궁궐 >>>\n");
-		List<Palace> pList = pc.printAll();
-		for (int i = 0; i < pList.size(); i++) {
-			System.out.println((i + 1) + " ▷ " + pList.get(i).toString());
-			System.out.println();
-		}
-		int menuNum = 0;
-		while (true) {
-			System.out.print("보고 싶은 궁궐 선택 ▷ ");
-			menuNum = Utility.scannerInt() - 1;
-			if (menuNum < pList.size() && menuNum > -1) {
-				break;
-			}
-			System.out.println(wrongInput);
-		}
-		Palace palace = pList.get(menuNum);
-
-		int pNo = palace.getPalaceNo();
-
-		List<Facility> fList = fc.searchByPNo(pNo);
-
-		for (int i = 0; i < fList.size(); i++) {
-			System.out.println((i + 1) + " - " + fList.get(i).toString());
-		}
-		System.out.println();
-		System.out.print("번호를 선택하세요 ▷ ");
-		int chooseNum = 0;
-		while (true) {
-			chooseNum = Utility.scannerInt() - 1;
-			if (chooseNum < fList.size() && chooseNum > -1) {
-				break;
-			}
-			System.out.print(wrongInput);
-		}
-		System.out.println(fList.get(chooseNum).detailToString());
-	}
+	
 
 	// 메인 메뉴 1. 문화재 검색 2. 궁궐 검색 3. Top-10 4. 개인정보(로그인 시) 5. 로그인 6. 로그아웃. 9. 종료
 	// --------------------------------------------------------------------------------

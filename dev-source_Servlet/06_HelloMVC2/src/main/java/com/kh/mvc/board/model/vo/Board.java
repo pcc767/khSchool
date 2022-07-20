@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 public class Board {
-	
 	private int no;
 	private int rowNum;
 	private int writer_no;
@@ -19,7 +18,7 @@ public class Board {
 	private Date create_date;
 	private Date modify_date;
 	private List<Reply> replies;
-	
+
 	public Board() {
 		super();
 	}
@@ -164,9 +163,5 @@ public class Board {
 	public void setReplies(List<Reply> replies) {
 		this.replies = replies;
 	}
-	
-	
-
-	
 
 }

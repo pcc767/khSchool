@@ -14,7 +14,6 @@ public class Reply {
 
 	public Reply() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Reply(int no, int board_no, int writer_no, String writer_id, String content, String status, Date create_date,
@@ -100,5 +99,5 @@ public class Reply {
 	public void setModify_date(Date modify_date) {
 		this.modify_date = modify_date;
 	}
-	
+
 }

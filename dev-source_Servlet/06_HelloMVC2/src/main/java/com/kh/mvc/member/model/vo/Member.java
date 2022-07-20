@@ -3,19 +3,18 @@ package com.kh.mvc.member.model.vo;
 import java.util.Date;
 
 public class Member {
-	
-	private int no;
-	private String id;
-	private String password;
-	private String role;
-	private String name;
-	private String phone;
-	private String email;
-	private String address;
-	private String hobby;
-	private String status;
-	private Date enroll_date;
-	private Date modify_date;
+	private int 	no;
+	private String 	id;
+	private String 	password;
+	private String 	role;
+	private String 	name;
+	private String 	phone;
+	private String 	email;
+	private String 	address;
+	private String 	hobby;
+	private String 	status;
+	private Date 	enroll_date;
+	private Date	modify_date;
 
 	public Member() {
 		super();
@@ -140,8 +139,5 @@ public class Member {
 	public void setModify_date(Date modify_date) {
 		this.modify_date = modify_date;
 	}
-
-	
-	
 
 }

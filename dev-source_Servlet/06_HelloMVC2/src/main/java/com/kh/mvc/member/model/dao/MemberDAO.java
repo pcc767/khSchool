@@ -1,16 +1,16 @@
 package com.kh.mvc.member.model.dao;
 
+
 import static com.kh.common.jdbc.JDBCTemplate.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.Date;
 
 import com.kh.mvc.member.model.vo.Member;
 
 public class MemberDAO {
-	
+
 	public Member findMemberById(Connection conn, String id) {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -46,7 +46,6 @@ public class MemberDAO {
 		return null;
 	}
 	
-	
 	public int insertMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
 		String query = "INSERT INTO MEMBER VALUES(SEQ_UNO.NEXTVAL,?,?,DEFAULT,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT)";
@@ -70,22 +69,21 @@ public class MemberDAO {
 		return result;
 	}
 	
-	
-	//사용자 정보 수정
+	// 사용자 정보 수정
 	public int updateMember(Connection conn, Member member) {
 		PreparedStatement pstmt = null;
-		String query = "UPDATE MEMBER SET NAME=?,PHONE=?,EMAIL=?,ADDRESS=?,HOBBY=?,MODIFY_DATE=SYSDATE WHERE NO=?";
-
+		String query = "UPDATE MEMBER SET NAME=?,PHONE=?,"
+				+ 		" EMAIL=?,ADDRESS=?,HOBBY=?,MODIFY_DATE=SYSDATE WHERE NO=?";
 		int result = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, member.getName()); 
-			pstmt.setString(2, member.getPhone());
-			pstmt.setString(3, member.getEmail());
+			pstmt.setString(2, member.getPhone()); 
+			pstmt.setString(3, member.getEmail()); 
 			pstmt.setString(4, member.getAddress()); 
-			pstmt.setString(5, member.getHobby());
-			pstmt.setInt(6, member.getNo());
+			pstmt.setString(5, member.getHobby()); 
+			pstmt.setInt(6, member.getNo()); 
 			
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
@@ -96,18 +94,16 @@ public class MemberDAO {
 		return result;
 	}
 	
-	
-	//탈퇴
-	public int updateStatus(Connection conn, int userNo, String status) {
+	// 탈퇴하기
+	public int updateStatus(Connection conn, int userNo,  String status) {
 		PreparedStatement pstmt = null;
-		String query = "UPDATE MEMBER SET STATUS=? WHERE NO=?";
+		String query = " UPDATE MEMBER SET STATUS=? WHERE NO=? ";
 		int result = 0;
 		
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, status); 
-			pstmt.setInt(2, userNo);
-			
+			pstmt.setInt(2, userNo); 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -117,9 +113,8 @@ public class MemberDAO {
 		return result;
 	}
 	
-	
-	//패스워드 변경
-	public int updatepassword(Connection conn, int userNo, String password) {
+	// 패스워드 변경하기
+	public int updatePassword(Connection conn, int userNo, String password) {
 		PreparedStatement pstmt = null;
 		String query = "UPDATE MEMBER SET PASSWORD=? WHERE NO=?";
 		int result = 0;
@@ -127,8 +122,7 @@ public class MemberDAO {
 		try {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, password); 
-			pstmt.setInt(2, userNo);
-			
+			pstmt.setInt(2, userNo); 
 			result = pstmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -138,80 +132,76 @@ public class MemberDAO {
 		return result;
 	}
 	
-	
-	
-	public static void main(String[] args) {
-		Connection conn = getConnection();
-		MemberDAO dao = new MemberDAO();
-		
-		// 조회하기
-		Member member = dao.findMemberById(conn, "admin");
-		System.out.println(member.toString().replace(",", ",\n"));
-		System.out.println("------------------------------------\n");
-		
-		// 회원 가입하기
-		Member member2 = new Member();
-		member2.setId("test12");
-		member2.setPassword("1234");
-		member2.setName("최길동");
-		member2.setPhone("010-1234-5678");
-		member2.setEmail("test2@email.com");
-		member2.setAddress("서울시 강남구 도곡동");
-		member2.setHobby("게임,야구,농구");
-		
-		int result = dao.insertMember(conn, member2);
-		Member member3 = null;
-		if(result == 1) {
-			System.out.println("회원가입 성공");
-			member3 = dao.findMemberById(conn, member2.getId());
-			System.out.println(member3.toString().replace(",", ",\n"));
-		}else {
-			System.out.println("회원가입 실패!!");
-		}
-		System.out.println("------------------------------------\n");
-		
-		//user update
-		member3.setAddress("경기도 안양시 동안구");
-		member3.setPhone("010-4321-4321");
-		member3.setName("차은우");
-		result = dao.updateMember(conn, member3);
-		
-		if(result == 1) {
-			System.out.println("수정 성공");
-			member3 = dao.findMemberById(conn, member3.getId());
-			System.out.println(member3.toString().replace(",", ",\n"));
-		}else {
-			System.out.println("수정 실패!!");
-		}
-		System.out.println("------------------------------------\n");
-		
-		//패스워드 변경
-		System.out.println("psaaword update");
-		result = dao.updatepassword(conn, member3.getNo(),"4567");
-		
-		if(result == 1) {
-			System.out.println("비밀번호 변경 성공");
-			member3 = dao.findMemberById(conn, member3.getId());
-			System.out.println(member3.toString().replace(",", ",\n"));
-		}else {
-			System.out.println("비밀번호 변경 실패!!");
-		}
-		System.out.println("------------------------------------\n");
-		
-		
-		//회원탈퇴
-		System.out.println("updateStatus");
-		result = dao.updatepassword(conn, member3.getNo(),"N");
-		
-		if(result == 1) {
-			System.out.println("탈퇴 성공");
-			member3 = dao.findMemberById(conn, member3.getId());
-			System.out.println(member3);
-		}else {
-			System.out.println("탈퇴 실패!!");
-		}
-		
-		
-	}
+//	public static void main(String[] args) {
+//		Connection conn = getConnection();
+//		MemberDAO dao = new MemberDAO();
+//		
+//		// 조회하기
+//		Member member = dao.findMemberById(conn, "admin");
+//		System.out.println(member.toString().replace(",", ",\n"));
+//		System.out.println("------------------------------------------\n");
+//		
+//		// 회원 가입하기
+//		Member member2 = new Member();
+//		member2.setId("test12");
+//		member2.setPassword("1234");
+//		member2.setName("최길동");
+//		member2.setPhone("010-1234-5678");
+//		member2.setEmail("test2@email.com");
+//		member2.setAddress("서울시 강남구 도곡동");
+//		member2.setHobby("게임,야구,농구");
+//		
+//		int result = dao.insertMember(conn, member2);
+//		Member member3 = null;
+//		if(result == 1) {
+//			System.out.println("회원가입 성공");
+//			member3 = dao.findMemberById(conn, member2.getId());
+//			System.out.println(member3.toString().replace(",", ",\n"));
+//		}else {
+//			System.out.println("회원가입 실패!!");
+//		}
+//		System.out.println("------------------------------------------\n");
+//		
+//		// 회원 업데이트
+//		member3.setAddress("경기도 안양시 동안구");
+//		member3.setPhone("010-4321-4444");
+//		member3.setName("차은우");
+//		result = dao.updateMember(conn, member3);
+//		if(result == 1) {
+//			System.out.println("수정 성공");
+//			member3 = dao.findMemberById(conn, member3.getId());
+//			System.out.println(member3.toString().replace(",", ",\n"));
+//		}else {
+//			System.out.println("수정 실패!!");
+//		}
+//		System.out.println("------------------------------------------\n");
+//		
+//		// 패스워드 변경
+//		result = dao.updatePassword(conn, member3.getNo(), "4321");
+//		if(result == 1) {
+//			System.out.println("비밀번호 변경 성공");
+//			member3 = dao.findMemberById(conn, member3.getId());
+//			System.out.println(member3.toString().replace(",", ",\n"));
+//		}else {
+//			System.out.println("비밀번호 변경 실패!!");
+//		}
+//		System.out.println("------------------------------------------\n");
+//		
+//		// 회원탈퇴
+//		result = dao.updateStatus(conn, member3.getNo(), "N");
+//		if(result == 1) {
+//			System.out.println("탈퇴 성공");
+//			member3 = dao.findMemberById(conn, member3.getId());
+//			System.out.println(member3);
+//		}else {
+//			System.out.println("탈퇴 실패!!");
+//		}
+//		System.out.println("------------------------------------------\n");
+//	}
 }
+
+
+
+
+
 

@@ -18,8 +18,8 @@ public class JDBCTemplate {
 			// class 실행 경로의 path를 가져오는 방법  ※ 주의 : 한글이 경로에 있으면 실행 불가.
 			String path = JDBCTemplate.class.getResource("./driver.properties").getPath();
 			path = path.replace("%20", " ");
-			
-			System.out.println(path);
+
+//			System.out.println(path);
 			
 			porp.load(new FileReader(path));
 			Class.forName(porp.getProperty("db.driver"));
@@ -88,7 +88,7 @@ public class JDBCTemplate {
 	}
 	
 	
-	// main을 통해 검증 -> 향후에는 삭제
+//	// main을 통해 검증 -> 향후에는 삭제
 //	public static void main(String[] args) {
 //		Connection conn = JDBCTemplate.getConnection();
 //		System.out.println("!!");

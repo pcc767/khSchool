@@ -1,0 +1,120 @@
+package com.beach.api;
+
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import com.beach.model.vo.Beach;
+
+public class beachAPI {
+
+    public static final String KEY = "orCD5outbUakEqSxWPAu4C3NHBeT2DtV5DHSQbUBCr4Wx74vx2MumvtD23yU8ImOKwK8KWIjpiG5ubsei4j9dA%3D%3D";
+    public static final String BEACH_KEYWORD_LIST_URL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword";
+    public static final String BEACH_DETAIL_LIST_URL = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon";
+
+//    http://api.visitkorea.or.kr/openapi/service/rest/KorService/searchKeyword?ServiceKey=orCD5outbUakEqSxWPAu4C3NHBeT2DtV5DHSQbUBCr4Wx74vx2MumvtD23yU8ImOKwK8KWIjpiG5ubsei4j9dA%3D%3D&MobileApp=AppTest&MobileOS=ETC&numOfRows=500&cat1=A01&cat2=A0101&cat3=A01011200&keyword=
+
+    public static List<Beach> callBeachKeywordByXML(){
+
+        List<Beach> list = new ArrayList<>();
+        String place = "해수욕장";
+        
+        String url = null;
+        try {
+        	url = URLEncoder.encode(place, "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+        StringBuffer urlBuffer = new StringBuffer();
+        urlBuffer.append(BEACH_KEYWORD_LIST_URL);
+        urlBuffer.append("?" + "ServiceKey="+KEY);
+        urlBuffer.append("&" + "MobileApp=AppTest");
+        urlBuffer.append("&" + "MobileOS=ETC");
+        urlBuffer.append("&" + "numOfRows=500");
+        urlBuffer.append("&" + "cat1=A01");
+        urlBuffer.append("&" + "cat2=A0101");
+        urlBuffer.append("&" + "cat3=A01011200");
+        urlBuffer.append("&" + "keyword="+url);
+
+        System.out.println(urlBuffer);
+        
+        String urln = null;
+        try {
+        	urln = URLEncoder.encode(urlBuffer, "UTF-8");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+        
+        
+        try {
+            URL url = new URL(urlBuffer.toString());
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/xml");
+            int code = conn.getResponseCode();
+            System.out.println("Response code: " + code);
+
+            if(code < 200 || code > 300){
+                System.out.println("페이지가 잘 못되었습니다.");
+                return null;
+            }
+
+            //페이지 해석
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document doc = db.parse(conn.getInputStream());
+            doc.normalizeDocument();
+
+            System.out.println("Root Element : " + doc.getDocumentElement().getNodeName());
+            System.out.println("========================================================");
+
+            //태그 선택이 안되는것 같음.--------------------------------------------------------
+            NodeList beachList = doc.getElementsByTagName("item");
+            System.out.println("파실할 리스트 수 : "+ beachList.getLength());
+
+            for(int i=0; i<beachList.getLength();i++){
+                Node node = beachList.item(i);
+                System.out.println("\nCurrent Element : " + node.getNodeName());
+                if(node.getNodeType() == Node.ELEMENT_NODE){
+                    Element eElement = (Element) node;
+                    System.out.println(getStrData(eElement, "addr1"));
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+
+    private static String getStrData(Element eElement, String tagName){
+        try {
+            return eElement.getElementsByTagName(tagName).item(0).getTextContent();
+        } catch (Exception e) {
+            return "-";
+        }
+    }
+
+
+    public static void main(String[] args) {
+        callBeachKeywordByXML();
+
+    }
+
+}
+
+
+

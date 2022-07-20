@@ -1,0 +1,48 @@
+package com.kh.mvc.board.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.kh.common.util.MyHttpSertvlet;
+import com.kh.mvc.board.model.service.BoardService;
+import com.kh.mvc.member.model.vo.Member;
+
+/**
+ * 
+ * 게시글 첨부파일 없을때
+ *
+ */
+
+@WebServlet("/board/write")
+public class BoardWriteServletForSimple extends MyHttpSertvlet{
+
+	private static final long serialVersionUID = 1L;
+	
+	private BoardService service = new BoardService();
+
+
+	@Override
+	public String getServletName() {
+		return "BoardWrite";
+	}
+	
+	@Override
+		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			try {				
+				Member loginMember = getSessionMember(req);
+				if(loginMember != null) {
+					req.getRequestDispatcher("/views/board/write.jsp").forward(req, resp);
+				}
+				
+			} catch (Exception e) {}
+			
+			sendCommonPage("로그인 이후 사용할 수 있습니다." , "/", req, resp);
+		}
+	
+	
+
+}

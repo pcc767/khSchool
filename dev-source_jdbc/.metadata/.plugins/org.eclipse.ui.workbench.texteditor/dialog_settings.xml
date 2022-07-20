@@ -6,8 +6,10 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="legacySearch"/>
+		<item key="selection" value="searchDate"/>
 		<list key="findhistory">
+			<item value="searchDate"/>
+			<item value="yearWeekTime"/>
 			<item value="legacysearch"/>
 			<item value="try"/>
 			<item value="→"/>
@@ -21,8 +23,6 @@
 			<item value="selectAll"/>
 			<item value="getMvListByYearweekTime"/>
 			<item value="searchByBoxofficeNo"/>
-			<item value="ccceName"/>
-			<item value="All"/>
 		</list>
 		<list key="replacehistory">
 		</list>

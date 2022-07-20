@@ -13,6 +13,7 @@ import java.util.Map;
 
 import com.kh.common.util.PageInfo;
 import com.kh.mvc.board.model.vo.Board;
+import com.kh.mvc.board.model.vo.Reply;
 
 public class BoardDAO {
 	
@@ -182,6 +183,7 @@ public class BoardDAO {
 		if(searchMap.containsKey("writer")) {
 			queryBefore += "AND M.ID LIKE ? "; 
 		}
+		
 		String query = queryBefore + queryAfter;
 		
 		try {
@@ -221,6 +223,200 @@ public class BoardDAO {
 		return list;
 	}
 	
+	// 글쓰기 기능 완성
+	public int insertBoard(Connection conn, Board board) {
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO BOARD VALUES(SEQ_BOARD_NO.NEXTVAL,?,?,?,?,?,?,DEFAULT,DEFAULT,DEFAULT,DEFAULT)";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, board.getWriter_no()); 
+			pstmt.setString(2, board.getTitle()); 
+			pstmt.setString(3, board.getContent()); 
+			pstmt.setString(4, ""); 
+			pstmt.setString(5, board.getOriginal_filename()); 
+			pstmt.setString(6, board.getRenamed_filename()); 
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 상세 게시글을 조회 
+	public Board findBoardByNo(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Board board  = null;
+		String query = 
+				"SELECT  B.NO, B.TITLE, M.ID, B.READCOUNT, B.ORIGINAL_FILENAME, B.RENAMED_FILENAME, B.CONTENT, B.CREATE_DATE, B.MODIFY_DATE "
+				+ "FROM BOARD B "
+				+ "JOIN MEMBER M ON(B.WRITER_NO = M.NO) "
+				+ "WHERE B.STATUS = 'Y' AND B.NO= ? ";
+
+		try {
+			pstmt = conn.prepareStatement(query); 
+			pstmt.setInt(1, boardNo);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				board = new Board();
+				board.setNo(rs.getInt("NO"));
+				board.setTitle(rs.getString("TITLE"));
+				board.setWriter_id(rs.getString("ID"));
+				board.setReadcount(rs.getInt("READCOUNT"));
+				board.setOriginal_filename(rs.getString("ORIGINAL_FILENAME"));
+				board.setRenamed_filename(rs.getString("RENAMED_FILENAME"));
+				board.setContent(rs.getString("CONTENT"));
+				board.setCreate_date(rs.getTimestamp("CREATE_DATE"));
+				board.setModify_date(rs.getTimestamp("MODIFY_DATE"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return board;
+	}
+
+	// 게시글 조회수 올려주는 쿼리
+	public int updateReadCount(Connection conn, Board board) {
+		PreparedStatement pstmt = null;
+		String query = "UPDATE BOARD SET READCOUNT = ? WHERE NO = ?";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, board.getReadcount() + 1); 
+			pstmt.setInt(2, board.getNo()); 
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+
+	// 게시글 삭제(실제로는 안보여주기 기능) 를 위한 쿼리
+	public int updateStatus(Connection conn, int boardNo, String status) {
+		PreparedStatement pstmt = null;
+		String query = "UPDATE BOARD SET STATUS=? WHERE NO=?";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, status); 
+			pstmt.setInt(2, boardNo); 
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
+	// 게시글 수정
+	public int updateBoard(Connection conn, Board board) {
+		PreparedStatement pstmt = null;
+		String query = "UPDATE BOARD SET TITLE=?,CONTENT=?,ORIGINAL_FILENAME=?,RENAMED_FILENAME=?,MODIFY_DATE=SYSDATE WHERE NO=?";
+		int result = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, board.getTitle()); 
+			pstmt.setString(2, board.getContent()); 
+			pstmt.setString(3, board.getOriginal_filename()); 
+			pstmt.setString(4, board.getRenamed_filename()); 
+			pstmt.setInt(5, board.getNo()); 
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 리플을 가져오는 메소드
+	public List<Reply> getRepliesByNo(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Reply> list = new ArrayList<Reply>();
+		
+		String query = "SELECT R.NO, R.BOARD_NO, R.CONTENT, M.ID, R.CREATE_DATE, R.MODIFY_DATE "
+				+ "FROM REPLY R "
+				+ "JOIN MEMBER M ON(R.WRITER_NO = M.NO) "
+				+ "WHERE R.STATUS='Y' AND BOARD_NO= ? "
+				+ "ORDER BY R.NO DESC ";
+
+		try {
+			pstmt = conn.prepareStatement(query); 
+			pstmt.setInt(1, boardNo);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				Reply reply = new Reply();
+				reply.setNo(rs.getInt("NO"));
+				reply.setBoard_no(rs.getInt("BOARD_NO"));
+				reply.setContent(rs.getString("ID"));
+				reply.setWriter_id(rs.getString("CONTENT"));
+				reply.setCreate_date(rs.getTimestamp("CREATE_DATE"));
+				reply.setModify_date(rs.getTimestamp("MODIFY_DATE"));
+				list.add(reply);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+			close(rs);
+		}
+		return list;
+	}
+
+	// 리플 쓰기 기능
+	public int insertReply(Connection conn, Reply reply) {
+		PreparedStatement pstmt = null;
+		String query = "INSERT INTO REPLY VALUES(SEQ_REPLY_NO.NEXTVAL, ?, ?, ?, DEFAULT, DEFAULT, DEFAULT)";
+		int result = 0;
+
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, reply.getBoard_no());
+			pstmt.setInt(2, reply.getWriter_no());
+			pstmt.setString(3, reply.getContent());
+
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+
+	// 리플 삭제 기능
+	public int deleteReply(Connection conn, int replyNo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+		String query = "DELETE REPLY WHERE NO = ?";
+		try {
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, replyNo);
+			
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
 
 	public static void main(String[] args) {
 		Connection conn = getConnection();
@@ -242,8 +438,8 @@ public class BoardDAO {
 		// 게시물 갯수 - 검색
 		Map<String, String> searchMap = new HashMap<String, String>();
 		searchMap.put("title", "판매");
-//		searchMap.put("content", "아이폰");
-//		searchMap.put("writer", "admin");
+		searchMap.put("content", "아이폰");
+		searchMap.put("writer", "admin");
 		count = dao.getBoardCount(conn, searchMap);
 		System.out.println("검색된 총 게시물 수 : " + count);
 		System.out.println("-----------------------------------------------");
@@ -255,5 +451,34 @@ public class BoardDAO {
 			System.out.println(b.toString());
 		}
 		System.out.println("-----------------------------------------------");
+		
+		// 일반 게시판 쓰기
+		Board board = new Board();
+		board.setWriter_no(1);
+		board.setTitle("자바에서 올린 타이틀");
+		board.setContent("자바에서 올린 내용물");
+		board.setOriginal_filename("");
+		board.setRenamed_filename("");
+		int result = dao.insertBoard(conn, board);
+		System.out.println("게시물 작성 결과 : " + result);
+		
+		// 게시물 갯수
+		count = dao.getBoardCount(conn);
+		System.out.println("총 게시물 수 : " + count);
+		System.out.println("-----------------------------------------------");
+		
+		// 게시물 리스트
+		info = new PageInfo(1, 10, count, 10);
+		list = dao.findAll(conn, info);
+		for(Board b : list) {
+			System.out.println(b.toString());
+		}
+		System.out.println("-----------------------------------------------");
+		
+		Board board2 = dao.findBoardByNo(conn, list.get(0).getNo());
+		System.out.println(board2.toString());
+		System.out.println("-----------------------------------------------");
+		
+		
 	}
 }

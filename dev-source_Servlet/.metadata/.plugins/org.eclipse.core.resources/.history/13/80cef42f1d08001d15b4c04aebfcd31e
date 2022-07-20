@@ -1,0 +1,26 @@
+package com.kh.mvc.board.controller;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/board/fileDown")
+public class BoardFileDownServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		// 파일을 읽어서 전송하는 코드. 돌려주는건 페이지가 아닌 파일스트림 형태
+		//1. 파라메터 읽어오기
+		String originName = req.getParameter("originName");
+		String reName = req.getParameter("reName");
+		System.out.println(originName + " , " + reName);
+		
+	}
+
+}

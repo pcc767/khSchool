@@ -7,11 +7,10 @@ public class PageInfo {
 	private int listLimit;	
 	
 	/**
-	 * 
 	 * @param currentPage 현재 페이지
-	 * @param pageLimit 한 페이지에 보여질 페이지의 수  
-	 * @param listCount 전체 리스트의 수 
-	 * @param listLimit 한 페이지에 표시될 리스트의 수 = 한페이지에 보여질 게시물 수  
+	 * @param pageLimit 한 페이지에 보여질 페이지의 수  = 페이지 기준으로 보여질 숫자
+	 * @param listCount 전체 리스트의 수 = 총게시물 숫자 
+	 * @param listLimit 한 페이지에 표시될 리스트의 수  = 한페이지에 보여질 게시물 수
 	 */
 	public PageInfo(int currentPage, int pageLimit, int listCount, int listLimit) {
 		this.currentPage = currentPage;
